@@ -1,5 +1,19 @@
 #!/usr/bin/env python3
-""" Eular 9 """
+"""
+Eular 9
+*Special Pythagorean triplet*
+    A Pythagorean triplet is a set of three natural numbers,
+    a < b < c, for which, a^2 + b^2 = c^2
+    For example, 3^2 + 4^2 = 9 + 16 = 25 = 52.
+
+    There exists exactly one Pythagorean triplet for which
+    a + b + c = 1000.
+
+    Find the product a * b * c.
+"""
+
+# Some notes
+# a, b, and c cannot be larger than 1000
 
 import math
 
@@ -8,24 +22,96 @@ def square_list(upto):
     return [x ** 2 for x in range(upto)]
 
 
-def main():
-    """ Main """
-    squares = square_list(1000)
+def is_pythagorean_triplet(a2, b2, c2):
+    if a2 + b2 == c2:
+        return True
+    else:
+        return False
 
-    for a in range(1, 1000):
-        for b in range(a + 1, 1000):
+
+def adds_to_1000(a, b, c):
+    if a + b + c == 1000:
+        return True
+    else:
+        return False
+
+
+def recursive_solution():
+    # We probably won't need any squares above 500.
+    squares = square_list(500)
+
+    # Start with c^2, and try to determine a and b from c^2.
+    for c in range(2, len(squares)):
+
+        if c + (c - 1) + (c - 2) < 1000:
+            continue
+        # Check if there is a perfect pythagorean triplet for c
+        abc = find_ab(0, 1, c, squares)
+
+        # If something other than None is returns, there is a triplet
+        if abc is not None:
+            a, b, c = abc[0], abc[1], abc[2]
+
+            # Check if they add to 1000
+            if adds_to_1000(a, b, c):
+                return abc
+            else:
+                print('{} + {} + {} != 1000'.format(a, b, c))
+
+
+def find_ab(a, b, c, squares):
+    #  print('find_ab({}, {}, {}, squares)'.format(a, b, c))
+    print('find_ab({} + {} = {}?'.format(squares[a], squares[b], squares[c]))
+    # base case:
+    if is_pythagorean_triplet(squares[a], squares[b], squares[c]) and b != c:
+        print('Base case encountered.')
+        return squares[a], squares[b], squares[c]
+    elif a == c - 2 and b == c - 1:
+        print('No pythagorean triplet found for {}^2.'.format(squares[c]))
+        return None
+    elif b < c:
+        return find_ab(a, b + 1, c, squares)
+    else:
+        a = a + 1
+        return find_ab(a, a + 1, c, squares)
+
+
+def iterative_solution():
+    MAX = 1000
+    squares = square_list(MAX)
+
+    for a in range(1, MAX):
+        for b in range(a + 1, MAX):
             ab = a ** 2 + b ** 2
-            c = math.sqrt(ab)
-            if a + b + c > 1000:
+            c = int(math.sqrt(ab))
+            if a + b + c > MAX:
                 continue
 
             if ab in squares:
-                if a + b + c == 1000:
-                    print('a^2 + b^2 = c^2')
-                    print('{} + {} = {}'.format(a**2, b**2, ab))
-                    print('a + b + c = 1000')
-                    print('{} + {} + {} = 1000!'.format(a, b, c))
-                    print('The product abc = {}'.format(a*b*c))
+                print('{} + {} + {} == 1000?'.format(a, b, c))
+                if adds_to_1000(a, b, c):
+                    return a, b, c
 
 if __name__ == "__main__":
-    main()
+
+    #  print('Eular 9: Recursive solution')
+    #  result = recursive_solution()
+    #  if result is None:
+        #  print('No solution was found')
+        #  exit()
+    #  else:
+        #  a2, b2, c2 = result
+
+    #  a = math.sqrt(a2)
+    #  b = math.sqrt(b2)
+    #  c = math.sqrt(c2)
+
+    abc = iterative_solution()
+    a, b, c = iterative_solution()
+
+    print('a^2 + b^2 = c^2')
+    #  print('{} + {} = {}'.format(a2, b2, c2))
+    print('{} + {} = {}'.format(a ** 2, b ** 2, c ** 2))
+    print('a + b + c = 1000')
+    print('{} + {} + {} = 1000!'.format(a, b, c))
+    print('The product abc = {}'.format(a * b * c))

@@ -39,41 +39,6 @@ def get_largest_palindrome(lowerlimit, upperlimit):
     return largest_palindrome
 
 
-def test():
-    # Test the basic boundary conditions
-    print("Test!")
-    print("ispalindome('')")
-    print(ispalindrome(''))
-
-    print("ispalindome(1)")
-    print(ispalindrome(1))
-
-    print("ispalindome(11)")
-    print(ispalindrome(11))
-
-    print("ispalindome(12)")
-    print(ispalindrome(12))
-
-    print("ispalindome(111)")
-    print(ispalindrome(111))
-
-    print("ispalindome(121)")
-    print(ispalindrome(121))
-
-    print("ispalindome(112)")
-    print(ispalindrome(112))
-
-    print("ispalindome(1111)")
-    print(ispalindrome(1111))
-
-    print("ispalindome(2112)")
-    print(ispalindrome(2112))
-
-    print("ispalindome(1234)")
-    print(ispalindrome(1234))
-    # print("ispalindome(1) = {}".format(str(ispalindrome(1))))
-
-
 def main():
     print('Calculating the largest palindrome producable between the factors' +
           ' of 10 and 100')

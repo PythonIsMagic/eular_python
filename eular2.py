@@ -8,32 +8,34 @@ terms. By starting with 1 and 2, the first 10 terms will be:
 
 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
 
-By considering the terms in the Fibonacci sequence
-
-whose values do not exceed
-4 million, find the sum of the even-valued terms.
+By considering the terms in the Fibonacci sequence whose values do not exceed 4
+million, find the sum of the even-valued terms.
 """
 
 
-def main():
-    UPPERLIMIT = 4000000
+def fibonacci():
+    a, b = 0, 1
+    while(True):
+        a, b = b, a + b
+        yield a
+
+
+def calc_sum_of_evens(upto):
     sum = 0
 
-    # Define first 2 Fibonacci numbers
-    A = 0
-    B = 1
+    for x in fibonacci():
+        if x > upto:
+            break
+        #  print(x)
 
-    while (B < UPPERLIMIT):
         # Test if the current fib # is even and if so, add it to the sum.
-        if B % 2 == 0:
-            print("Even Pibonacci # %d" % B)
-            sum += B
+        if x % 2 == 0:
+            sum += x
 
-        # Advance the fib #
-        A, B = B, A + B
-        # B, A = B + A, B
+    return sum
 
-    print("The sum is %d" % sum)
 
 if __name__ == "__main__":
-    main()
+    UPPERLIMIT = 4000000
+    sum = calc_sum_of_evens(UPPERLIMIT)
+    print('The sum of all even numbered Fibonacci numbers up to 4000000 = {}'.format(sum))

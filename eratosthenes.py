@@ -1,15 +1,12 @@
 #!/usr/bin/env python3
 
-import readinput
-
 
 # Sieve of eratosthenese
 def sift_primes(n):
-    # Check the number
-    if not readinput.is_integer(n):
-        print('Passed in argument is not an integer!')
-        return -1
-    elif n < 2:
+    """
+    For all integers up to n, sifts out the non-primes and returns list of all primes up to n.
+    """
+    if n < 2:
         print('Passed in integer is not large enough to contain primes.')
         return -1
     print('sifting primes of {}'.format(n))
