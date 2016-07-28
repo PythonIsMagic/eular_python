@@ -126,7 +126,7 @@ def find_greatest_product(matrix, factors):
             continue
         i = 0
         while i <= endpoint:
-            product = recursion.multiply(sequence, i, factors, 1)
+            product = recursion.multiply(sequence, i, factors)
             print('\tProduct: {}'.format(product))
             if product > greatest_product:
                 greatest_product = product

@@ -20,7 +20,7 @@ def print_selection(alist, index, factors):
         print_selection(alist, index + 1, factors - 1)
 
 
-def multiply(alist, index, factors, product):
+def multiply(alist, index, factors, product=1):
     # Base case: At index 0
     if index < 0 or index >= len(alist):
         # Out of bounds, just return 0?
