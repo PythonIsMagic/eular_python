@@ -2,7 +2,7 @@ import unittest
 import recursion
 
 
-class TestFactors(unittest.TestCase):
+class TestRecursion(unittest.TestCase):
     # Tests for multiply(alist, index, factors, product):
 
     def test_multiply_2factors_returns2(self):
@@ -31,4 +31,18 @@ class TestFactors(unittest.TestCase):
         n = [2, 3, 4]
         expected = 24
         result = recursion.multiply(n, 0, 3, 1)
+        self.assertEqual(expected, result)
+
+    def test_multiply_13factors_size14_index0_returns157689344584365834240(self):
+        n = [32, 26, 58, 9, 22, 35, 89, 69, 7, 46, 72, 69, 48, 43]
+        expected = 157689344584365834240
+
+        result = recursion.multiply(n, 0, 13, 1)
+        self.assertEqual(expected, result)
+
+    def test_multiply_13factors_size14_index1_returns211895056785241589760(self):
+        n = [32, 26, 58, 9, 22, 35, 89, 69, 7, 46, 72, 69, 48, 43]
+        expected = 211895056785241589760
+
+        result = recursion.multiply(n, 1, 13, 1)
         self.assertEqual(expected, result)
