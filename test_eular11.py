@@ -44,13 +44,45 @@ class TestEular11(unittest.TestCase):
         result = eular11.print_matrix(matrix)
         self.assertEqual(expected, result)
 
-    # Tests for horizontal_product(alist, index, factors):
-    # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    def test_horzprod_0_1_returns0(self):
-        items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-        expected = 0
-        result = eular11.horz_prod(items, 0, 2)
+    # Tests get_rows(matrix):
+    def test_getrows_3x3_returns3lists(self):
+        expected = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+        m = eular11.read_matrix('test_matrix4.txt')
+        result = eular11.get_rows(m)
         self.assertEqual(expected, result)
 
-    # Tests for get_product(alist, index, factors):
+    # Tests get_columns(matrix):
+    def test_getcolumns_3x3_returns3lists(self):
+        expected = [[1, 4, 7], [2, 5, 8], [3, 6, 9]]
+        m = eular11.read_matrix('test_matrix4.txt')
+        result = eular11.get_columns(m)
+        self.assertEqual(expected, result)
 
+    # Tests get_right_diagonals(matrix):
+    def test_get_right_diagonals_3x3_returns5lists(self):
+        expected = [[7], [4, 8], [1, 5, 9], [2, 6], [3]]
+        m = eular11.read_matrix('test_matrix4.txt')
+        result = eular11.get_right_diagonals(m)
+        self.assertEqual(expected, result)
+
+    # Tests get_left_diagonals(matrix):
+    def test_get_left_diagonals_3x3_returns5lists(self):
+        expected = [[1], [2, 4], [3, 5, 7], [6, 8], [9]]
+        m = eular11.read_matrix('test_matrix4.txt')
+        result = eular11.get_left_diagonals(m)
+        self.assertEqual(expected, result)
+
+    # Tests for find_greatest_product(factors)
+    def test_findgreatestproduct_3x3_returns504(self):
+        # 7 * 8 * 9 = 504
+        expected = 504
+        m = eular11.read_matrix('test_matrix4.txt')
+        result = eular11.find_greatest_product(m, 3)
+        self.assertEqual(expected, result)
+
+    # Tests for find_greatest_product(factors)
+    def test_findgreatestproduct_2x2_returns12(self):
+        expected = 12
+        m = eular11.read_matrix('test_matrix2.txt')
+        result = eular11.find_greatest_product(m, 2)
+        self.assertEqual(expected, result)
