@@ -31,7 +31,7 @@ def print_matrix(matrix):
     return _str
 
 
-def scan_matrix(matrix, point, xyincrement):
+def extract_line(matrix, point, xyincrement):
     """
     Takes an x by x matrix and scans a matrix for a list of items.
 
@@ -50,7 +50,7 @@ def scan_matrix(matrix, point, xyincrement):
     return items
 
 
-def scan_lines(matrix):
+def scan_matrix_lines(matrix):
     """
     Scans for all rows, columns, and diagonals in the given matrix and returns them as a list
     of lists.
@@ -68,7 +68,7 @@ def get_rows(matrix):
     for i in range(len(matrix)):
         point = (0, i)
         inc = (1, 0)
-        rows.append(scan_matrix(matrix, point, inc))
+        rows.append(extract_line(matrix, point, inc))
     return rows
 
 
@@ -77,7 +77,7 @@ def get_columns(matrix):
     for i in range(len(matrix)):
         point = (i, 0)
         inc = (0, 1)
-        cols.append(scan_matrix(matrix, point, inc))
+        cols.append(extract_line(matrix, point, inc))
     return cols
 
 
@@ -88,13 +88,13 @@ def get_right_diagonals(matrix):
     for i in range(len(matrix) - 1, 0, -1):
         point = (0, i)
         inc = (1, 1)
-        diags.append(scan_matrix(matrix, point, inc))
+        diags.append(extract_line(matrix, point, inc))
 
     # Scan right diagonals: top left to top right
     for i in range(len(matrix)):
         point = (i, 0)
         inc = (1, 1)
-        diags.append(scan_matrix(matrix, point, inc))
+        diags.append(extract_line(matrix, point, inc))
 
     return diags
 
@@ -105,36 +105,33 @@ def get_left_diagonals(matrix):
     for i in range(len(matrix)):
         point = (i, 0)
         inc = (-1, 1)
-        diags.append(scan_matrix(matrix, point, inc))
+        diags.append(extract_line(matrix, point, inc))
 
     # Scan left diagonals: top right to bottom right
     for i in range(1, len(matrix)):
         point = (len(matrix) - 1, i)
         inc = (-1, 1)
-        diags.append(scan_matrix(matrix, point, inc))
+        diags.append(extract_line(matrix, point, inc))
     return diags
 
 
 def find_greatest_product(matrix, factors):
     greatest_product = 0
-    length = len(matrix)
-    endpoint = length - factors
-    lines = scan_lines(matrix)
+    endpoint = len(matrix) - factors
+    lines = scan_matrix_lines(matrix)
+
     for sequence in lines:
-        #  print('List: {}'.format(sequence))
+        print('List: {}'.format(sequence))
         if len(sequence) < factors:
-            #  print('List not long enough: minimum length={}. Skipping'.format(factors))
             continue
         i = 0
         while i <= endpoint:
             product = recursion.multiply(sequence, i, factors, 1)
-            #  print('product = {}'.format(product))
+            print('\tProduct: {}'.format(product))
             if product > greatest_product:
                 greatest_product = product
             i += 1
 
-    #  print('The greatest product of {} factors in the {}x{} matrix = {}'.format(
-        #  factors, length, length, greatest_product))
     return greatest_product
 
 

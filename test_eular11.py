@@ -3,7 +3,7 @@ import eular11
 
 
 class TestEular11(unittest.TestCase):
-    # Tests for read_file_to_matrix(filename):
+    # Tests for read_matrix(filename):
     # Reading just 0 in a file, returns 1x1 matrix with 0
     def test_readmatrix_1x1file_1x1matrix(self):
         expected = [[0]]
@@ -44,6 +44,10 @@ class TestEular11(unittest.TestCase):
         result = eular11.print_matrix(matrix)
         self.assertEqual(expected, result)
 
+
+    # Tests for extract_line(matrix, point, xyincrement) are implicit since get_rows,
+    # get_columns, get_right_diagonals, get_right_diagonals use extract_line.
+
     # Tests get_rows(matrix):
     def test_getrows_3x3_returns3lists(self):
         expected = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
@@ -70,6 +74,19 @@ class TestEular11(unittest.TestCase):
         expected = [[1], [2, 4], [3, 5, 7], [6, 8], [9]]
         m = eular11.read_matrix('test_matrix4.txt')
         result = eular11.get_left_diagonals(m)
+        self.assertEqual(expected, result)
+
+    # Tests for scan_matrix_lines(matrix):
+    # In this order: rows, columns, right diagonals, left diagonals.
+    def test_scanmatrixlines_3x3_returns16lists(self):
+        expected = [
+            [1, 2, 3], [4, 5, 6], [7, 8, 9],
+            [1, 4, 7], [2, 5, 8], [3, 6, 9],
+            [7], [4, 8], [1, 5, 9], [2, 6], [3],
+            [1], [2, 4], [3, 5, 7], [6, 8], [9]
+        ]
+        m = eular11.read_matrix('test_matrix4.txt')
+        result = eular11.scan_matrix_lines(m)
         self.assertEqual(expected, result)
 
     # Tests for find_greatest_product(factors)
