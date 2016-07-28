@@ -117,10 +117,10 @@ def get_left_diagonals(matrix):
 
 def find_greatest_product(matrix, factors):
     greatest_product = 0
-    endpoint = len(matrix) - factors
     lines = scan_matrix_lines(matrix)
 
     for sequence in lines:
+        endpoint = len(sequence) - factors
         print('List: {}'.format(sequence))
         if len(sequence) < factors:
             continue
@@ -138,4 +138,5 @@ def find_greatest_product(matrix, factors):
 if __name__ == "__main__":
     print('Eular problem #11')
     m = read_matrix('matrix1.txt')
-    find_greatest_product(m, 13)
+    p = find_greatest_product(m, 4)
+    print('The greatest product in the is {}'.format(p))
