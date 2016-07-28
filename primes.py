@@ -56,50 +56,6 @@ def isprime_2step(target):
     return True
 
 
-def max_prime_factor(target):
-    """ Finds the largest prime factor in the target number """
-    # PRECONDITIONS
-
-    # Check if target is < 2.
-    # Throw an exception(or return -1). It won't have any prime factors.
-    if target < 2:
-        return -1
-
-    # Check if target is prime. If prime, return IT.
-    if isprime_2step(target):
-        return target
-
-    i = 2
-    biggest_factor = 0
-
-    # Start searching all the #s in the target for prime factors,
-    while i <= target:
-        # Is i a factor of n and prime? (If both a factor and prime, then we
-        if isprime_2step(i) and target % i == 0:
-            # have actually found 2 factors.)
-            # Find the other factor:
-            # n = n/i
-            target = target/i
-
-            if i >= biggest_factor:
-                biggest_factor = i
-                #  print('Another prime factor found! {}'.format(i))
-            if isprime_2step(target) and target >= biggest_factor:
-                biggest_factor = target
-                #  print('Another prime factor found! {}'.format(target))
-
-            # If n is also prime, find the larger of n or i and set it as
-            # biggestFactor
-            # if max(i, target) > biggest_factor:
-                # biggest_factor = max(i, target)
-            # If factor2 is not prime, simply set the biggestFactor as i.
-        else:
-            # only increment if we did not find a factor.
-            i = i + 1
-
-    return biggest_factor
-
-
 def getprime(n):
     if n < 0:
         raise ValueError('getprime(n) must take an integer greater than or equal to 0.')
@@ -168,3 +124,31 @@ def sieve_markers(n):
             numbers[j] = None
 
     return [x for x in numbers if x is not None]
+
+
+def get_prime_factors(N):
+    """
+    Find all prime factors in N and return them as a list
+    """
+    i = 2
+    factors = set()
+
+    while N > 1:
+        if N % i == 0:
+            factors.add(i)
+            N = N / i
+        else:
+            # only increment if we did not find a factor.
+            i = i + 1
+    if len(factors) == 0:
+        return None
+    else:
+        return factors
+
+
+def max_prime_factor(N):
+    factors = get_prime_factors(N)
+    if factors is None:
+        return None
+    else:
+        return max(factors)
