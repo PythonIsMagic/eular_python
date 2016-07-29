@@ -27,13 +27,9 @@ def triangle_num():
 
 if __name__ == "__main__":
     for t in triangle_num():
-        f = factors.divisors(t)
-
-        if len(f) > 500:
-            print('{} is the first triangle number to have over 500 divisors.'.format(t))
+        f = factors.fromprime(t)
 
         print('{} has {} factors'.format(t, len(f)))
-        #  print('{} has {} factors: {}'.format(t, len(f), f))
-
-       #  if t > 100:
-            #  exit()
+        if len(f) > 500:
+            print('{} is the first triangle number to have over 500 divisors.'.format(t))
+            break
