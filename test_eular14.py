@@ -23,8 +23,8 @@ class TestEular14(unittest.TestCase):
     def test_nextcollatz_0_raiseException(self):
         self.assertRaises(ValueError, eular14.next_collatz, 0)
 
-    def test_nextcollatz_1_returns1(self):
-        expected = 1
+    def test_nextcollatz_1_returns4(self):
+        expected = 4
         result = eular14.next_collatz(1)
         self.assertEqual(expected, result)
 

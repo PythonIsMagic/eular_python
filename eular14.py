@@ -16,3 +16,15 @@ Eular Problem14
     Which starting number, under one million, produces the longest chain?
     NOTE: Once the chain starts the terms are allowed to go above one million.
 """
+
+
+def next_collatz(n):
+    # To make the function more efficient, I will stay with the true definition of the problem
+    # and passing 1 will return 4 (3*1 + 1). The calling function will have to track when the
+    # end of the sequence has been reached.
+    if n < 1:
+        raise ValueError('eular14.next_collatz: n must be a positive integer.!')
+    elif n % 2 == 0:
+        return n / 2
+    else:
+        return (3 * n) + 1
