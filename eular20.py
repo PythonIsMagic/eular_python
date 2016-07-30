@@ -9,6 +9,7 @@
 """
 
 import eular17
+import math
 
 
 def factorial(n):
@@ -27,8 +28,14 @@ def add_digits(n):
         sum += d
     return sum
 
+
+def fact_sum(n):
+    return sum([int(x) for x in str(math.factorial(100))])
+
+
 if __name__ == "__main__":
     print('Eular Problem #10: Factorial Digit Sum')
     fact = factorial(100)
     print('The factorial of 100! = {}'.format(fact))
     print('The sum of the digits in {} = {}'.format(fact, add_digits(fact)))
+    print('or using the super shorted version: {}'.format(fact_sum(100)))
