@@ -121,13 +121,13 @@ def find_greatest_product(matrix, factors):
 
     for sequence in lines:
         endpoint = len(sequence) - factors
-        print('List: {}'.format(sequence))
+        #  print('List: {}'.format(sequence))
         if len(sequence) < factors:
             continue
         i = 0
         while i <= endpoint:
             product = recursion.multiply(sequence, i, factors)
-            print('\tProduct: {}'.format(product))
+            #  print('\tProduct: {}'.format(product))
             if product > greatest_product:
                 greatest_product = product
             i += 1
