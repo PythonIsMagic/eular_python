@@ -12,7 +12,12 @@ import eular17
 
 
 def factorial(n):
-    pass
+    if n <= 0:
+        raise ValueError('eular20.factorial(n): n must be a positive integer!')
+    product = 1
+    for i in range(1, n + 1):
+        product *= i
+    return product
 
 
 def add_digits(n):
