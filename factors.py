@@ -49,28 +49,22 @@ def fromprime(n):
     if prime_facts is None:
         return None
 
-    #  print('Prime factors of {}: {}'.format(n, prime_facts))
-
     powers = set()
     for f in prime_facts:
         x, power = 2, 0
         while power <= n:
             power = pow(f, x)
             if n % power == 0:
-                #  print('power factor found! {}'.format(power))
                 powers.add(power)
             x = x + 1
 
     factors = list(prime_facts | powers)
-    #  print('Current factors of {}: {}'.format(n, factors))
 
     for x in factors:
         for y in factors:
             product = y * x
-            #  print('{} x {} = {}'.format(x, y, product))
 
             if n % product == 0 and product not in factors:
-                #  print('new factor found! {}'.format(product))
                 factors.append(product)
 
     # Cutting out 1 saves a lot of checks and is a factor of every positive number.
