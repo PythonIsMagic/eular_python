@@ -22,7 +22,10 @@ def factorial(n):
 
 def add_digits(n):
     digits = eular17.num_to_list(n)
-    pass
+    sum = 0
+    for d in digits:
+        sum += d
+    return sum
 
 if __name__ == "__main__":
     print('Eular Problem #10: Factorial Digit Sum')
