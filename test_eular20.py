@@ -9,13 +9,21 @@ class TestEular20(unittest.TestCase):
 
     def test_factorial_0_(self):
         self.assertRaises(ValueError, eular20.factorial, 0)
-        #  expected = 0
-        #  result = eular20.factorial(0)
-        #  self.assertEquals(expected, result)
 
-    #  def test_factorial_1_returns1(self):
-    #  def test_factorial_2_returns2(self):
-    #  def test_factorial_3_returns6(self):
+    def test_factorial_1_returns1(self):
+        expected = 1
+        result = eular20.factorial(1)
+        self.assertEqual(expected, result)
+
+    def test_factorial_2_returns2(self):
+        expected = 2
+        result = eular20.factorial(2)
+        self.assertEqual(expected, result)
+
+    def test_factorial_3_returns6(self):
+        expected = 6
+        result = eular20.factorial(3)
+        self.assertEqual(expected, result)
 
     # Tests for add_digits(n):
     """
