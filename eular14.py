@@ -28,3 +28,14 @@ def next_collatz(n):
         return n / 2
     else:
         return (3 * n) + 1
+
+
+def collatz_seq(n):
+    if n < 1:
+        raise ValueError('eular14.collatz_seq: n must be a positive integer.!')
+
+    seq = [n]
+    while n > 1:
+        n = next_collatz(n)
+        seq.append(n)
+    return seq
