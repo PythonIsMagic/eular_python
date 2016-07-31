@@ -25,10 +25,18 @@ months = {
 
 
 def get_days(month):
+    """
+    Returns the number of days in the month. The year defaults to None, but if the month is
+    February, the year will be needed to calculate the days.
+    """
     pass
 
 
 def is_leap_year(year):
+    """
+    Returns True if the passed year is a leap-year, False otherwise.
+    """
+
     pass
 
 if __name__ == "__main__":
