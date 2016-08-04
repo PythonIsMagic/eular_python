@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 Eular Problem14
 
@@ -16,8 +17,6 @@ Eular Problem14
     Which starting number, under one million, produces the longest chain?
     NOTE: Once the chain starts the terms are allowed to go above one million.
 """
-
-import pdb
 
 
 def next_collatz(n):
