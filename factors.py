@@ -48,7 +48,7 @@ def fromprime(n):
     prime_facts = primes.get_prime_factors(n)
     if prime_facts is None:
         return None
-
+    """
     powers = set()
     for f in prime_facts:
         x, power = 2, 0
@@ -57,8 +57,8 @@ def fromprime(n):
             if n % power == 0:
                 powers.add(power)
             x = x + 1
-
-    factors = list(prime_facts | powers)
+    """
+    factors = list(prime_facts)
 
     for x in factors:
         for y in factors:
