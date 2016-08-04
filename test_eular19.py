@@ -16,19 +16,7 @@ class TestEular19(unittest.TestCase):
     def test_getdays_noyear_raisesException(self):
         self.assertRaises(ValueError, eular19.get_days, 2)
 
-    # February has 29 days for a leap-year. Year = 0 = leap year.
-    def test_getdays_2_year0_returns29(self):
-        expected = 29
-        result = eular19.get_days(2, 0)
-        self.assertEqual(expected, result)
-
-    # February has 29 days for a century leap-year. Year divisible by 400.
-    def test_getdays_2_year2000_returns29(self):
-        expected = 29
-        result = eular19.get_days(2, 2000)
-        self.assertEqual(expected, result)
-
-    # February has 29 days for a leap-year. Divisible by 4.
+    # February has 29 days for a leap-year.
     def test_getdays_2_year2004_returns29(self):
         expected = 29
         result = eular19.get_days(2, 2004)
@@ -38,12 +26,6 @@ class TestEular19(unittest.TestCase):
     def test_getdays_2_year2001_returns28(self):
         expected = 28
         result = eular19.get_days(2, 2001)
-        self.assertEqual(expected, result)
-
-    # February has 28 days for a non-leap-year. Year is not divisible by 400.
-    def test_getdays_2_year2100_returns28(self):
-        expected = 28
-        result = eular19.get_days(2, 2100)
         self.assertEqual(expected, result)
 
     # March has 31 days
@@ -107,6 +89,32 @@ class TestEular19(unittest.TestCase):
         self.assertEqual(expected, result)
 
     # Tests for is_leap_year(year)
-    #  def test_ismultipleof_emptylist_returnFalse(self):
+    # February has 29 days for a leap-year. Year = 0 = leap year.
+    def test_isleapyear_0_returnsTrue(self):
+        expected = True
+        result = eular19.is_leap_year(0)
+        self.assertEqual(expected, result)
 
-    #  def test_ismultipleof_1div0_RaiseException(self):
+    # February has 29 days for a century leap-year. Year divisible by 400.
+    def test_isleapyear_2000_returnsTrue(self):
+        expected = True
+        result = eular19.is_leap_year(2000)
+        self.assertEqual(expected, result)
+
+    # February has 29 days for a leap-year. Divisible by 4.
+    def test_isleapyear_2004_returnsTrue(self):
+        expected = True
+        result = eular19.is_leap_year(2004)
+        self.assertEqual(expected, result)
+
+    # February has 28 days for a non-leap-year.
+    def test_isleapyear_2001_returnsFalse(self):
+        expected = False
+        result = eular19.is_leap_year(2001)
+        self.assertEqual(expected, result)
+
+    # February has 28 days for a non-leap-year. Year is not divisible by 400.
+    def test_isleapyear_2100_returnsFalse(self):
+        expected = False
+        result = eular19.is_leap_year(2100)
+        self.assertEqual(expected, result)
