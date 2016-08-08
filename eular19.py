@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 Eular problem 19:
 * Jan, 1,  1900 was a Monday.
@@ -40,7 +41,34 @@ def is_leap_year(year):
     else:
         return False
 
-
 if __name__ == "__main__":
-    for m, d in months.items():
-        print('Month {} -> {} days'.format(m, d))
+    month = 1
+    day = 1
+    year = 1900
+    weekday = 0
+    sundays = 0
+
+    while year < 2001:
+        print('{}/{}/{} weekday: {}'.format(month, day, year, weekday))
+        input()
+        # Check for Sunday on the first of the month.
+        if weekday == 6 and day == 1:
+            sundays += 1
+            print('Sunday on the first of the month!')
+
+        # advance day
+        day += 1
+        weekday = (weekday + 1) % 7
+
+        # Advance month
+        if day > get_days(month, year):
+            day = 1
+            month += 1
+
+        # Advance Year
+        if month > 12:
+            year += 1
+            month = 1
+            #  input()
+
+    print('There were {} Sundays counted.'.format(sundays))
