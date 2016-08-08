@@ -45,10 +45,14 @@ def is_leap_year(year):
     """
     Returns True if the passed year is a leap-year, False otherwise.
     """
-    if year % 400 == 0:
-        return True
-    elif year % 4 == 0 and year % 100 != 0:
-        return True
+    if year % 4 == 0:
+        if year % 100 == 0:
+            if year % 400 == 0:
+                return True
+            else:
+                return False
+        else:
+            return True
     else:
         return False
 
@@ -56,14 +60,14 @@ if __name__ == "__main__":
     month = 1
     day = 1
     year = 1900
-    weekday = 0
+    weekday = 0  # 0=Monday, 6=Sunday
     sundays = 0
 
     while year < 2001:
         print('{}/{}/{} weekday: {}'.format(month, day, year, weekday))
-        input()
+
         # Check for Sunday on the first of the month.
-        if weekday == 6 and day == 1:
+        if weekday == 6 and day == 1 and year > 1900:
             sundays += 1
             print('Sunday on the first of the month!')
 
@@ -78,8 +82,7 @@ if __name__ == "__main__":
 
         # Advance Year
         if month > 12:
-            year += 1
             month = 1
-            #  input()
+            year += 1
 
     print('There were {} Sundays counted.'.format(sundays))
