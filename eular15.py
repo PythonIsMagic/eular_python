@@ -37,5 +37,17 @@ def print_matrix(matrix):
 
 
 if __name__ == "__main__":
+    LENGTH = 5
     matrix5 = lattice_matrix(5)
     print(print_matrix(matrix5))
+
+    x, y = 0, 0
+    end = LENGTH
+    paths = []
+
+    while x < LENGTH and y < LENGTH:
+        # increase x first
+
+        # increase y
+
+        pass
