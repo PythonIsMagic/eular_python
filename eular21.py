@@ -26,8 +26,9 @@ def d(n):
     Return the sum of the proper divisors of n
     (numbers less than n which divide evenly into n).
     """
-    #  return sum([int(x) for x in alist])
-    pass
+    divisors = factors.fromprime(n)
+    divisors.remove(n)
+    return sum([int(x) for x in divisors])
 
 
 def find_amicable_pair(n, pair_dict):
