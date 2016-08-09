@@ -63,6 +63,16 @@ def divisors(n):
     return set(factors)
 
 
+def proper_divisors(n):
+    """
+    Return a set containing the proper divisors of n (numbers less than n which divide evenly
+    into n).
+    """
+    d = divisors(n)
+    d.remove(n)
+    return d
+
+
 def test_fromprime(n):
     failures = 0
 

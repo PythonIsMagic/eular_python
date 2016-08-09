@@ -86,3 +86,15 @@ class TestFactors(unittest.TestCase):
         self.assertEqual(expected, result)
 
     # 13195 has x factors:
+
+
+    # Tests for proper_divisors(n)
+    def test_properdivisors_7_returns1(self):
+        expected = {1}
+        result = factors.proper_divisors(7)
+        self.assertEqual(expected, result)
+
+    def test_properdivisors_24_returns7factors(self):
+        expected = {1, 2, 3, 4, 6, 8, 12}
+        result = factors.proper_divisors(24)
+        self.assertEqual(expected, result)
