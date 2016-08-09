@@ -14,3 +14,9 @@
 
 Find the maximum total from top to bottom of the triangle below:
 """
+
+import eular11
+
+if __name__ == "__main__":
+    tree = eular11.read_matrix('number_tree.txt')
+    print(eular11.print_matrix(tree))
