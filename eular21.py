@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# coding=utf-8
 """
 ++ Eular21
 
@@ -28,7 +29,7 @@ def d(n):
     """
     divisors = factors.fromprime(n)
     divisors.remove(n)
-    return sum([int(x) for x in divisors])
+    return sum(divisors)
 
 
 def find_amicable_pair(n, pair_dict):
@@ -37,11 +38,15 @@ def find_amicable_pair(n, pair_dict):
 
 if __name__ == "__main__":
     amicable_sum = 0
-    div_sums = []
+    div_sums = [0]
     amicables = set()
 
     # For all numbers from 0-10000, make a list containing their divisor sums.
+    for n in range(1, 10000):
+        div_sums.append(d(n))
+        print('#{}: sum = {}'.format(n, div_sums[-1]))
 
     # for each entry in the sums list, check for an amicable pair and add it to a set.
+    #  for n in range(10000):
 
     # Add all of the amicable numbers together
