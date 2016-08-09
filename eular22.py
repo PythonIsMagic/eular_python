@@ -46,10 +46,19 @@ def import_names(filename):
     # To sort we can merely use the builtin sorted()
     return sorted(names)
 
+
+def alphabetical_value(name):
+    return sum([ord(x.lower()) - 96 for x in list(name)])
+
+
 if __name__ == "__main__":
     names = import_names('names.txt')
 
     print('names has {} entries.'.format(len(names)))
 
-    for n in names:
-        print(n, end=' ')
+    namescore = 0
+
+    for i, n in enumerate(names):
+        namescore += alphabetical_value(n) * (i+1)
+
+    print('The total of all name scores = {}'.format(namescore))
