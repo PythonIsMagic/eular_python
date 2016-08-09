@@ -27,26 +27,36 @@ def d(n):
     Return the sum of the proper divisors of n
     (numbers less than n which divide evenly into n).
     """
-    divisors = factors.fromprime(n)
-    divisors.remove(n)
+    divisors = factors.proper_divisors(n)
     return sum(divisors)
 
 
-def find_amicable_pair(n, pair_dict):
-    pass
+def get_divisor_sums(upto):
+    # make a dictionary of divisor sums
+    return {n: d(n) for n in range(2, upto)}
 
+
+def amicable(a, b):
+    if d(a) == b and d(b) == a:
+        return a != b
+    else:
+        return False
 
 if __name__ == "__main__":
+    LIMIT = 10000
     amicable_sum = 0
-    div_sums = [0]
     amicables = set()
+    div_sums = get_divisor_sums(LIMIT)
 
-    # For all numbers from 0-10000, make a list containing their divisor sums.
-    for n in range(1, 10000):
-        div_sums.append(d(n))
-        print('#{}: sum = {}'.format(n, div_sums[-1]))
+    for k, v in div_sums.items():
+        if amicable(k, v):
+            if k < LIMIT:
+                amicables.add(k)
 
-    # for each entry in the sums list, check for an amicable pair and add it to a set.
-    #  for n in range(10000):
+    print('{} amicable #s found'.format(len(amicables)))
+
+    for n in amicables:
+        print('{} --> {}'.format(n, div_sums[n]))
 
     # Add all of the amicable numbers together
+    print('The sum of all amicables #s up to {} = {}'.format(LIMIT, sum(amicables)))
