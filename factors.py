@@ -33,7 +33,7 @@ def bruteforce(n):
     return factors
 
 
-def fromprime(n):
+def divisors(n):
     """
     Creates a list of all the factors of n and returns them as a set. First we get the prime
     factors of n. To get any remaining factors, we take all the prime factors and take each to
@@ -48,16 +48,7 @@ def fromprime(n):
     prime_facts = primes.get_prime_factors(n)
     if prime_facts is None:
         return None
-    """
-    powers = set()
-    for f in prime_facts:
-        x, power = 2, 0
-        while power <= n:
-            power = pow(f, x)
-            if n % power == 0:
-                powers.add(power)
-            x = x + 1
-    """
+
     factors = list(prime_facts)
 
     for x in factors:
@@ -77,7 +68,7 @@ def test_fromprime(n):
 
     for i in range(1, n):
         bf = bruteforce(i)
-        fp = fromprime(i)
+        fp = divisors(i)
 
         if bf != fp:
             print('Test failed on {}!'.format(i))

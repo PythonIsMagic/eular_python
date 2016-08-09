@@ -27,7 +27,7 @@ def triangle_num():
 
 if __name__ == "__main__":
     for t in triangle_num():
-        f = factors.fromprime(t)
+        f = factors.divisors(t)
 
         if len(f) > 500:
             print('{} is the first triangle number to have over 500 divisors.'.format(t))
