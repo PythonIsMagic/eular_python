@@ -17,22 +17,39 @@ obtain a score of 938 × 53 = 49714.
 What is the total of all the name scores in the file?
 """
 
+from __future__ import print_function
+
 
 def import_names(filename):
     # Each name is contained in quotes ("NAME")
     # and also separated by commas("NAME1", "NAME2, "NAME3")
 
+    names = []
+    newname = ''
     with open(filename) as f:
 
         while True:
             char = f.read(1)
             if not char:
                 break  # Empty string means EOF
-            print(char)
+
+            # Start a new name with each quote
+            if char == "\"" and newname != '':
+                names.append(newname)
+                newname = ''
+            elif char == "\"" or char == ',':
+                # Ignore formatting characters
+                continue
+            else:
+                newname += char
 
     # To sort we can merely use the builtin sorted()
-    pass
-
+    return sorted(names)
 
 if __name__ == "__main__":
-    import_names('names.txt')
+    names = import_names('names.txt')
+
+    print('names has {} entries.'.format(len(names)))
+
+    for n in names:
+        print(n, end=' ')
