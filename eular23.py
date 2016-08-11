@@ -21,11 +21,8 @@ this limit.
 Find the sum of all the positive integers which cannot be written as the sum of
 two abundant numbers.
 """
+from __future__ import print_function
 import factors
-
-
-def is_abundant(n):
-    pass
 
 
 def is_abundant_sum(n):
@@ -38,3 +35,12 @@ def sum_non_abundant(LIMIT):
 
 if __name__ == "__main__":
     print('Eular project 25')
+    LIMIT = 28123
+    abundants = []
+    print('Listing all abundant numbers up to {}:'.format(LIMIT))
+    for i in range(1, LIMIT + 1):
+        if factors.is_abundant(i):
+            #  print(i, end=' ')
+            abundants.append(i)
+
+    print('Total of {} abundant numbers from 1-{}'.format(len(abundants), LIMIT))
