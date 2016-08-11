@@ -45,10 +45,7 @@ if __name__ == "__main__":
         for b in range(i, len(abundants)):
             sums.add(a + abundants[b])
 
-    unsummable = set()
-    for i in range(LIMIT + 1):
-        if i not in sums:
-            unsummable.add(i)
+    unsummable = [i for i in range(LIMIT + 1) if i not in sums]
 
     print('Sum of all positive ints which can\'t be summed by 2 abundants={}'.format(
         sum(unsummable)))
