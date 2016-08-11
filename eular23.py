@@ -25,20 +25,10 @@ from __future__ import print_function
 import factors
 
 
-def is_abundant_sum(n):
-    pass
-
-
-def sum_non_abundant(LIMIT):
-    pass
-
-
 if __name__ == "__main__":
     print('Eular project 25')
     LIMIT = 28123
-
     abundants = [i for i in range(1, LIMIT + 1) if factors.is_abundant(i)]
-
     sums = set()
 
     for i, a in enumerate(abundants):
