@@ -37,37 +37,20 @@ if __name__ == "__main__":
     print('Eular project 25')
     LIMIT = 28123
     abundants = []
-    print('Listing all abundant numbers up to {}:'.format(LIMIT))
     for i in range(1, LIMIT + 1):
         if factors.is_abundant(i):
-            #  print(i, end=' ')
             abundants.append(i)
 
-    print('Total of {} abundant numbers from 1-{}'.format(len(abundants), LIMIT))
-    print('The max abundant # = {}'.format(max(abundants)))
-    print('The min abundant # = {}'.format(min(abundants)))
     sums = set()
-    #  for i in range(0, len(abundants)):
-        #  for j in range(i, len(abundants)):
-            #  sums.add(abundants[i] + abundants[j])
 
     for i, a in enumerate(abundants):
         for b in range(i, len(abundants)):
             sums.add(a + abundants[b])
-
-    print('Found {} sums.'.format(len(sums)))
-    print('The max sum = {}'.format(max(sums)))
-    print('The min sum = {}'.format(min(sums)))
 
     unsummable = set()
     for i in range(LIMIT + 1):
         if i not in sums:
             unsummable.add(i)
 
-    for i in range(30):
-        if i in unsummable:
-            print('{} cannot be written as a sum of 2 abundant #s.'.format(i))
-
-    print('There are {} unsummable #s.'.format(len(unsummable)))
-    print('sum of all positive ints which can\'t be summed by 2 abundants={}.'.format(
+    print('Sum of all positive ints which can\'t be summed by 2 abundants={}'.format(
         sum(unsummable)))
