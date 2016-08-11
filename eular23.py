@@ -44,3 +44,10 @@ if __name__ == "__main__":
             abundants.append(i)
 
     print('Total of {} abundant numbers from 1-{}'.format(len(abundants), LIMIT))
+
+    sums = set()
+    for i in range(0, len(abundants)):
+        for j in range(i, len(abundants)):
+            sums.add(i + j)
+
+    print('Found {} sums.'.format(len(sums)))
