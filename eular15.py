@@ -36,7 +36,9 @@ def next_path(path, grid_len):
 
 def get_routes(x, y, grid_size, remembered={}):
     # Finds all the routes from a given point (x, y) in a grid.
-    routes, path = [], []
+    if (x, y) not in remembered:
+        remembered[x, y] = 0
+    routes, path = 0, []
     iterating = True
 
     while iterating:
@@ -46,16 +48,18 @@ def get_routes(x, y, grid_size, remembered={}):
         elif y < grid_size:
             y += 1
         else:
-            routes.append(path[:])  # We have reached the end node
+            #  routes.append(path[:])  # We have reached the end node
+            routes += 1
             iterating, path = next_path(path, grid_size)
             if iterating:
                 x, y = path.pop()
 
         if (x, y) in remembered:
-            for route in remembered[(x, y)]:
-                newpath = path[:]
-                newpath.extend(route)
-                routes.append(newpath)
+            #  for route in remembered[(x, y)]:
+                #  newpath = path[:]
+                #  newpath.extend(route)
+                #  routes.append(newpath)
+            routes += remembered[x, y]
             path.append((x, y))
 
             iterating, path = next_path(path, grid_size)
@@ -67,17 +71,18 @@ def get_routes(x, y, grid_size, remembered={}):
 
 def find_all_routes(grid_size, remembered):
     # The lattice array is really grid_size + 1
-    routes = get_routes(0, 0, grid_size, remembered)
+    #  routes = get_routes(0, 0, grid_size, remembered)
 
     for i in range(grid_size, -1, -1):
         for j in range(grid_size, -1, -1):
             #  print('remembering the paths for ({}, {})...'.format(i, j))
             if (i, j) not in remembered:
+                #  remembered[i, j] = len(get_routes(i, j, grid_size, remembered))
                 remembered[i, j] = get_routes(i, j, grid_size, remembered)
 
     routes = get_routes(0, 0, grid_size, remembered)
 
-    count = 0
+    #  count = 0
     """
     while len(routes) > 0:
         r = routes.pop()
@@ -92,10 +97,11 @@ def find_all_routes(grid_size, remembered):
             #  count += 1
 
     #  return count
-    return len(routes)
+    #  return len(routes)
+    return routes
 
 
 if __name__ == "__main__":
-    for i in range(1, 12):
+    for i in range(1, 21):
         remembered = {}
         print('{} routes in a {}x{} grid!'.format(find_all_routes(i, remembered), i, i))
