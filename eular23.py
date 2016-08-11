@@ -36,10 +36,8 @@ def sum_non_abundant(LIMIT):
 if __name__ == "__main__":
     print('Eular project 25')
     LIMIT = 28123
-    abundants = []
-    for i in range(1, LIMIT + 1):
-        if factors.is_abundant(i):
-            abundants.append(i)
+
+    abundants = [i for i in range(1, LIMIT + 1) if factors.is_abundant(i)]
 
     sums = set()
 
