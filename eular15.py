@@ -13,9 +13,6 @@ How many such routes are there through a 20×20 grid?
 """
 
 
-#  while path[0] == (0, 0):
-
-
 def next_path(path, grid_len):
     while len(path) > 0:
         x, y = path.pop()  # Pop back one step
@@ -48,17 +45,12 @@ def get_routes(x, y, grid_size, remembered={}):
         elif y < grid_size:
             y += 1
         else:
-            #  routes.append(path[:])  # We have reached the end node
             routes += 1
             iterating, path = next_path(path, grid_size)
             if iterating:
                 x, y = path.pop()
 
         if (x, y) in remembered:
-            #  for route in remembered[(x, y)]:
-                #  newpath = path[:]
-                #  newpath.extend(route)
-                #  routes.append(newpath)
             routes += remembered[x, y]
             path.append((x, y))
 
@@ -71,33 +63,16 @@ def get_routes(x, y, grid_size, remembered={}):
 
 def find_all_routes(grid_size, remembered):
     # The lattice array is really grid_size + 1
-    #  routes = get_routes(0, 0, grid_size, remembered)
 
+    # Start constructing the counts from the last space
     for i in range(grid_size, -1, -1):
         for j in range(grid_size, -1, -1):
-            #  print('remembering the paths for ({}, {})...'.format(i, j))
+            # Remember the count of paths from the current (i, j) position
             if (i, j) not in remembered:
-                #  remembered[i, j] = len(get_routes(i, j, grid_size, remembered))
                 remembered[i, j] = get_routes(i, j, grid_size, remembered)
 
     routes = get_routes(0, 0, grid_size, remembered)
 
-    #  count = 0
-    """
-    while len(routes) > 0:
-        r = routes.pop()
-        if r in routes:
-            pass
-        if len(r) == (grid_size * 2) + 1:
-            count += 1
-    """
-
-    #  for r in routes:
-        #  if len(r) == (grid_size * 2) + 1:
-            #  count += 1
-
-    #  return count
-    #  return len(routes)
     return routes
 
 
