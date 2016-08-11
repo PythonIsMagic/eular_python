@@ -92,3 +92,7 @@ def test_fromprime(n):
         print('{} out of {} tests failed.'.format(failures, n - 1))
     else:
         print('All tests passed! (up to {})'.format(n))
+
+
+def is_abundant(n):
+    return sum(proper_divisors(n)) > n
