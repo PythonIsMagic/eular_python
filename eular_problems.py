@@ -64,6 +64,12 @@ def eular6():
           'numbers and the square of the sum is {}'.format(difference))
 
 
+def eular7():
+    print(text.eular7)
+    targetprime = 10001
+    print('Prime #{} = {}'.format(targetprime, primes.getprime(targetprime)))
+
+
 def eular9():
     print(text.eular9)
     a, b, c = pythagorean.iterative_solution()
@@ -91,6 +97,9 @@ if __name__ == "__main__":
     separator()
 
     eular6()
+    separator()
+
+    eular7()
     separator()
 
     eular9()
