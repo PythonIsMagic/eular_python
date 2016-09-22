@@ -1,7 +1,3 @@
-#!/usr/bin/env python3
-# coding=utf-8
-
-
 def ispalindrome(number):
     numlist = list(str(number))
 
@@ -31,17 +27,3 @@ def get_largest_palindrome(lowerlimit, upperlimit):
                 if product > largest_palindrome:
                     largest_palindrome = product
     return largest_palindrome
-
-
-def main():
-    print('Calculating the largest palindrome producable between the factors' +
-          ' of 10 and 100')
-    print(get_largest_palindrome(10, 100))
-
-    print('Calculating the largest palindrome producable between the factors' +
-          ' of 100 and 1000')
-    print(get_largest_palindrome(100, 1000))
-
-
-if __name__ == "__main__":
-    main()

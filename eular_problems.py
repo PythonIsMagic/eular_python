@@ -1,8 +1,9 @@
-import text
-import pythagorean
 import factors
 import fibseries
 import primes
+import pythagorean
+import palindrome
+import text
 
 
 def separator():
@@ -29,6 +30,17 @@ def eular3():
         bignumber, primes.max_prime_factor(bignumber)))
 
 
+def eular4():
+    print(text.eular4)
+    print('Calculating the largest palindrome producable between the factors' +
+          ' of 10 and 100')
+    print(palindrome.get_largest_palindrome(10, 100))
+
+    print('Calculating the largest palindrome producable between the factors' +
+          ' of 100 and 1000')
+    print(palindrome.get_largest_palindrome(100, 1000))
+
+
 def eular9():
     print(text.eular9)
     a, b, c = pythagorean.iterative_solution()
@@ -42,9 +54,15 @@ def eular9():
 if __name__ == "__main__":
     eular1()
     separator()
+
     eular2()
     separator()
+
     eular3()
     separator()
 
+    eular4()
+    separator()
+
     eular9()
+    separator()
