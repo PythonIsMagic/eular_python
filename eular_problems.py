@@ -1,6 +1,7 @@
 import text
 import factors
 import fibseries
+import primes
 
 
 def separator():
@@ -19,8 +20,18 @@ def eular2():
     fibsum = sum([x for x in fibseries.fibonacci(UPPERLIMIT) if x % 2 == 0])
     print('Sum = {}'.format(fibsum))
 
+
+def eular3():
+    print(text.eular3)
+    bignumber = 600851475143
+    print('Largest prime factor of {}: {}'.format(
+        bignumber, primes.max_prime_factor(bignumber)))
+
+
 if __name__ == "__main__":
     eular1()
     separator()
     eular2()
+    separator()
+    eular3()
     separator()
