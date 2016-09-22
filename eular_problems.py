@@ -41,6 +41,29 @@ def eular4():
     print(palindrome.get_largest_palindrome(100, 1000))
 
 
+def eular5():
+    print(text.eular5)
+    testrange = 20
+    n = factors.num_div_by_all_upto(testrange)
+
+    print('Finding a number divisible by all the numbers 1-{}'.format(testrange))
+    print("{} is a factor of all 1-{}!".format(n, testrange))
+
+
+def eular6():
+    print(text.eular6)
+    upto = 100
+    sum_of_sq = sum([i ** 2 for i in range(upto+1)])
+    sq_of_sums = sum([i for i in range(upto + 1)]) ** 2
+
+    print('Sum of squares(100) = {}'.format(sum_of_sq))
+    print('Square of sums(100) = {}'.format(sq_of_sums))
+    difference = abs(sq_of_sums - sum_of_sq)
+
+    print('The difference between the sum of the squares of the first 100 ' +
+          'numbers and the square of the sum is {}'.format(difference))
+
+
 def eular9():
     print(text.eular9)
     a, b, c = pythagorean.iterative_solution()
@@ -62,6 +85,12 @@ if __name__ == "__main__":
     separator()
 
     eular4()
+    separator()
+
+    eular5()
+    separator()
+
+    eular6()
     separator()
 
     eular9()
