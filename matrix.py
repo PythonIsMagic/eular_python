@@ -103,5 +103,3 @@ def get_left_diagonals(matrix):
         inc = (-1, 1)
         diags.append(extract_line(matrix, point, inc))
     return diags
-
-

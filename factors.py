@@ -96,3 +96,19 @@ def test_fromprime(n):
 
 def is_abundant(n):
     return sum(proper_divisors(n)) > n
+
+
+def sum_multiples(factorlist, limit):
+    # Returns the sum of the specificed multiples.
+    return sum([is_multiple_of(i, factorlist) for i in range(limit)])
+
+
+def is_multiple_of(num, factorlist):
+    if 0 in factorlist:
+        raise ValueError('0 is not valid in list of factors!')
+
+    for n in factorlist:
+        if num % n == 0:
+            return True
+    else:
+        return False
