@@ -1,8 +1,19 @@
 #!/usr/bin/env python
-""" Module for generating Fibonacci numbers """
+"""
+Module for generating Fibonacci numbers
+"""
 
 
-def main():
+def fibonacci(limit):
+    a, b = 0, 1
+    while(b < limit):
+        a, b = b, a + b
+        yield a
+    else:
+        raise StopIteration()
+
+
+def fibtest():
     # the sum of two elements defines the next
     T1, T2 = 0, 1
 
@@ -16,6 +27,3 @@ def main():
         print T2,
         T1, T2 = T2, T1+T2
         # or a = b and b = a+b
-
-if __name__ == "main":
-    main()
