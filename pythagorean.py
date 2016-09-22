@@ -1,17 +1,4 @@
 #!/usr/bin/env python3
-"""
-Eular 9
-*Special Pythagorean triplet*
-    A Pythagorean triplet is a set of three natural numbers,
-    a < b < c, for which, a^2 + b^2 = c^2
-    For example, 3^2 + 4^2 = 9 + 16 = 25 = 52.
-
-    There exists exactly one Pythagorean triplet for which
-    a + b + c = 1000.
-
-    Find the product a * b * c.
-"""
-
 # Some notes
 # a, b, and c cannot be larger than 1000
 
@@ -88,12 +75,14 @@ def iterative_solution():
                 continue
 
             if ab in squares:
-                print('{} + {} + {} == 1000?'.format(a, b, c))
+                #  print('{} + {} + {} == 1000?'.format(a, b, c))
                 if adds_to_1000(a, b, c):
                     return a, b, c
 
-if __name__ == "__main__":
 
+# This wasn't successful.
+def recursive_try():
+    pass
     #  print('Eular 9: Recursive solution')
     #  result = recursive_solution()
     #  if result is None:
@@ -105,13 +94,3 @@ if __name__ == "__main__":
     #  a = math.sqrt(a2)
     #  b = math.sqrt(b2)
     #  c = math.sqrt(c2)
-
-    abc = iterative_solution()
-    a, b, c = iterative_solution()
-
-    print('a^2 + b^2 = c^2')
-    #  print('{} + {} = {}'.format(a2, b2, c2))
-    print('{} + {} = {}'.format(a ** 2, b ** 2, c ** 2))
-    print('a + b + c = 1000')
-    print('{} + {} + {} = 1000!'.format(a, b, c))
-    print('The product abc = {}'.format(a * b * c))

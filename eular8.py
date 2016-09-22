@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 
-""" Find the 13 adjacent digits in the 1000-digit number that have the
-greatest product. What is the value of this product?  """
-
 from __future__ import print_function
 
 

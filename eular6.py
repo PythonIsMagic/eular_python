@@ -1,11 +1,4 @@
 #!/usr/bin/env python
-"""
-Eular6
-
-Find the difference between the sum of the squares of the first one hundred
-natural numbers and the square of the sum.
-"""
-
 
 def sum_of_squares(upto):
     total = 0

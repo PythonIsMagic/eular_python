@@ -1,4 +1,5 @@
 import text
+import pythagorean
 import factors
 import fibseries
 import primes
@@ -28,6 +29,16 @@ def eular3():
         bignumber, primes.max_prime_factor(bignumber)))
 
 
+def eular9():
+    print(text.eular9)
+    a, b, c = pythagorean.iterative_solution()
+    print('a^2 + b^2 = c^2')
+    #  print('{} + {} = {}'.format(a2, b2, c2))
+    print('{} + {} = {}'.format(a ** 2, b ** 2, c ** 2))
+    #  print('a + b + c = 1000')
+    print('{} + {} + {} = 1000!'.format(a, b, c))
+    print('The product abc = {}'.format(a * b * c))
+
 if __name__ == "__main__":
     eular1()
     separator()
@@ -35,3 +46,5 @@ if __name__ == "__main__":
     separator()
     eular3()
     separator()
+
+    eular9()
