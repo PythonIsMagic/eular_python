@@ -1,3 +1,4 @@
+import bignumber
 import factors
 import fibseries
 import primes
@@ -70,6 +71,15 @@ def eular7():
     print('Prime #{} = {}'.format(targetprime, primes.getprime(targetprime)))
 
 
+def eular8():
+    print(text.eular8)
+    FACTORS = 13
+    filename = 'eular8.txt'
+    digits = bignumber.read_file_to_list(filename)
+    p = bignumber.find_product_in_list(digits, FACTORS)
+    print('The largest product is {}'.format(p))
+
+
 def eular9():
     print(text.eular9)
     a, b, c = pythagorean.iterative_solution()
@@ -100,6 +110,9 @@ if __name__ == "__main__":
     separator()
 
     eular7()
+    separator()
+
+    eular8()
     separator()
 
     eular9()

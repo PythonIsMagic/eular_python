@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-
-from __future__ import print_function
-
-
 def read_file_to_list(filename):
     """
     Reads a file containing digits to a list.
@@ -28,8 +23,6 @@ def read_file_to_list(filename):
 
 def find_product_in_list(alist, factors):
     largest_product = 0
-    # Set the endpoints, 0 and 12
-
     # Ending point = size - (FACTORS - 1)
     end = len(alist) - (factors - 1)
 
@@ -85,16 +78,3 @@ def find_product_via_queue(filename):
                     largest_product = product
 
     return largest_product
-
-
-if __name__ == "__main__":
-    #  largest_product = find_product_via_queue()
-    FACTORS = 13
-    print("Eular problem 8:")
-    filename = 'eular8.txt'
-
-    print('Reading file')
-    digits = read_file_to_list('eular8.txt')
-
-    p = find_product_in_list(digits, FACTORS)
-    print('The largest product is {}'.format(p))
