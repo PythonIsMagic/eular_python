@@ -185,6 +185,13 @@ def eular20():
     print('The sum of the digits in {}! = {}'.format(num, functions.add_digits(fact)))
     print('or using the super shorted version: {}'.format(functions.fact_sum(num)))
 
+
+def eular21():
+    print(text.eular21)
+    LIMIT = 10000
+    # Add all of the amicable numbers together
+    print('The sum of all amicables #s up to {} = {}'.format(LIMIT, functions.add_amicable_numbers(10000)))
+
 if __name__ == "__main__":
     eular1()
     separator()
@@ -246,4 +253,7 @@ if __name__ == "__main__":
     separator()
 
     eular20()
+    separator()
+
+    eular21()
     separator()

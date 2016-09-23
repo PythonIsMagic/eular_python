@@ -37,15 +37,15 @@ class TestEular21(unittest.TestCase):
     # Tests for amicable(a, b):
     def test_amicable_1_2_returnsFalse(self):
         expected = False
-        result = eular21.amicable(1, 2)
+        result = eular21.is_amicable(1, 2)
         self.assertEqual(expected, result)
 
     def test_amicable_1_1_returnsFalse(self):
         expected = False
-        result = eular21.amicable(1, 1)
+        result = eular21.is_amicable(1, 1)
         self.assertEqual(expected, result)
 
     def test_amicable_220_284_returnsTrue(self):
         expected = True
-        result = eular21.amicable(220, 284)
+        result = eular21.is_amicable(220, 284)
         self.assertEqual(expected, result)
