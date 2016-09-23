@@ -6,6 +6,7 @@ import filework
 import functions
 import factors
 import fibseries
+import itertools
 import latticepath
 import matrix
 import numbertree
@@ -218,6 +219,13 @@ def eular23():
     print('Sum of all positive ints which can\'t be summed by 2 abundants={}'.format(
         sum(unsummable)))
 
+
+def eular24():
+    print(text.eular24)
+    perms = list(itertools.permutations(str('0123456789'), len('0123456789')))
+    print(''.join(perms[999999]))
+
+
 if __name__ == "__main__":
     eular1()
     separator()
@@ -288,4 +296,7 @@ if __name__ == "__main__":
     separator()
 
     eular23()
+    separator()
+
+    eular24()
     separator()
