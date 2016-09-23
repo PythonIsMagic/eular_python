@@ -6,6 +6,7 @@ import primes
 import pythagorean
 import palindrome
 import text
+import triangle
 
 
 def separator():
@@ -85,9 +86,7 @@ def eular9():
     print(text.eular9)
     a, b, c = pythagorean.iterative_solution()
     print('a^2 + b^2 = c^2')
-    #  print('{} + {} = {}'.format(a2, b2, c2))
     print('{} + {} = {}'.format(a ** 2, b ** 2, c ** 2))
-    #  print('a + b + c = 1000')
     print('{} + {} + {} = 1000!'.format(a, b, c))
     print('The product abc = {}'.format(a * b * c))
 
@@ -95,7 +94,6 @@ def eular9():
 def eular10():
     print(text.eular10)
     upperlimit = 2000000
-    #  prime_sum = primes.sieve_rm_method(upperlimit)
     prime_sum = primes.sum_via_iteration(upperlimit)
     print('The sum of all primes up to {} = {}'.format(upperlimit, prime_sum))
 
@@ -105,6 +103,17 @@ def eular11():
     m = matrix.read_matrix('matrix1.txt')
     p = matrix.find_greatest_product(m, 4)
     print('The greatest product in the is {}'.format(p))
+
+
+def eular12():
+    print(text.eular12)
+    for t in triangle.triangle_num():
+        f = factors.divisors(t)
+
+        if len(f) > 500:
+            print('{} is the first triangle number to have over 500 divisors.'.format(t))
+            break
+
 
 if __name__ == "__main__":
     eular1()
@@ -138,4 +147,7 @@ if __name__ == "__main__":
     separator()
 
     eular11()
+    separator()
+
+    eular12()
     separator()
