@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-from __future__ import print_function
-import eular11
 
 
 def find_max_path(tree):
@@ -27,8 +25,6 @@ def get_sum(path, tree):
     pathsum = 0
     for i, row in enumerate(tree):
         pathsum += row[path[i]]
-        print('{} '.format(row[path[i]]), end='')
-    print('\n')
     return pathsum
 
 
@@ -49,11 +45,3 @@ def move_path(path, row):
 
         return move_path(path, row - 1)
     pass
-
-
-if __name__ == "__main__":
-    tree = eular11.read_matrix('number_tree.txt')
-    #  tree = eular11.read_matrix('small_tree.txt')
-    print(eular11.print_matrix(tree))
-    print()
-    find_max_path(tree)

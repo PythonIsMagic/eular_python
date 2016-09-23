@@ -5,6 +5,7 @@ import factors
 import fibseries
 import latticepath
 import matrix
+import numbertree
 import primes
 import pythagorean
 import palindrome
@@ -160,6 +161,14 @@ def eular17():
 
     print('It take {} letter to represent all the numbers in 1-1000'.format(letters))
 
+
+def eular18():
+    print(text.eular18)
+    tree = matrix.read_matrix('number_tree.txt')
+    print(matrix.print_matrix(tree))
+    print()
+    numbertree.find_max_path(tree)
+
 if __name__ == "__main__":
     eular1()
     separator()
@@ -212,4 +221,7 @@ if __name__ == "__main__":
     separator()
 
     eular17()
+    separator()
+
+    eular18()
     separator()
