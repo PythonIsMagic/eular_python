@@ -4,13 +4,13 @@ Module for generating Fibonacci numbers
 """
 
 
-def fibonacci(limit):
+def fibonacci(limit=None):
     a, b = 0, 1
-    while(b < limit):
+    while True:
+        if limit and b >= limit:
+            raise StopIteration()
         a, b = b, a + b
         yield a
-    else:
-        raise StopIteration()
 
 
 def fibtest():

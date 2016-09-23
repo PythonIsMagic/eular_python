@@ -226,6 +226,13 @@ def eular24():
     print(''.join(perms[999999]))
 
 
+def eular25():
+    print(text.eular25)
+    for i, x in enumerate(fibseries.fibonacci()):
+        if len(str(x)) >= 1000:
+            print('Term {} has over 1000 digits!'.format(i+1))
+            break
+
 if __name__ == "__main__":
     eular1()
     separator()
@@ -299,4 +306,7 @@ if __name__ == "__main__":
     separator()
 
     eular24()
+    separator()
+
+    eular25()
     separator()
