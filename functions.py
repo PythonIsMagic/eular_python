@@ -59,3 +59,7 @@ def add_amicable_numbers(upto):
         #  print('{} --> {}'.format(n, div_sums[n]))
 
     return sum(amicables)
+
+
+def alphabetical_value(name):
+    return sum([ord(x.lower()) - 96 for x in list(name)])

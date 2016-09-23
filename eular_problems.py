@@ -2,6 +2,7 @@ import alphanumbers
 import bignumber
 import collatz
 import counting_days
+import filework
 import functions
 import factors
 import fibseries
@@ -192,6 +193,18 @@ def eular21():
     # Add all of the amicable numbers together
     print('The sum of all amicables #s up to {} = {}'.format(LIMIT, functions.add_amicable_numbers(10000)))
 
+
+def eular22():
+    print(text.eular22)
+    names = filework.import_names('names.txt')
+    print('names has {} entries.'.format(len(names)))
+    namescore = 0
+
+    for i, n in enumerate(names):
+        namescore += functions.alphabetical_value(n) * (i+1)
+
+    print('The total of all name scores = {}'.format(namescore))
+
 if __name__ == "__main__":
     eular1()
     separator()
@@ -256,4 +269,7 @@ if __name__ == "__main__":
     separator()
 
     eular21()
+    separator()
+
+    eular22()
     separator()
