@@ -2,6 +2,7 @@ import bignumber
 import collatz
 import factors
 import fibseries
+import latticepath
 import matrix
 import primes
 import pythagorean
@@ -135,6 +136,13 @@ def eular14():
     collatz.longest_collatz_seq(1000000)
 
 
+def eular15():
+    print(text.eular15)
+    for i in range(1, 21):
+        remembered = {}
+        print('{} routes in a {}x{} grid!'.format(latticepath.find_all_routes(i, remembered), i, i))
+
+
 if __name__ == "__main__":
     eular1()
     separator()
@@ -164,7 +172,7 @@ if __name__ == "__main__":
     separator()
 
     # sum primes - takes a while
-    eular10()
+    #  eular10()
     separator()
 
     eular11()
@@ -178,4 +186,7 @@ if __name__ == "__main__":
     separator()
 
     eular14()
+    separator()
+
+    eular15()
     separator()

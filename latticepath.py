@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # coding=utf-8
 
 
@@ -63,9 +62,3 @@ def find_all_routes(grid_size, remembered):
     routes = get_routes(0, 0, grid_size, remembered)
 
     return routes
-
-
-if __name__ == "__main__":
-    for i in range(1, 21):
-        remembered = {}
-        print('{} routes in a {}x{} grid!'.format(find_all_routes(i, remembered), i, i))
