@@ -50,6 +50,3 @@ def longest_collatz_seq(upto):
     print('which has a length of {}'.format(n_len))
     print('')
     print('The collatz_dict ended up with a length of {} entries.'.format(len(collatz_dict)))
-
-if __name__ == "__main__":
-    longest_collatz_seq(1000000)

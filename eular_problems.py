@@ -1,4 +1,5 @@
 import bignumber
+import collatz
 import factors
 import fibseries
 import matrix
@@ -129,6 +130,11 @@ def eular13():
     print(first_ten_digits)
 
 
+def eular14():
+    print(text.eular14)
+    collatz.longest_collatz_seq(1000000)
+
+
 if __name__ == "__main__":
     eular1()
     separator()
@@ -157,14 +163,19 @@ if __name__ == "__main__":
     eular9()
     separator()
 
+    # sum primes - takes a while
     eular10()
     separator()
 
     eular11()
     separator()
 
+    # Triangle num
     eular12()
     separator()
 
     eular13()
+    separator()
+
+    eular14()
     separator()
