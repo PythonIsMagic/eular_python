@@ -106,7 +106,7 @@ the maximum total from top to bottom is 23.
 Find the maximum total from top to bottom of the given triangle:
 """
 
-eular19 = """ Eular problem 19 - Counting Sundays:
+eular19 = """Eular problem 19 - Counting Sundays:
 How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31
 Dec 2000)?
 """

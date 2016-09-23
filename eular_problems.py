@@ -1,6 +1,7 @@
 import alphanumbers
 import bignumber
 import collatz
+import counting_days
 import functions
 import factors
 import fibseries
@@ -173,7 +174,16 @@ def eular18():
 
 def eular19():
     print(text.eular19)
-    print('There were {} Sundays counted.'.format(functions.count_sundays()))
+    print('There were {} Sundays counted.'.format(counting_days.count_sundays()))
+
+
+def eular20():
+    print(text.eular20)
+    num = 100
+    fact = functions.factorial(num)
+    print('The factorial of {}! = {}'.format(num, fact))
+    print('The sum of the digits in {}! = {}'.format(num, functions.add_digits(fact)))
+    print('or using the super shorted version: {}'.format(functions.fact_sum(num)))
 
 if __name__ == "__main__":
     eular1()
@@ -233,4 +243,7 @@ if __name__ == "__main__":
     separator()
 
     eular19()
+    separator()
+
+    eular20()
     separator()
