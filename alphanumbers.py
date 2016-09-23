@@ -78,13 +78,3 @@ def letter_qty(s):
         if c in string.ascii_letters:
             _sum += 1
     return _sum
-
-if __name__ == "__main__":
-    letters = 0
-    for i in range(1, 1001):
-        number = num_to_alpha(i)
-        qty = letter_qty(number)
-        print('{} has {} letters'.format(number, qty))
-        letters += qty
-
-    print('It take {} letter to represent all the numbers in 1-1000'.format(letters))

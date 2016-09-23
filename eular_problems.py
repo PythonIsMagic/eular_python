@@ -1,3 +1,4 @@
+import alphanumbers
 import bignumber
 import collatz
 import factors
@@ -147,6 +148,18 @@ def eular16():
     print(text.eular16)
     print(sum([int(x) for x in str(2 ** 1000)]))
 
+
+def eular17():
+    print(text.eular17)
+    letters = 0
+    for i in range(1, 1001):
+        number = alphanumbers.num_to_alpha(i)
+        qty = alphanumbers.letter_qty(number)
+        print('{} has {} letters'.format(number, qty))
+        letters += qty
+
+    print('It take {} letter to represent all the numbers in 1-1000'.format(letters))
+
 if __name__ == "__main__":
     eular1()
     separator()
@@ -183,17 +196,20 @@ if __name__ == "__main__":
     separator()
 
     # Triangle num
-    eular12()
+    #  eular12()
     separator()
 
     eular13()
     separator()
 
-    eular14()
+    #  eular14()
     separator()
 
     eular15()
     separator()
 
     eular16()
+    separator()
+
+    eular17()
     separator()
