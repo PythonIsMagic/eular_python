@@ -1,3 +1,6 @@
+import recursion
+
+
 def read_matrix(filename):
     """
     Reads a file containing integers to a matrix(list of lists).
@@ -103,3 +106,21 @@ def get_left_diagonals(matrix):
         inc = (-1, 1)
         diags.append(extract_line(matrix, point, inc))
     return diags
+
+
+def find_greatest_product(_matrix, factors):
+    greatest_product = 0
+    lines = scan_matrix_lines(_matrix)
+
+    for sequence in lines:
+        endpoint = len(sequence) - factors
+        if len(sequence) < factors:
+            continue
+        i = 0
+        while i <= endpoint:
+            product = recursion.multiply(sequence, i, factors)
+            if product > greatest_product:
+                greatest_product = product
+            i += 1
+
+    return greatest_product

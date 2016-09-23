@@ -1,6 +1,7 @@
 import bignumber
 import factors
 import fibseries
+import matrix
 import primes
 import pythagorean
 import palindrome
@@ -92,11 +93,18 @@ def eular9():
 
 
 def eular10():
+    print(text.eular10)
     upperlimit = 2000000
     #  prime_sum = primes.sieve_rm_method(upperlimit)
     prime_sum = primes.sum_via_iteration(upperlimit)
     print('The sum of all primes up to {} = {}'.format(upperlimit, prime_sum))
 
+
+def eular11():
+    print(text.eular11)
+    m = matrix.read_matrix('matrix1.txt')
+    p = matrix.find_greatest_product(m, 4)
+    print('The greatest product in the is {}'.format(p))
 
 if __name__ == "__main__":
     eular1()
@@ -129,3 +137,5 @@ if __name__ == "__main__":
     eular10()
     separator()
 
+    eular11()
+    separator()

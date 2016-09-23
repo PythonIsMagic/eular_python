@@ -18,12 +18,12 @@ def fibtest():
     T1, T2 = 0, 1
 
     while T2 < 100:
-        print T2
+        print(T2)
         T1, T2 = T2, T1+T2
         # or a = b and b = a+b
 
     T1, T2 = 0, 1
     while T2 < 100:
-        print T2,
+        print(T2,)
         T1, T2 = T2, T1+T2
         # or a = b and b = a+b
