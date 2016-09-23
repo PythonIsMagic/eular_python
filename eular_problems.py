@@ -90,6 +90,14 @@ def eular9():
     print('{} + {} + {} = 1000!'.format(a, b, c))
     print('The product abc = {}'.format(a * b * c))
 
+
+def eular10():
+    upperlimit = 2000000
+    #  prime_sum = primes.sieve_rm_method(upperlimit)
+    prime_sum = primes.sum_via_iteration(upperlimit)
+    print('The sum of all primes up to {} = {}'.format(upperlimit, prime_sum))
+
+
 if __name__ == "__main__":
     eular1()
     separator()
@@ -117,3 +125,7 @@ if __name__ == "__main__":
 
     eular9()
     separator()
+
+    eular10()
+    separator()
+

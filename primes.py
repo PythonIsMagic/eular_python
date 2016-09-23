@@ -152,3 +152,23 @@ def max_prime_factor(N):
         return None
     else:
         return max(factors)
+
+
+def sum_via_iteration(n):
+    prime_sum = 0
+    for i in range(n):
+        if isprime_2step(i):
+            prime_sum += i
+    return prime_sum
+
+
+def sum_via_sieve(n):
+    prime_sum = 0
+    set_of_primes = sieve_rm_method(n - 1)
+    for p in set_of_primes:
+        prime_sum += p
+    return prime_sum
+
+
+def sum_via_generator(n):
+    pass
