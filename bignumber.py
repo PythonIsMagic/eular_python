@@ -78,3 +78,15 @@ def find_product_via_queue(filename):
                     largest_product = product
 
     return largest_product
+
+
+def read_numbers(filename):
+    """
+    Read each number as a line from the file and return the numbers as a list.
+    """
+    numbers = []
+    with open(filename) as f:
+        for l in f.readlines():
+            numbers.append(int(l))
+
+    return numbers

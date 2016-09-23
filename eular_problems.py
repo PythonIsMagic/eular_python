@@ -115,6 +115,20 @@ def eular12():
             break
 
 
+def eular13():
+    print(text.eular13)
+    n = bignumber.read_numbers('bignumbers.txt')
+    bigsum = 0
+    for x in n:
+        bigsum += x
+        print(x)
+
+    print('sum = {}'.format(bigsum))
+    sum_list = list(str(bigsum))
+    first_ten_digits = sum_list[-10:]
+    print(first_ten_digits)
+
+
 if __name__ == "__main__":
     eular1()
     separator()
@@ -150,4 +164,7 @@ if __name__ == "__main__":
     separator()
 
     eular12()
+    separator()
+
+    eular13()
     separator()
