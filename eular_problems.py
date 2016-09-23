@@ -143,6 +143,10 @@ def eular15():
         print('{} routes in a {}x{} grid!'.format(latticepath.find_all_routes(i, remembered), i, i))
 
 
+def eular16():
+    print(text.eular16)
+    print(sum([int(x) for x in str(2 ** 1000)]))
+
 if __name__ == "__main__":
     eular1()
     separator()
@@ -189,4 +193,7 @@ if __name__ == "__main__":
     separator()
 
     eular15()
+    separator()
+
+    eular16()
     separator()
