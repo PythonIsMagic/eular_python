@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 months = {
     1: 31,
     2: 28,
@@ -46,7 +45,8 @@ def is_leap_year(year):
     else:
         return False
 
-if __name__ == "__main__":
+
+def count_sundays():
     month = 1
     day = 1
     year = 1900
@@ -54,12 +54,12 @@ if __name__ == "__main__":
     sundays = 0
 
     while year < 2001:
-        print('{}/{}/{} weekday: {}'.format(month, day, year, weekday))
+        #  print('{}/{}/{} weekday: {}'.format(month, day, year, weekday))
 
         # Check for Sunday on the first of the month.
         if weekday == 6 and day == 1 and year > 1900:
             sundays += 1
-            print('Sunday on the first of the month!')
+            #  print('Sunday on the first of the month!')
 
         # advance day
         day += 1
@@ -75,4 +75,4 @@ if __name__ == "__main__":
             month = 1
             year += 1
 
-    print('There were {} Sundays counted.'.format(sundays))
+    return sundays

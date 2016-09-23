@@ -1,6 +1,7 @@
 import alphanumbers
 import bignumber
 import collatz
+import functions
 import factors
 import fibseries
 import latticepath
@@ -169,6 +170,11 @@ def eular18():
     print()
     numbertree.find_max_path(tree)
 
+
+def eular19():
+    print(text.eular19)
+    print('There were {} Sundays counted.'.format(functions.count_sundays()))
+
 if __name__ == "__main__":
     eular1()
     separator()
@@ -224,4 +230,7 @@ if __name__ == "__main__":
     separator()
 
     eular18()
+    separator()
+
+    eular19()
     separator()
