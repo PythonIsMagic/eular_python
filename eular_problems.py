@@ -12,7 +12,6 @@ import matrix
 import numbertree
 import primes
 import pythagorean
-import palindrome
 import text
 import triangle
 
@@ -45,11 +44,11 @@ def eular4():
     print(text.eular4)
     print('Calculating the largest palindrome producable between the factors' +
           ' of 10 and 100')
-    print(palindrome.get_largest_palindrome(10, 100))
+    print(functions.get_largest_palindrome(10, 100))
 
     print('Calculating the largest palindrome producable between the factors' +
           ' of 100 and 1000')
-    print(palindrome.get_largest_palindrome(100, 1000))
+    print(functions.get_largest_palindrome(100, 1000))
 
 
 def eular5():
