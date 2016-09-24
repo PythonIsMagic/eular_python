@@ -172,3 +172,13 @@ def longest_collatz_seq(upto):
     print('which has a length of {}'.format(n_len))
     print('')
     print('The collatz_dict ended up with a length of {} entries.'.format(len(collatz_dict)))
+
+
+# Generator
+def triangle_num():
+    x = 1
+    tri = 1
+    while True:
+        yield tri
+        x += 1
+        tri += x

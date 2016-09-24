@@ -11,7 +11,6 @@ import numbertree
 import primes
 import pythagorean
 import text
-import triangle
 
 
 def separator():
@@ -112,7 +111,7 @@ def eular11():
 
 def eular12():
     print(text.eular12)
-    for t in triangle.triangle_num():
+    for t in functions.triangle_num():
         f = factors.divisors(t)
 
         if len(f) > 500:
