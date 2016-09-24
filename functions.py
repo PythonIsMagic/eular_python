@@ -1,6 +1,6 @@
 import alphanumbers
-import factors
 import math
+import primes
 
 
 def factorial(n):
@@ -29,7 +29,7 @@ def d(n):
     Return the sum of the proper divisors of n
     (numbers less than n which divide evenly into n).
     """
-    divisors = factors.proper_divisors(n)
+    divisors = proper_divisors(n)
     return sum(divisors)
 
 
@@ -182,3 +182,134 @@ def triangle_num():
         yield tri
         x += 1
         tri += x
+
+
+def bruteforce(n):
+    """
+    Returns a set of all the divisors of n using a brute force check.  We only need to check up
+    to (n/2) for any n, bc n won't be divisible by anything larger than that. We can also skip
+    checking even divisors for odd numbers, since they won't be divisible - this should speed up
+    the checking a little. But this is still pretty slow for numbers over a million.
+    """
+    if n < 1:
+        raise ValueError('factors.divisors(n): n needs to be a positive integer')
+
+    factors = set()
+    middle = n // 2
+
+    if n % 2 == 0:  # It's even
+        for i in range(1, middle + 1):
+            if n % i == 0:
+                factors.add(i)
+    else:
+        # It's odd (skip checking even factors)
+        for i in range(1, middle + 1, 2):
+            if n % i == 0:
+                factors.add(i)
+
+    # n will ALWAYS be a factor of itself.
+    factors.add(n)
+    return factors
+
+
+def divisors(n):
+    """
+    Creates a list of all the factors of n and returns them as a set. First we get the prime
+    factors of n. To get any remaining factors, we take all the prime factors and take each to
+    it's maximum power. This results in a list of factors we can use to build the remaining
+    factors.
+    """
+    if n < 1:
+        raise ValueError('factors.divisors(n): n needs to be a positive integer')
+    elif n == 1:
+        return {1}
+
+    prime_facts = primes.get_prime_factors(n)
+    if prime_facts is None:
+        return None
+
+    factors = list(prime_facts)
+
+    for x in factors:
+        for y in factors:
+            product = y * x
+
+            if n % product == 0 and product not in factors:
+                factors.append(product)
+
+    # Cutting out 1 saves a lot of checks and is a factor of every positive number.
+    factors.append(1)
+    return set(factors)
+
+
+def proper_divisors(n):
+    """
+    Return a set containing the proper divisors of n (numbers less than n which divide evenly
+    into n).
+    """
+    d = divisors(n)
+    d.remove(n)
+    return d
+
+
+def test_fromprime(n):
+    failures = 0
+
+    for i in range(1, n):
+        bf = bruteforce(i)
+        fp = divisors(i)
+
+        if bf != fp:
+            print('Test failed on {}!'.format(i))
+            print('bruteforce: {}'.format(sorted(bf)))
+            print('fromprime:  {}'.format(sorted(fp)))
+            failures += 1
+        else:
+            print('{} - Check.'.format(i))
+
+    if failures > 0:
+        print('{} out of {} tests failed.'.format(failures, n - 1))
+    else:
+        print('All tests passed! (up to {})'.format(n))
+
+
+def is_abundant(n):
+    return sum(proper_divisors(n)) > n
+
+
+def sum_multiples(factorlist, limit):
+    # Returns the sum of the specificed multiples.
+    return sum([is_multiple_of(i, factorlist) for i in range(limit)])
+
+
+def is_multiple_of(num, factorlist):
+    if 0 in factorlist:
+        raise ValueError('0 is not valid in list of factors!')
+
+    for n in factorlist:
+        if num % n == 0:
+            return True
+    else:
+        return False
+
+
+def isfactorofall(number, upto):
+    for factor in range(1, upto + 1):
+        if number % factor != 0:
+            return False
+    return True
+
+
+def num_div_by_all_upto(upto):
+    # Start at the highest factor we are testing by
+    # The number won't be divisible by any numbers larger than it!
+    currentnum = upto
+    while True:
+        if isfactorofall(currentnum, upto):
+            break
+
+        # Increase by the size of the largest factor we are testing by
+        # This will dramatically increase the speed and we don't need to test
+        # numbers in between since they won't be divisible by that number.
+        currentnum += upto
+    return currentnum

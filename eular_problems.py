@@ -3,7 +3,6 @@ import bignumber
 import counting_days
 import filework
 import functions
-import factors
 import itertools
 import latticepath
 import matrix
@@ -19,7 +18,7 @@ def separator():
 
 def eular1():
     print(text.eular1)
-    result = factors.sum_multiples([3, 5], 1000)
+    result = functions.sum_multiples([3, 5], 1000)
     print('Sum = {}'.format(result))
 
 
@@ -51,7 +50,7 @@ def eular4():
 def eular5():
     print(text.eular5)
     testrange = 20
-    n = factors.num_div_by_all_upto(testrange)
+    n = functions.num_div_by_all_upto(testrange)
 
     print('Finding a number divisible by all the numbers 1-{}'.format(testrange))
     print("{} is a factor of all 1-{}!".format(n, testrange))
@@ -112,7 +111,7 @@ def eular11():
 def eular12():
     print(text.eular12)
     for t in functions.triangle_num():
-        f = factors.divisors(t)
+        f = functions.divisors(t)
 
         if len(f) > 500:
             print('{} is the first triangle number to have over 500 divisors.'.format(t))
@@ -206,7 +205,7 @@ def eular22():
 def eular23():
     print(text.eular23)
     LIMIT = 28123
-    abundants = [i for i in range(1, LIMIT + 1) if factors.is_abundant(i)]
+    abundants = [i for i in range(1, LIMIT + 1) if functions.is_abundant(i)]
     sums = set([a + abundants[b]
                 for i, a in enumerate(abundants)
                 for b in range(i, len(abundants))])
