@@ -1,6 +1,5 @@
 import alphanumbers
 import bignumber
-import collatz
 import counting_days
 import filework
 import functions
@@ -137,7 +136,7 @@ def eular13():
 
 def eular14():
     print(text.eular14)
-    collatz.longest_collatz_seq(1000000)
+    functions.longest_collatz_seq(1000000)
 
 
 def eular15():
