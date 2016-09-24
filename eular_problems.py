@@ -5,7 +5,6 @@ import counting_days
 import filework
 import functions
 import factors
-import fibseries
 import itertools
 import latticepath
 import matrix
@@ -29,7 +28,7 @@ def eular1():
 def eular2():
     print(text.eular2)
     UPPERLIMIT = 4000000
-    fibsum = sum([x for x in fibseries.fibonacci(UPPERLIMIT) if x % 2 == 0])
+    fibsum = sum([x for x in functions.fibonacci(UPPERLIMIT) if x % 2 == 0])
     print('Sum = {}'.format(fibsum))
 
 
@@ -227,7 +226,7 @@ def eular24():
 
 def eular25():
     print(text.eular25)
-    for i, x in enumerate(fibseries.fibonacci()):
+    for i, x in enumerate(functions.fibonacci()):
         if len(str(x)) >= 1000:
             print('Term {} has over 1000 digits!'.format(i+1))
             break
