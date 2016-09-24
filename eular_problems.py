@@ -6,7 +6,6 @@ import functions
 import itertools
 import matrix
 import numbertree
-import primes
 import pythagorean
 import text
 
@@ -32,7 +31,7 @@ def eular3():
     print(text.eular3)
     bignumber = 600851475143
     print('Largest prime factor of {}: {}'.format(
-        bignumber, primes.max_prime_factor(bignumber)))
+        bignumber, functions.max_prime_factor(bignumber)))
 
 
 def eular4():
@@ -72,7 +71,7 @@ def eular6():
 def eular7():
     print(text.eular7)
     targetprime = 10001
-    print('Prime #{} = {}'.format(targetprime, primes.getprime(targetprime)))
+    print('Prime #{} = {}'.format(targetprime, functions.getprime(targetprime)))
 
 
 def eular8():
@@ -96,7 +95,7 @@ def eular9():
 def eular10():
     print(text.eular10)
     upperlimit = 2000000
-    prime_sum = primes.sum_via_iteration(upperlimit)
+    prime_sum = functions.sum_via_iteration(upperlimit)
     print('The sum of all primes up to {} = {}'.format(upperlimit, prime_sum))
 
 
