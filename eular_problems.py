@@ -4,7 +4,6 @@ import counting_days
 import filework
 import functions
 import itertools
-import latticepath
 import matrix
 import numbertree
 import primes
@@ -141,7 +140,7 @@ def eular15():
     print(text.eular15)
     for i in range(1, 21):
         remembered = {}
-        print('{} routes in a {}x{} grid!'.format(latticepath.find_all_routes(i, remembered), i, i))
+        print('{} routes in a {}x{} grid!'.format(functions.find_all_routes(i, remembered), i, i))
 
 
 def eular16():
