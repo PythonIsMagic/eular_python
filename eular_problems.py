@@ -1,6 +1,6 @@
 import alphanumbers
 import bignumber
-import counting_days
+import countingdays
 import filework
 import functions
 import itertools
@@ -169,7 +169,7 @@ def eular18():
 
 def eular19():
     print(text.eular19)
-    print('There were {} Sundays counted.'.format(counting_days.count_sundays()))
+    print('There were {} Sundays counted.'.format(countingdays.count_sundays()))
 
 
 def eular20():
