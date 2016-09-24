@@ -203,3 +203,115 @@ class TestFunctions(unittest.TestCase):
         expected = 9009
         result = functions.get_largest_palindrome(10, 100)
         self.assertEqual(expected, result)
+
+    # Tests for isfactorofall(number, upto):
+    def test_isfactorofall_1_upto1_returnTrue(self):
+        expected = True
+        result = functions.isfactorofall(1, 1)
+        self.assertEqual(expected, result)
+
+    def test_isfactorofall_1_upto2_returnFalse(self):
+        expected = False
+        result = functions.isfactorofall(1, 2)
+        self.assertEqual(expected, result)
+
+    def test_isfactorofall_2520_upto10_returnTrue(self):
+        expected = True
+        result = functions.isfactorofall(2520, 10)
+        self.assertEqual(expected, result)
+
+    # Tests for num_div_by_all_upto(upto):
+    def test_numdivbyallupto_1_returns1(self):
+        expected = 1
+        result = functions.num_div_by_all_upto(1)
+        self.assertEqual(expected, result)
+
+    def test_numdivbyallupto_2_returns2(self):
+        expected = 2
+        result = functions.num_div_by_all_upto(2)
+        self.assertEqual(expected, result)
+
+    def test_numdivbyallupto_3_returns6(self):
+        expected = 6
+        result = functions.num_div_by_all_upto(3)
+        self.assertEqual(expected, result)
+
+    def test_numdivbyallupto_10_returns2520(self):
+        expected = 2520
+        result = functions.num_div_by_all_upto(10)
+        self.assertEqual(expected, result)
+
+    # Tests for sum_of_squares(upto):
+    def test_sumofsquares_upto0_returns0(self):
+        expected = 0
+        result = functions.sum_of_squares(0)
+        self.assertEqual(expected, result)
+
+    def test_sumofsquares_upto1_returns1(self):
+        expected = 1
+        result = functions.sum_of_squares(1)
+        self.assertEqual(expected, result)
+
+    def test_sumofsquares_upto2_returns5(self):
+        expected = 5
+        result = functions.sum_of_squares(2)
+        self.assertEqual(expected, result)
+
+    # Tests for square_of_sum(upto):
+    def test_squareofsum_upto1_returns0(self):
+        expected = 0
+        result = functions.square_of_sum(0)
+        self.assertEqual(expected, result)
+
+    def test_squareofsum_upto1_returns1(self):
+        expected = 1
+        result = functions.square_of_sum(1)
+        self.assertEqual(expected, result)
+
+    def test_squareofsum_upto2_returns9(self):
+        expected = 9
+        result = functions.square_of_sum(2)
+        self.assertEqual(expected, result)
+
+    # Tests for factorial(n):
+    def test_factorial_neg1_RaiseException(self):
+        self.assertRaises(ValueError, functions.factorial, -1)
+
+    def test_factorial_0_(self):
+        self.assertRaises(ValueError, functions.factorial, 0)
+
+    def test_factorial_1_returns1(self):
+        expected = 1
+        result = functions.factorial(1)
+        self.assertEqual(expected, result)
+
+    def test_factorial_2_returns2(self):
+        expected = 2
+        result = functions.factorial(2)
+        self.assertEqual(expected, result)
+
+    def test_factorial_3_returns6(self):
+        expected = 6
+        result = functions.factorial(3)
+        self.assertEqual(expected, result)
+
+    # Tests for add_digits(n):
+    def test_adddigits_1_returns1(self):
+        expected = 1
+        result = functions.add_digits(1)
+        self.assertEqual(expected, result)
+
+    def test_adddigits_1_2_returns3(self):
+        expected = 3
+        result = functions.add_digits(12)
+        self.assertEqual(expected, result)
+
+    def test_adddigits_1_2_3_returns6(self):
+        expected = 6
+        result = functions.add_digits(123)
+        self.assertEqual(expected, result)
+
+    def test_adddigits_2_2_9_7_returns20(self):
+        expected = 20
+        result = functions.add_digits(2297)
+        self.assertEqual(expected, result)
