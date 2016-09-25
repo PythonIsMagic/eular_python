@@ -77,10 +77,8 @@ class TestFunctions(unittest.TestCase):
     def test_nextcollatz_0_raiseException(self):
         self.assertRaises(ValueError, functions.next_collatz, 0)
 
-    def test_nextcollatz_1_returns4(self):
-        expected = 4
-        result = functions.next_collatz(1)
-        self.assertEqual(expected, result)
+    def test_nextcollatz_1_raiseException(self):
+        self.assertRaises(ValueError, functions.next_collatz, 1)
 
     def test_nextcollatz_2_returns1(self):
         expected = 1

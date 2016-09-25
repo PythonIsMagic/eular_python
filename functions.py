@@ -34,6 +34,9 @@ def divisor_sum_dict(upto):
 
 
 def is_amicable(a, b):
+    """
+    Determines if integers and b are amicable numbers. Returns True if they are, False otherwise.
+    """
     if sum_proper_divisors(a) == b and sum_proper_divisors(b) == a:
         return a != b
     else:
@@ -41,6 +44,9 @@ def is_amicable(a, b):
 
 
 def add_amicable_numbers(upto):
+    """
+    Adds all the amicable numbers up to upto and returns the sum.
+    """
     amicables = set()
     div_sums = divisor_sum_dict(upto)
 
@@ -49,18 +55,22 @@ def add_amicable_numbers(upto):
             if k < upto:
                 amicables.add(k)
 
-    #  print('{} amicable #s found'.format(len(amicables)))
-    #  for n in amicables:
-        #  print('{} --> {}'.format(n, div_sums[n]))
-
     return sum(amicables)
 
 
 def alphabetical_value(name):
+    """
+    Returns the sum of the alphabetical values of the string passed. Each letter is equal to it's
+    position in the alphabet.
+    Example: COLIN is worth 3 + 15 + 12 + 9 + 14 = 53
+    """
     return sum([ord(x.lower()) - 96 for x in list(name)])
 
 
 def ispalindrome(number):
+    """
+    Determines if the value passed is a palindrome or not.
+    """
     numlist = list(str(number))
 
     if len(numlist) <= 0:
@@ -78,6 +88,9 @@ def ispalindrome(number):
 
 
 def get_largest_palindrome(lowerlimit, upperlimit):
+    """
+    Finds the largest palindrome in the given integer limits.
+    """
     largest_palindrome = 0
 
     for m1 in range(lowerlimit, upperlimit):
@@ -92,6 +105,10 @@ def get_largest_palindrome(lowerlimit, upperlimit):
 
 
 def fibonacci(limit=None):
+    """
+    Defines a Fibonacci number generator. The sequence returned is [1, 1, 2, 3, 5] and so on
+    as the sequence progresses.
+    """
     a, b = 0, 1
     while True:
         if limit and b >= limit:
@@ -100,28 +117,18 @@ def fibonacci(limit=None):
         yield a
 
 
-def fibtest():
-    # the sum of two elements defines the next
-    T1, T2 = 0, 1
-
-    while T2 < 100:
-        print(T2)
-        T1, T2 = T2, T1+T2
-        # or a = b and b = a+b
-
-    T1, T2 = 0, 1
-    while T2 < 100:
-        print(T2,)
-        T1, T2 = T2, T1+T2
-        # or a = b and b = a+b
-
-
 def next_collatz(n):
-    # To make the function more efficient, I will stay with the true definition of the problem
-    # and passing 1 will return 4 (3*1 + 1). The calling function will have to track when the
-    # end of the sequence has been reached.
-    if n < 1:
-        raise ValueError('eular14.next_collatz: n must be a positive integer.!')
+    """
+    Takes an integer n and returns the following integer in the Collatz sequence.
+
+    If n is even, it returns n divided by 2.
+    If n is odd, it returns (3*n) + 1.
+
+    The end of a collatz sequence is traditionally 1, so we will raise an exception if the n
+    passed is 1.
+    """
+    if n <= 1:
+        raise ValueError('eular14.next_collatz: n must be a positive integer larger than 1!')
     elif n % 2 == 0:
         return n // 2
     else:
