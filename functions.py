@@ -1,8 +1,10 @@
-import alphanumbers
 import math
 
 
 def factorial(n):
+    """
+    Returns the factorial of n.
+    """
     if n <= 0:
         raise ValueError('eular20.factorial(n): n must be a positive integer!')
     product = 1
@@ -12,33 +14,27 @@ def factorial(n):
 
 
 def fact_sum(n):
+    """
+    Returns the sum of the integers in the factorial of n.
+    """
     return sum([int(x) for x in str(math.factorial(100))])
 
 
-def add_digits(n):
-    digits = alphanumbers.num_to_list(n)
-    sum = 0
-    for d in digits:
-        sum += d
-    return sum
-
-
-def d(n):
+def sum_proper_divisors(n):
     """
-    Return the sum of the proper divisors of n
-    (numbers less than n which divide evenly into n).
+    Return the sum of the proper divisors of n(numbers less than n which divide evenly into n).
     """
     divisors = proper_divisors(n)
     return sum(divisors)
 
 
-def get_divisor_sums(upto):
+def divisor_sum_dict(upto):
     # make a dictionary of divisor sums
-    return {n: d(n) for n in range(2, upto)}
+    return {n: sum_proper_divisors(n) for n in range(2, upto)}
 
 
 def is_amicable(a, b):
-    if d(a) == b and d(b) == a:
+    if sum_proper_divisors(a) == b and sum_proper_divisors(b) == a:
         return a != b
     else:
         return False
@@ -46,7 +42,7 @@ def is_amicable(a, b):
 
 def add_amicable_numbers(upto):
     amicables = set()
-    div_sums = get_divisor_sums(upto)
+    div_sums = divisor_sum_dict(upto)
 
     for k, v in div_sums.items():
         if is_amicable(k, v):

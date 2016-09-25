@@ -279,27 +279,6 @@ class TestFunctions(unittest.TestCase):
         result = functions.factorial(3)
         self.assertEqual(expected, result)
 
-    # Tests for add_digits(n):
-    def test_adddigits_1_returns1(self):
-        expected = 1
-        result = functions.add_digits(1)
-        self.assertEqual(expected, result)
-
-    def test_adddigits_1_2_returns3(self):
-        expected = 3
-        result = functions.add_digits(12)
-        self.assertEqual(expected, result)
-
-    def test_adddigits_1_2_3_returns6(self):
-        expected = 6
-        result = functions.add_digits(123)
-        self.assertEqual(expected, result)
-
-    def test_adddigits_2_2_9_7_returns20(self):
-        expected = 20
-        result = functions.add_digits(2297)
-        self.assertEqual(expected, result)
-
     """
     Tests for is_prime(target):
     """
@@ -634,31 +613,31 @@ class TestFunctions(unittest.TestCase):
     # Proper divisors of 1 = None. Sum = 0
     def test_d_1_returns0(self):
         expected = 0
-        result = functions.d(1)
+        result = functions.sum_proper_divisors(1)
         self.assertEqual(expected, result)
 
     # Proper divisors of 2 = 1. Sum = 1
     def test_d_2_returns1(self):
         expected = 1
-        result = functions.d(2)
+        result = functions.sum_proper_divisors(2)
         self.assertEqual(expected, result)
 
     # Proper divisors of 3 = 1. Sum = 1
     def test_d_3_returns1(self):
         expected = 1
-        result = functions.d(3)
+        result = functions.sum_proper_divisors(3)
         self.assertEqual(expected, result)
 
     # Proper divisors of 4 = 1, 2. Sum = 3
     def test_d_4_returns3(self):
         expected = 3
-        result = functions.d(4)
+        result = functions.sum_proper_divisors(4)
         self.assertEqual(expected, result)
 
     # Proper divisors of 6 = 1, 2, 3. Sum = 6
     def test_d_6_returns6(self):
         expected = 6
-        result = functions.d(6)
+        result = functions.sum_proper_divisors(6)
         self.assertEqual(expected, result)
 
     # Tests for amicable(a, b):

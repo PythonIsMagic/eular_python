@@ -78,3 +78,11 @@ def letter_qty(s):
         if c in string.ascii_letters:
             _sum += 1
     return _sum
+
+
+def add_digits(n):
+    digits = num_to_list(n)
+    sum = 0
+    for d in digits:
+        sum += d
+    return sum

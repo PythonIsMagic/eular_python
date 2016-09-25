@@ -236,3 +236,24 @@ class TestAlphaNumbers(unittest.TestCase):
     # 'abc1' returns 3
     # '123' returns 3
     # 123(the integer) returns 3
+
+    # Tests for add_digits(n):
+    def test_adddigits_1_returns1(self):
+        expected = 1
+        result = alphanumbers.add_digits(1)
+        self.assertEqual(expected, result)
+
+    def test_adddigits_1_2_returns3(self):
+        expected = 3
+        result = alphanumbers.add_digits(12)
+        self.assertEqual(expected, result)
+
+    def test_adddigits_1_2_3_returns6(self):
+        expected = 6
+        result = alphanumbers.add_digits(123)
+        self.assertEqual(expected, result)
+
+    def test_adddigits_2_2_9_7_returns20(self):
+        expected = 20
+        result = alphanumbers.add_digits(2297)
+        self.assertEqual(expected, result)
