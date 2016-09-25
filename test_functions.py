@@ -151,22 +151,6 @@ class TestFunctions(unittest.TestCase):
                 self.assertEqual(expected, result)
                 break
 
-    # Tests for calcsum(upto):
-    def test_calcsumofevens_upto0_return0(self):
-        expected = 0
-        result = functions.calc_sum_of_evens(0)
-        self.assertEqual(expected, result)
-
-    def test_calcsumofevens_upto1_return0(self):
-        expected = 0
-        result = functions.calc_sum_of_evens(1)
-        self.assertEqual(expected, result)
-
-    def test_calcsumofevens_upto2_return2(self):
-        expected = 2
-        result = functions.calc_sum_of_evens(2)
-        self.assertEqual(expected, result)
-
     # Tests for ispalindrome(number):
     def test_ispalindrome_emptyString_returnFalse(self):
         expected = False
@@ -549,4 +533,146 @@ class TestFunctions(unittest.TestCase):
     def test_getprimefactors_24_returns2_3(self):
         expected = {2, 3}
         result = functions.get_prime_factors(24)
+        self.assertEqual(expected, result)
+
+    # Tests for bruteforce(n):
+    def test_bruteforce_0_raiseException(self):
+        self.assertRaises(ValueError, functions.bruteforce, 0)
+
+    # 1 has 1 factor: 1
+    def test_bruteforce_1_returns1(self):
+        expected = {1}
+        result = functions.bruteforce(1)
+        self.assertEqual(expected, result)
+
+    # 2 has 2 factors: 1, 2
+    def test_bruteforce_2_returns2factors(self):
+        expected = {1, 2}
+        result = functions.bruteforce(2)
+        self.assertEqual(expected, result)
+
+    # 3 has 2 factors: 1, 3
+    def test_bruteforce_3_returns2factors(self):
+        expected = {1, 3}
+        result = functions.bruteforce(3)
+        self.assertEqual(expected, result)
+
+    # 4 has 3 factors: 1, 2, 4
+    def test_bruteforce_4_returns3factors(self):
+        expected = {1, 2, 4}
+        result = functions.bruteforce(4)
+        self.assertEqual(expected, result)
+
+    # 6 has 4 factors: 1, 2, 3, 6
+    def test_bruteforce_6_returns4factors(self):
+        expected = {1, 2, 3, 6}
+        result = functions.bruteforce(6)
+        self.assertEqual(expected, result)
+
+    # 24 has 8 factors: 1, 2, 3, 4, 6, 8, 12, 24
+    def test_bruteforce_24_returns8factors(self):
+        expected = {1, 2, 3, 4, 6, 8, 12, 24}
+        result = functions.bruteforce(24)
+        self.assertEqual(expected, result)
+
+    # 13195 has x factors:
+
+    # Tests for divisors(n):
+    def test_divisors_0_raiseException(self):
+        self.assertRaises(ValueError, functions.divisors, 0)
+
+    # 1 has 1 factor: 1
+    def test_divisors_1_returns1(self):
+        expected = {1}
+        result = functions.divisors(1)
+        self.assertEqual(expected, result)
+
+    # 2 has 2 factors: 1, 2
+    def test_divisors_2_returns2factors(self):
+        expected = {1, 2}
+        result = functions.divisors(2)
+        self.assertEqual(expected, result)
+
+    # 3 has 2 factors: 1, 3
+    def test_divisors_3_returns2factors(self):
+        expected = {1, 3}
+        result = functions.divisors(3)
+        self.assertEqual(expected, result)
+
+    # 4 has 3 factors: 1, 2, 4
+    def test_divisors_4_returns3factors(self):
+        expected = {1, 2, 4}
+        result = functions.divisors(4)
+        self.assertEqual(expected, result)
+
+    # 6 has 4 factors: 1, 2, 3, 6
+    def test_divisors_6_returns4factors(self):
+        expected = {1, 2, 3, 6}
+        result = functions.divisors(6)
+        self.assertEqual(expected, result)
+
+    # 24 has 8 factors: 1, 2, 3, 4, 6, 8, 12, 24
+    def test_divisors_24_returns8factors(self):
+        expected = {1, 2, 3, 4, 6, 8, 12, 24}
+        result = functions.divisors(24)
+        self.assertEqual(expected, result)
+
+    # 13195 has x factors:
+
+    # Tests for proper_divisors(n)
+    def test_properdivisors_7_returns1(self):
+        expected = {1}
+        result = functions.proper_divisors(7)
+        self.assertEqual(expected, result)
+
+    def test_properdivisors_24_returns7factors(self):
+        expected = {1, 2, 3, 4, 6, 8, 12}
+        result = functions.proper_divisors(24)
+        self.assertEqual(expected, result)
+
+    # Tests for d(n)
+    # Proper divisors of 1 = None. Sum = 0
+    def test_d_1_returns0(self):
+        expected = 0
+        result = functions.d(1)
+        self.assertEqual(expected, result)
+
+    # Proper divisors of 2 = 1. Sum = 1
+    def test_d_2_returns1(self):
+        expected = 1
+        result = functions.d(2)
+        self.assertEqual(expected, result)
+
+    # Proper divisors of 3 = 1. Sum = 1
+    def test_d_3_returns1(self):
+        expected = 1
+        result = functions.d(3)
+        self.assertEqual(expected, result)
+
+    # Proper divisors of 4 = 1, 2. Sum = 3
+    def test_d_4_returns3(self):
+        expected = 3
+        result = functions.d(4)
+        self.assertEqual(expected, result)
+
+    # Proper divisors of 6 = 1, 2, 3. Sum = 6
+    def test_d_6_returns6(self):
+        expected = 6
+        result = functions.d(6)
+        self.assertEqual(expected, result)
+
+    # Tests for amicable(a, b):
+    def test_amicable_1_2_returnsFalse(self):
+        expected = False
+        result = functions.is_amicable(1, 2)
+        self.assertEqual(expected, result)
+
+    def test_amicable_1_1_returnsFalse(self):
+        expected = False
+        result = functions.is_amicable(1, 1)
+        self.assertEqual(expected, result)
+
+    def test_amicable_220_284_returnsTrue(self):
+        expected = True
+        result = functions.is_amicable(220, 284)
         self.assertEqual(expected, result)

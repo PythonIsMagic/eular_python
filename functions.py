@@ -1,6 +1,5 @@
 import alphanumbers
 import math
-import primes
 
 
 def factorial(n):
@@ -224,7 +223,7 @@ def divisors(n):
     elif n == 1:
         return {1}
 
-    prime_facts = primes.get_prime_factors(n)
+    prime_facts = get_prime_factors(n)
     if prime_facts is None:
         return None
 
@@ -549,3 +548,11 @@ def sum_via_sieve(n):
 
 def sum_via_generator(n):
     pass
+
+
+def sum_of_squares(upto):
+    return sum([i ** 2 for i in range(upto+1)])
+
+
+def square_of_sum(upto):
+    return sum([i for i in range(upto + 1)]) ** 2

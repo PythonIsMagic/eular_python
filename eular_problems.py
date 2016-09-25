@@ -57,12 +57,13 @@ def eular5():
 def eular6():
     print(text.eular6)
     upto = 100
-    sum_of_sq = sum([i ** 2 for i in range(upto+1)])
-    sq_of_sums = sum([i for i in range(upto + 1)]) ** 2
+    sum_of_sq = functions.sum_of_squares(upto+1)
+
+    sq_of_sum = functions.square_of_sum(upto+1)
 
     print('Sum of squares(100) = {}'.format(sum_of_sq))
-    print('Square of sums(100) = {}'.format(sq_of_sums))
-    difference = abs(sq_of_sums - sum_of_sq)
+    print('Square of sums(100) = {}'.format(sq_of_sum))
+    difference = abs(sq_of_sum - sum_of_sq)
 
     print('The difference between the sum of the squares of the first 100 ' +
           'numbers and the square of the sum is {}'.format(difference))
