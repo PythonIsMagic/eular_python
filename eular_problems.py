@@ -4,6 +4,7 @@ import countingdays
 import filework
 import functions
 import itertools
+import latticepaths
 import matrix
 import numbertree
 import pythagorean
@@ -47,11 +48,11 @@ def eular4():
 
 def eular5():
     print(text.eular5)
-    testrange = 20
-    n = functions.num_div_by_all_upto(testrange)
+    limit = 20
+    n = functions.num_div_by_all_upto(limit)
 
-    print('Finding a number divisible by all the numbers 1-{}'.format(testrange))
-    print("{} is a factor of all 1-{}!".format(n, testrange))
+    print('Finding a number divisible by all the numbers 1-{}'.format(limit))
+    print("{} is a factor of all numbers 1-{}!".format(n, limit))
 
 
 def eular6():
@@ -96,7 +97,7 @@ def eular9():
 def eular10():
     print(text.eular10)
     upperlimit = 2000000
-    prime_sum = functions.sum_via_iteration(upperlimit)
+    prime_sum = functions.sum_primes_via_iteration(upperlimit)
     print('The sum of all primes up to {} = {}'.format(upperlimit, prime_sum))
 
 
@@ -133,7 +134,6 @@ def eular13():
 
 def eular14():
     print(text.eular14)
-
     upto = 1000000
     longest_seq = functions.longest_collatz_seq(upto)
     print('\n\n')
@@ -145,7 +145,8 @@ def eular15():
     print(text.eular15)
     for i in range(1, 21):
         remembered = {}
-        print('{} routes in a {}x{} grid!'.format(functions.find_all_routes(i, remembered), i, i))
+        p = latticepaths.find_all_routes(i, remembered)
+        print('{} routes in a {}x{} grid!'.format(p, i, i))
 
 
 def eular16():

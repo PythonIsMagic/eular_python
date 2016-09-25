@@ -508,42 +508,42 @@ class TestFunctions(unittest.TestCase):
 
     # Tests for bruteforce(n):
     def test_bruteforce_0_raiseException(self):
-        self.assertRaises(ValueError, functions.bruteforce, 0)
+        self.assertRaises(ValueError, functions.divisors_bruteforce, 0)
 
     # 1 has 1 factor: 1
     def test_bruteforce_1_returns1(self):
         expected = {1}
-        result = functions.bruteforce(1)
+        result = functions.divisors_bruteforce(1)
         self.assertEqual(expected, result)
 
     # 2 has 2 factors: 1, 2
     def test_bruteforce_2_returns2factors(self):
         expected = {1, 2}
-        result = functions.bruteforce(2)
+        result = functions.divisors_bruteforce(2)
         self.assertEqual(expected, result)
 
     # 3 has 2 factors: 1, 3
     def test_bruteforce_3_returns2factors(self):
         expected = {1, 3}
-        result = functions.bruteforce(3)
+        result = functions.divisors_bruteforce(3)
         self.assertEqual(expected, result)
 
     # 4 has 3 factors: 1, 2, 4
     def test_bruteforce_4_returns3factors(self):
         expected = {1, 2, 4}
-        result = functions.bruteforce(4)
+        result = functions.divisors_bruteforce(4)
         self.assertEqual(expected, result)
 
     # 6 has 4 factors: 1, 2, 3, 6
     def test_bruteforce_6_returns4factors(self):
         expected = {1, 2, 3, 6}
-        result = functions.bruteforce(6)
+        result = functions.divisors_bruteforce(6)
         self.assertEqual(expected, result)
 
     # 24 has 8 factors: 1, 2, 3, 4, 6, 8, 12, 24
     def test_bruteforce_24_returns8factors(self):
         expected = {1, 2, 3, 4, 6, 8, 12, 24}
-        result = functions.bruteforce(24)
+        result = functions.divisors_bruteforce(24)
         self.assertEqual(expected, result)
 
     # 13195 has x factors:
@@ -647,3 +647,27 @@ class TestFunctions(unittest.TestCase):
         expected = True
         result = functions.is_amicable(220, 284)
         self.assertEqual(expected, result)
+
+
+def test_fromprime(n):
+    """
+    This is a thorough test of divisors and divisors_bruteforce that compares both.
+    """
+    failures = 0
+
+    for i in range(1, n):
+        bf = functions.divisors_bruteforce(i)
+        fp = functions.divisors(i)
+
+        if bf != fp:
+            print('Test failed on {}!'.format(i))
+            print('bruteforce: {}'.format(sorted(bf)))
+            print('fromprime:  {}'.format(sorted(fp)))
+            failures += 1
+        else:
+            print('{} - Check.'.format(i))
+
+    if failures > 0:
+        print('{} out of {} tests failed.'.format(failures, n - 1))
+    else:
+        print('All tests passed! (up to {})'.format(n))
