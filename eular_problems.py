@@ -133,7 +133,12 @@ def eular13():
 
 def eular14():
     print(text.eular14)
-    functions.longest_collatz_seq(1000000)
+
+    upto = 1000000
+    longest_seq = functions.longest_collatz_seq(upto)
+    print('\n\n')
+    print('The longest collatz sequence under {} starts with the number {}'.format(upto, longest_seq[0]))
+    print('which has a length of {}'.format(len(longest_seq)))
 
 
 def eular15():

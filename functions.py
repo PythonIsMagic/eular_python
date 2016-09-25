@@ -136,14 +136,15 @@ def next_collatz(n):
 
 
 def collatz_seq(n, collatz_dict={}):
+    """
+    Takes an integer n and returs the resulting Collatz sequence as a list.
+    """
     seq = [n]
     while n > 1:
         n = next_collatz(n)
         if n in collatz_dict:
-            #  print('found shortcut in {}!'.format(n))
             seq.extend(collatz_dict[n])
             collatz_dict[seq[0]] = seq
-            #  print(seq)
             return seq
         else:
             seq.append(n)
@@ -155,20 +156,12 @@ def collatz_seq(n, collatz_dict={}):
 
 def longest_collatz_seq(upto):
     collatz_dict = {}
-    n = 0
-    n_len = 0
-
+    longestseq = []
     for i in range(1, upto):
         seq = collatz_seq(i, collatz_dict)
-        if len(seq) > n_len:
-            n = i
-            n_len = len(seq)
-            print('New longest seq! {}, for a sequence {} steps long.'.format(n, n_len))
-    print('\n\n')
-    print('The longest collatz sequence under {} starts with the number {}'.format(upto, n))
-    print('which has a length of {}'.format(n_len))
-    print('')
-    print('The collatz_dict ended up with a length of {} entries.'.format(len(collatz_dict)))
+        if len(seq) > len(longestseq):
+            longestseq = seq
+    return seq
 
 
 # Generator
