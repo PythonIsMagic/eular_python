@@ -136,11 +136,6 @@ def next_collatz(n):
 
 
 def collatz_seq(n, collatz_dict={}):
-    #  pdb.set_trace()
-    if n < 1:
-        raise ValueError('eular14.collatz_seq: n must be a positive integer.!')
-
-    #  print('\n****** COLLATZ SEQ for {}'.format(n))
     seq = [n]
     while n > 1:
         n = next_collatz(n)

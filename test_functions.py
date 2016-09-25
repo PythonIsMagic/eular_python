@@ -101,12 +101,6 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(expected, result)
 
     # Tests for collatz_seq(n):
-    def test_collatzseq_neg1_raiseException(self):
-        self.assertRaises(ValueError, functions.collatz_seq, -1)
-
-    def test_collatzseq_0_raiseException(self):
-        self.assertRaises(ValueError, functions.collatz_seq, 0)
-
     def test_collatzseq_1_returns1(self):
         expected = [1]
         result = functions.collatz_seq(1)
