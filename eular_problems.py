@@ -178,7 +178,7 @@ def eular20():
     num = 100
     fact = functions.factorial(num)
     print('The factorial of {}! = {}'.format(num, fact))
-    print('The sum of the digits in {}! = {}'.format(num, functions.add_digits(fact)))
+    print('The sum of the digits in {}! = {}'.format(num, alphanumbers.add_digits(fact)))
     print('or using the super shorted version: {}'.format(functions.fact_sum(num)))
 
 
@@ -256,14 +256,14 @@ if __name__ == "__main__":
     separator()
 
     # sum primes - takes a while
-    #  eular10()
+    eular10()
     separator()
 
     eular11()
     separator()
 
     # Triangle num
-    #  eular12()
+    eular12()
     separator()
 
     eular13()
