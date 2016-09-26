@@ -2,30 +2,81 @@ import unittest
 import primes
 
 
-class TestPrimes(unittest.TestCase):
+class TestIsPrime:
+    def setUp(self):
+        self.ip = self.getImpl()  # call to factory method
+
     """
     Tests for is_prime(target):
     """
     def test_isprime_0_returnFalse(self):
         expected = False
-        result = primes.isprime_2step(0)
+        result = self.ip(0)
         self.assertEqual(expected, result)
 
     def test_isprime_1_returnFalse(self):
         expected = False
-        result = primes.isprime_2step(1)
+        result = self.ip(1)
         self.assertEqual(expected, result)
 
     def test_isprime_2_returnTrue(self):
         expected = True
-        result = primes.isprime_2step(2)
+        result = self.ip(2)
         self.assertEqual(expected, result)
 
     def test_isprime_3_returnTrue(self):
         expected = True
-        result = primes.isprime_2step(3)
+        result = self.ip(3)
         self.assertEqual(expected, result)
 
+
+class TestIsPrimeVer1(TestIsPrime, unittest.TestCase):
+    def getImpl(self):
+        return primes.isprime_ver1
+
+
+class TestIsPrimeVer2(TestIsPrime, unittest.TestCase):
+    def getImpl(self):
+        return primes.isprime_ver2
+
+
+class TestSieve:
+    def setUp(self):
+        self.sieve = self.getImpl()  # call to factory method
+
+    """
+    Tests for def sieve_markers(n):
+    """
+    #  def test_sievemarkers_0_raiseException(self):
+        #  self.assertRaises(ValueError, self.sieve, 0)
+
+    def test_sievemarkers_2_return2(self):
+        expected = [2]
+        result = self.sieve(2)
+        self.assertEqual(expected, result)
+
+    def test_sievemarkers_3_return2_3(self):
+        expected = [2, 3]
+        result = self.sieve(3)
+        self.assertEqual(expected, result)
+
+    def test_sievemarkers_11_returns5primes(self):
+        expected = [2, 3, 5, 7, 11]
+        result = self.sieve(11)
+        self.assertEqual(expected, result)
+
+    def test_sievemarkers_20_returns8primes(self):
+        expected = [2, 3, 5, 7, 11, 13, 17, 19]
+        result = self.sieve(20)
+        self.assertEqual(expected, result)
+
+
+class TestEratosthenesSieve(TestSieve, unittest.TestCase):
+    def getImpl(self):
+        return primes.eratosthenes_sieve
+
+
+class TestPrimes(unittest.TestCase):
     """
     Tests for max_prime_factor(target):
     """
@@ -70,97 +121,27 @@ class TestPrimes(unittest.TestCase):
         self.assertEqual(expected, result)
 
     """
-    Tests for getprime(index):
+    Tests for primes(n)
     """
-    def test_getprime_neg1_raiseException(self):
-        self.assertRaises(ValueError, primes.getprime, -1)
-
-    def test_getprime_0_returns2(self):
+    def test_primes_1next_return2(self):
+        g = primes.primes()
         expected = 2
-        result = primes.getprime(0)
+        result = next(g)
         self.assertEqual(expected, result)
 
-    def test_getprime_1_returns3(self):
+    def test_primes_2next_return3(self):
+        g = primes.primes()
         expected = 3
-        result = primes.getprime(1)
+        next(g)
+        result = next(g)
         self.assertEqual(expected, result)
 
-    def test_getprime_2_returns5(self):
+    def test_primes_3next_return5(self):
+        g = primes.primes()
         expected = 5
-        result = primes.getprime(2)
-        self.assertEqual(expected, result)
-
-    """
-    Tests for def generate_primes(n)
-    """
-    def test_generateprimes_0_raiseException(self):
-        self.assertRaises(ValueError, primes.generate_primes, 0)
-
-    def test_generateprimes_2_return2(self):
-        expected = [2]
-        result = primes.generate_primes(2)
-        self.assertEqual(expected, result)
-
-    def test_generateprimes_3_return2_3(self):
-        expected = [2, 3]
-        result = primes.generate_primes(3)
-        self.assertEqual(expected, result)
-
-    def test_generateprimes_11_returns5primes(self):
-        expected = [2, 3, 5, 7, 11]
-        result = primes.generate_primes(11)
-        self.assertEqual(expected, result)
-
-    """
-    Tests for def sieve_rm_method(n):
-    """
-    def test__0_raiseException(self):
-        self.assertRaises(ValueError, primes.sieve_rm_method, 0)
-
-    def test_sievermmethod_2_return2(self):
-        expected = [2]
-        result = primes.sieve_rm_method(2)
-        self.assertEqual(expected, result)
-
-    def test_sievermmethod_3_return2_3(self):
-        expected = [2, 3]
-        result = primes.sieve_rm_method(3)
-        self.assertEqual(expected, result)
-
-    def test_sievermmethod_11_returns5primes(self):
-        expected = [2, 3, 5, 7, 11]
-        result = primes.sieve_rm_method(11)
-        self.assertEqual(expected, result)
-
-    def test_sievermmethod_20_returns5primes(self):
-        expected = [2, 3, 5, 7, 11, 13, 17, 19]
-        result = primes.sieve_rm_method(20)
-        self.assertEqual(expected, result)
-
-    """
-    Tests for def sieve_markers(n):
-    """
-    def test_sievemarkers_0_raiseException(self):
-        self.assertRaises(ValueError, primes.sieve_markers, 0)
-
-    def test_sievemarkers_2_return2(self):
-        expected = [2]
-        result = primes.sieve_markers(2)
-        self.assertEqual(expected, result)
-
-    def test_sievemarkers_3_return2_3(self):
-        expected = [2, 3]
-        result = primes.sieve_markers(3)
-        self.assertEqual(expected, result)
-
-    def test_sievemarkers_11_returns5primes(self):
-        expected = [2, 3, 5, 7, 11]
-        result = primes.sieve_markers(11)
-        self.assertEqual(expected, result)
-
-    def test_sievemarkers_20_returns8primes(self):
-        expected = [2, 3, 5, 7, 11, 13, 17, 19]
-        result = primes.sieve_markers(20)
+        next(g)
+        next(g)
+        result = next(g)
         self.assertEqual(expected, result)
 
     """

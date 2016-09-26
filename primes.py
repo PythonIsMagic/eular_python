@@ -1,4 +1,5 @@
 import math
+import timer
 
 
 def isprime_ver1(n):
@@ -85,34 +86,23 @@ def isprime_ver4(n):
     return True
 
 
-def getprime(n):
-    if n < 0:
-        raise ValueError('getprime(n) must take an integer greater than or equal to 0.')
-
+def primes():
+    """
+    Defines a prime number generator that generates prime numbers up until the n'th prime number.
+    The first prime number defined is 2. Uses the is_prime tests.
+    """
     i = 2
-    prime = 0
     while True:
-        if prime == n:
-            return i
-
+        if isprime_ver4(i):
+            yield i
         i += 1
-        if isprime_ver4(i):
-            prime += 1
-
-
-def generate_primes(n):
-    if n < 2:
-        raise ValueError('Passed in integer is not large enough to contain primes.')
-
-    primes = []
-    for i in range(n + 1):
-        if isprime_ver4(i):
-            primes.append(i)
-        #  primes.append(getprime(i))
-    return primes
 
 
 def eratosthenes_sieve(n):
+    """
+    Eratosthenes sieve.
+    * Implemented using a list and None to specify a non-prime slot.
+    """
     # Great speed!
     L = [x for x in range(n+1)]
     L[0], L[1] = None, None
@@ -126,6 +116,17 @@ def eratosthenes_sieve(n):
                 L[j] = None
         i += 1
     return [x for x in L if x is not None]
+
+
+def max_prime_factor(n):
+    """
+    Finds the largest prime factor of n and returns it.
+    """
+    factors = get_prime_factors(n)
+    if factors is None:
+        return None
+    else:
+        return max(factors)
 
 
 def get_prime_factors(n):
@@ -148,28 +149,49 @@ def get_prime_factors(n):
         return factors
 
 
-def max_prime_factor(n):
-    """
-    Finds the largest prime factor of n and returns it.
-    """
-    factors = get_prime_factors(n)
-    if factors is None:
-        return None
-    else:
-        return max(factors)
+@timer.timeit
+def count_primes(upto, func):
+    c = 0
+    for i in range(upto):
+        if func(i):
+            c += 1
+    return c
 
 
-def sum_primes_via_iteration(n):
-    prime_sum = 0
-    for i in range(n):
-        if isprime_ver4(i):
-            prime_sum += i
-    return prime_sum
+@timer.timeit
+def sieve_primes(upto, func):
+    p = func(upto)
+    return len(p)
 
 
-def sum_primes_via_sieve(n):
-    prime_sum = 0
-    set_of_primes = eratosthenes_sieve(n - 1)
-    for p in set_of_primes:
-        prime_sum += p
-    return prime_sum
+if __name__ == "__main__":
+    print('~~~~~~~~~~~')
+    print('Prime tests')
+
+    counts = {
+        1000: 168,
+        10000: 1229,
+        100000: 9592,
+        1000000: 78498,
+        10000000: 664579,
+        # 100000000: 5761455  # too big - got 'Killed'
+    }
+
+    funcs = [isprime_ver2, isprime_ver3, isprime_ver4]
+    sieves = [eratosthenes_sieve]
+
+    for k, v in sorted(counts.items()):
+        print('---------------------------------')
+        #  print('Testing 0-{}'.format(k))
+        for f in funcs:
+            if k < 1000000:
+                count = count_primes(k, f)
+                print('{} primes found up to {}.'.format(count, k))
+                # Validate count
+                assert count == v
+
+        # Test the sieves
+        for s in sieves:
+            count = sieve_primes(k, s)
+            assert count == v
+            print('{} primes found up to {}.'.format(count, k))

@@ -2,12 +2,26 @@
 
 from __future__ import print_function
 
-import primes
 import sys
 import time
 
 # Selects the time func for Unix and time.clock for Windows.
 timer = time.clock if sys.platform[:3] == 'win' else time.time
+
+
+def timeit(method):
+    """
+    A timing decorator.
+    """
+    def timed(*args, **kw):
+        ts = time.time()
+        result = method(*args, **kw)
+        te = time.time()
+
+        print('%r (%r, %r) %2.2f sec' % (method.__name__, args, kw, te-ts))
+        return result
+
+    return timed
 
 
 def basic_timer(func, *args):
@@ -102,64 +116,3 @@ def enhanced_tests(func, *pargs, **kargs):
     print('')
     print(bestoftotal(50, reps, func, *pargs, **kargs))
     print('best total time run for 50 runs of {} reps'.format(reps))
-
-
-def compare_funcs(reps, func1, func2):
-    """
-    Takes two tuples of function calls and compares the speeds.
-    """
-    print('####################################')
-    print('Comparing 2 functions!')
-    total_time1 = total(reps, *func1)[0] / reps
-    total_time2 = total(reps, *func2)[0] / reps
-
-    print(func1)
-    print('Total time: {} seconds'.format(total_time1))
-    print('')
-    print(func2)
-    print('Total time: {} seconds'.format(total_time2))
-    print('')
-
-    if total_time1 < total_time2:
-        print('{} had the faster total time: '.format(func1), end='')
-    else:
-        print('{} had the faster total time: '.format(func2), end='')
-    besttime = max(total_time1, total_time2)
-    print('{} seconds.'.format(besttime))
-
-    diff = abs(total_time1 - total_time2)
-    percent = (diff / besttime) * 100
-    print('Faster by {}%'.format(percent))
-
-if __name__ == "__main__":
-    #  basic_test(pow, 2, 1000)
-    #  enhanced_tests(pow, 2, 1000)
-    #  enhanced_tests(str.upper, 'spam')
-
-    #  test1 = (str.upper, 'spam')
-    #  test2 = (str.upper, 'spamspaspaspammm')
-    #  compare_funcs(test1, test2)
-
-    # Test the isprime functions: One that checks all numbers, and one that skips evens.
-    #  test_num = 809789132779
-    #  prime1 = (primes.isprime_checkall, test_num)
-    #  prime2 = (primes.isprime_2step, test_num)
-    #  compare_funcs(10000, prime1, prime2)
-
-    # Test prime number generation: brute checking all ints vs sieve of Eratosthenese
-    #  upto = 100
-    #  prime1 = (primes.generate_primes, upto)
-    #  prime2 = (primes.sieve_rm_method, upto)
-    #  compare_funcs(10000, prime1, prime2)
-
-    # Test prime sieves: One using remove method, other marking numbers and removing at end.
-    #  upto = 100
-    #  prime2 = (primes.sieve_rm_method, upto)
-    #  prime1 = (primes.sieve_markers, upto)
-    #  compare_funcs(10000, prime1, prime2)
-
-    # Test prime generation: sieve_markers vs generate_primes
-    upto = 1000
-    prime2 = (primes.generate_primes, upto)
-    prime1 = (primes.sieve_markers, upto)
-    compare_funcs(10000, prime1, prime2)
