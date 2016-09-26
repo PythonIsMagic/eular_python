@@ -17,32 +17,42 @@ def sum_proper_divisors(n):
     return sum(divisors)
 
 
-def divisor_sum_dict(upto):
-    # make a dictionary of divisor sums
-    return {n: sum_proper_divisors(n) for n in range(2, upto)}
+def divisor_sum_dict(limit):
+    """
+    Make a dictionary of divisor sums up to, but not including, limit.
+    Example: The divisor sum of 2 would be 1 + 2 = 3.
+             The divisor sum of 220 = 1 + 2 + 4 + 5 + 10 + 11 + 20 + 22 + 44 + 55 + 110 = 284
+    """
+    return {n: sum_proper_divisors(n) for n in range(1, limit)}
 
 
 def is_amicable(a, b):
     """
     Determines if integers and b are amicable numbers. Returns True if they are, False otherwise.
     """
-    if sum_proper_divisors(a) == b and sum_proper_divisors(b) == a:
+    if sum_proper_divisors(a) == b and a == sum_proper_divisors(b):
         return a != b
     else:
         return False
 
 
-def add_amicable_numbers(upto):
+def add_amicables(limit):
     """
-    Adds all the amicable numbers up to upto and returns the sum.
+    Adds all the amicable numbers up to limit and returns the sum.
     """
     amicables = set()
-    div_sums = divisor_sum_dict(upto)
+    div_sums = divisor_sum_dict(limit)
 
     for k, v in div_sums.items():
-        if is_amicable(k, v):
-            if k < upto:
-                amicables.add(k)
+        # Skip divisor sums that are equal to or over the limit - they won't be in the keys.
+        # Also - k and v cannot be equal. k != v.
+        if v >= limit or k == v:
+            continue
+
+        # Since we have the divisor sum of k as v, we can conversely lookup the opposite
+        # div_sums[v] and check if it equals k.
+        if div_sums.get(v, -1) == k:
+            amicables.add(k)
 
     return sum(amicables)
 

@@ -213,9 +213,9 @@ def eular21():
     print(text.eular21)
     LIMIT = 10000
     # Add all of the amicable numbers together
-    result = functions.add_amicable_numbers(10000)
-    assert result == 31626
+    result = functions.add_amicables(10000)
     print('The sum of all amicables #s up to {} = {}'.format(LIMIT, result))
+    assert result == 31626
 
 
 def eular22():
