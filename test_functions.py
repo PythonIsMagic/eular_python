@@ -332,22 +332,6 @@ class TestFunctions(unittest.TestCase):
         result = functions.sum_proper_divisors(6)
         self.assertEqual(expected, result)
 
-    # Tests for amicable(a, b):
-    def test_amicable_1_2_returnsFalse(self):
-        expected = False
-        result = functions.is_amicable(1, 2)
-        self.assertEqual(expected, result)
-
-    def test_amicable_1_1_returnsFalse(self):
-        expected = False
-        result = functions.is_amicable(1, 1)
-        self.assertEqual(expected, result)
-
-    def test_amicable_220_284_returnsTrue(self):
-        expected = True
-        result = functions.is_amicable(220, 284)
-        self.assertEqual(expected, result)
-
 
 def test_fromprime(n):
     """

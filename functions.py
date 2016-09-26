@@ -26,16 +26,6 @@ def divisor_sum_dict(limit):
     return {n: sum_proper_divisors(n) for n in range(1, limit)}
 
 
-def is_amicable(a, b):
-    """
-    Determines if integers and b are amicable numbers. Returns True if they are, False otherwise.
-    """
-    if sum_proper_divisors(a) == b and a == sum_proper_divisors(b):
-        return a != b
-    else:
-        return False
-
-
 def add_amicables(limit):
     """
     Adds all the amicable numbers up to limit and returns the sum.
