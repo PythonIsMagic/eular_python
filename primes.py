@@ -88,8 +88,8 @@ def isprime_ver4(n):
 
 def primes():
     """
-    Defines a prime number generator that generates prime numbers up until the n'th prime number.
-    The first prime number defined is 2. Uses the is_prime tests.
+    Defines a prime number generator that generates prime numbers. The first prime number
+    defined is 2. Uses the is_prime tests.
     """
     i = 2
     while True:

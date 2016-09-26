@@ -76,9 +76,11 @@ def eular6():
 def eular7():
     print(text.eular7)
     targetprime = 10001
-    result = primes.eratosthenes_sieve(targetprime)[-1]
-    assert result == 104743
+    for i, result in enumerate(primes.primes()):
+        if i == targetprime - 1:
+            break
     print('Prime #{} = {}'.format(targetprime, result))
+    assert result == 104743
 
 
 def eular8():
