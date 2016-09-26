@@ -18,63 +18,67 @@ def separator():
 
 def eular1():
     print(text.eular1)
-    result = functions.sum_multiples([3, 5], 1000)
+    result = 0
+    for i in range(1000):
+        if i % 3 == 0 or i % 5 == 0:
+            result += i
+    #  result = functions.sum_multiples([3, 5], 1000)
     print('Sum = {}'.format(result))
+    assert result == 233168
 
 
 def eular2():
     print(text.eular2)
     UPPERLIMIT = 4000000
-    fibsum = sum([x for x in functions.fibonacci(UPPERLIMIT) if x % 2 == 0])
-    print('Sum = {}'.format(fibsum))
+    result = sum([x for x in functions.fibonacci(UPPERLIMIT) if x % 2 == 0])
+    assert result == 4613732
+    print('Sum = {}'.format(result))
 
 
 def eular3():
     print(text.eular3)
     bignumber = 600851475143
-    print('Largest prime factor of {}: {}'.format(
-        bignumber, primes.max_prime_factor(bignumber)))
+    result = primes.max_prime_factor(bignumber)
+    assert result == 6857
+    print('Largest prime factor of {}: {}'.format(bignumber, result))
 
 
 def eular4():
     print(text.eular4)
-    print('Calculating the largest palindrome producable between the factors' +
-          ' of 10 and 100')
-    print(functions.get_largest_palindrome(10, 100))
-
-    print('Calculating the largest palindrome producable between the factors' +
-          ' of 100 and 1000')
-    print(functions.get_largest_palindrome(100, 1000))
+    result = functions.get_largest_palindrome(100, 1000)
+    assert result == 906609
+    print('Largest palindrome between the factors of 100 and 1000 = {}'.format(result))
+    print()
 
 
 def eular5():
     print(text.eular5)
     limit = 20
-    n = functions.num_div_by_all_upto(limit)
-
+    result = functions.num_div_by_all_upto(limit)
+    assert result == 232792560
     print('Finding a number divisible by all the numbers 1-{}'.format(limit))
-    print("{} is a factor of all numbers 1-{}!".format(n, limit))
+    print("{} is a factor of all numbers 1-{}!".format(result, limit))
 
 
 def eular6():
     print(text.eular6)
     upto = 100
     sum_of_sq = functions.sum_of_squares(upto+1)
-
     sq_of_sum = functions.square_of_sum(upto+1)
 
-    print('Sum of squares(100) = {}'.format(sum_of_sq))
-    print('Square of sums(100) = {}'.format(sq_of_sum))
-    difference = abs(sq_of_sum - sum_of_sq)
+    result = abs(sq_of_sum - sum_of_sq)
+    assert result == 25164150
 
     print('The difference between the sum of the squares of the first 100 ' +
-          'numbers and the square of the sum is {}'.format(difference))
+          'numbers and the square of the sum is {}'.format(result))
 
 
 def eular7():
     print(text.eular7)
     targetprime = 10001
-    print('Prime #{} = {}'.format(targetprime, primes.getprime(targetprime)))
+    result = primes.eratosthenes_sieve(targetprime)[-1]
+    assert result == 104743
+    print('Prime #{} = {}'.format(targetprime, result))
 
 
 def eular8():
@@ -82,41 +86,47 @@ def eular8():
     FACTORS = 13
     filename = 'eular8.txt'
     digits = bignumber.read_file_to_list(filename)
-    p = bignumber.find_product_in_list(digits, FACTORS)
-    print('The largest product is {}'.format(p))
+    result = bignumber.find_product_in_list(digits, FACTORS)
+    assert result == 23514624000
+    print('The largest product is {}'.format(result))
 
 
 def eular9():
     print(text.eular9)
     a, b, c = pythagorean.iterative_solution()
+    result = a * b * c
+    assert result == 31875000
     print('a^2 + b^2 = c^2')
     print('{} + {} = {}'.format(a ** 2, b ** 2, c ** 2))
     print('{} + {} + {} = 1000!'.format(a, b, c))
-    print('The product abc = {}'.format(a * b * c))
+    print('The product abc = {}'.format(result))
 
 
 def eular10():
     print(text.eular10)
     upperlimit = 2000000
-    prime_sum = primes.sum_primes_via_iteration(upperlimit)
-    print('The sum of all primes up to {} = {}'.format(upperlimit, prime_sum))
+    result = primes.sum_primes_via_iteration(upperlimit)
+    assert result == 142913828922
+    print('The sum of all primes up to {} = {}'.format(upperlimit, result))
 
 
 def eular11():
     print(text.eular11)
     m = matrix.read_matrix('matrix1.txt')
-    p = matrix.find_greatest_product(m, 4)
-    print('The greatest product in the is {}'.format(p))
+    result = matrix.find_greatest_product(m, 4)
+    assert result == 70600674
+    print('The greatest product in the is {}'.format(result))
 
 
 def eular12():
     print(text.eular12)
-    for t in functions.triangle_num():
-        f = functions.divisors(t)
+    for result in functions.triangle_num():
+        f = functions.divisors(result)
 
         if len(f) > 500:
-            print('{} is the first triangle number to have over 500 divisors.'.format(t))
             break
+    assert result == 76576500
+    print('{} is the first triangle number to have over 500 divisors.'.format(result))
 
 
 def eular13():
@@ -129,8 +139,9 @@ def eular13():
 
     print('sum = {}'.format(bigsum))
     sum_list = list(str(bigsum))
-    first_ten_digits = sum_list[-10:]
-    print(first_ten_digits)
+    result = sum_list[-10:]
+    assert result == 5537376230
+    print(result)
 
 
 def eular14():

@@ -268,28 +268,6 @@ def is_abundant(n):
     return sum(proper_divisors(n)) > n
 
 
-def sum_multiples(factorlist, upto):
-    """
-    Returns the sum of the specificed multiples.
-    """
-    return sum([is_multiple_of(i, factorlist) for i in range(upto)])
-
-
-def is_multiple_of(num, factorlist):
-    """
-    Returns True if num is divisible by any of the numbers in the factorlist. Returns False if
-    num isn't divisible by any of them.
-    """
-    if 0 in factorlist:
-        raise ValueError('0 is not valid in list of factors!')
-
-    for n in factorlist:
-        if num % n == 0:
-            return True
-    else:
-        return False
-
-
 def isfactorofall(num, limit):
     """
     Returns True if num is divisible by all numbers in the range of integers in 1 up to and
