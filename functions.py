@@ -2,23 +2,11 @@ import math
 import primes
 
 
-def factorial(n):
-    """
-    Returns the factorial of n.
-    """
-    if n <= 0:
-        raise ValueError('eular20.factorial(n): n must be a positive integer!')
-    product = 1
-    for i in range(1, n + 1):
-        product *= i
-    return product
-
-
 def fact_sum(n):
     """
     Returns the sum of the integers in the factorial of n.
     """
-    return sum([int(x) for x in str(math.factorial(100))])
+    return sum([int(x) for x in str(math.factorial(n))])
 
 
 def sum_proper_divisors(n):

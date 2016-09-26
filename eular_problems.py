@@ -137,88 +137,95 @@ def eular13():
     bigsum = 0
     for x in n:
         bigsum += x
-        print(x)
 
     print('sum = {}'.format(bigsum))
     sum_list = list(str(bigsum))
-    result = sum_list[-10:]
-    assert result == 5537376230
+    result = int(''.join(sum_list[0:10]))
     print(result)
+    assert result == 5537376230
 
 
 def eular14():
     print(text.eular14)
     upto = 1000000
     longest_seq = functions.longest_collatz_seq(upto)
+    result = longest_seq[0]
+    assert result == 837799
     print('\n\n')
-    print('The longest collatz sequence under {} starts with the number {}'.format(upto, longest_seq[0]))
+    print('The longest collatz sequence under {} starts with the number {}'.format(upto, result))
     print('which has a length of {}'.format(len(longest_seq)))
 
 
 def eular15():
     print(text.eular15)
-    for i in range(1, 21):
-        remembered = {}
-        p = latticepaths.find_all_routes(i, remembered)
-        print('{} routes in a {}x{} grid!'.format(p, i, i))
+    GRIDSIZE = 20
+    remembered = {}
+    result = latticepaths.find_all_routes(GRIDSIZE, remembered)
+    assert result == 137846528820
+    print('{} routes in a {}x{} grid!'.format(result, GRIDSIZE, GRIDSIZE))
 
 
 def eular16():
     print(text.eular16)
-    print(sum([int(x) for x in str(2 ** 1000)]))
+    result = sum([int(x) for x in str(2 ** 1000)])
+    assert result == 1366
+    print('Sum = {}'.format(result))
 
 
 def eular17():
     print(text.eular17)
-    letters = 0
+    result = 0
     for i in range(1, 1001):
         number = alphanumbers.num_to_alpha(i)
         qty = alphanumbers.letter_qty(number)
-        print('{} has {} letters'.format(number, qty))
-        letters += qty
-
-    print('It take {} letter to represent all the numbers in 1-1000'.format(letters))
+        result += qty
+    assert result == 21124
+    print('It take {} letter to represent all the numbers in 1-1000'.format(result))
 
 
 def eular18():
     print(text.eular18)
     tree = matrix.read_matrix('number_tree.txt')
-    print(matrix.print_matrix(tree))
-    print()
-    numbertree.find_max_path(tree)
+    result = numbertree.find_max_path(tree)
+    assert result == 1074
+    print('The maximum sum = {}'.format(result))
 
 
 def eular19():
     print(text.eular19)
-    print('There were {} Sundays counted.'.format(countingdays.count_sundays()))
+    result = countingdays.count_sundays()
+    assert result == 171
+    print('{} Sundays counted.'.format(result))
 
 
 def eular20():
     print(text.eular20)
     num = 100
-    fact = functions.factorial(num)
-    print('The factorial of {}! = {}'.format(num, fact))
-    print('The sum of the digits in {}! = {}'.format(num, alphanumbers.add_digits(fact)))
-    print('or using the super shorted version: {}'.format(functions.fact_sum(num)))
+    result = functions.fact_sum(num)
+    assert result == 648
+    print('The sum of the digits in {}! = {}'.format(num, result))
 
 
 def eular21():
     print(text.eular21)
     LIMIT = 10000
     # Add all of the amicable numbers together
-    print('The sum of all amicables #s up to {} = {}'.format(LIMIT, functions.add_amicable_numbers(10000)))
+    result = functions.add_amicable_numbers(10000)
+    assert result == 31626
+    print('The sum of all amicables #s up to {} = {}'.format(LIMIT, result))
 
 
 def eular22():
     print(text.eular22)
     names = filework.import_names('names.txt')
     print('names has {} entries.'.format(len(names)))
-    namescore = 0
+    result = 0
 
     for i, n in enumerate(names):
-        namescore += functions.alphabetical_value(n) * (i+1)
+        result += functions.alphabetical_value(n) * (i+1)
 
-    print('The total of all name scores = {}'.format(namescore))
+    assert result == 871198282
+    print('The total of all name scores = {}'.format(result))
 
 
 def eular23():
@@ -229,23 +236,29 @@ def eular23():
                 for i, a in enumerate(abundants)
                 for b in range(i, len(abundants))])
     unsummable = [i for i in range(LIMIT + 1) if i not in sums]
-
-    print('Sum of all positive ints which can\'t be summed by 2 abundants={}'.format(
-        sum(unsummable)))
+    result = sum(unsummable)
+    assert result == 4179871
+    print('Sum of all positive ints which can\'t be summed by 2 abundants={}'.format(result))
 
 
 def eular24():
     print(text.eular24)
     perms = list(itertools.permutations(str('0123456789'), len('0123456789')))
-    print(''.join(perms[999999]))
+    result = int(''.join(perms[999999]))
+    print(result)
+    assert result == 2783915460
 
 
 def eular25():
     print(text.eular25)
     for i, x in enumerate(functions.fibonacci()):
         if len(str(x)) >= 1000:
-            print('Term {} has over 1000 digits!'.format(i+1))
             break
+
+    i += 1  # Avoid off by one err
+    assert i == 4782
+    print('Fibonacci Term {} has over 1000 digits!'.format(i))
+
 
 if __name__ == "__main__":
     eular1()

@@ -17,8 +17,7 @@ def find_max_path(tree):
         # Move path ahead
         iterating = move_path(path, len(tree) - 1)
         total_paths += 1
-    print('max = {}'.format(maxsum))
-    print('total of {} paths found!'.format(total_paths))
+    return maxsum
 
 
 def get_sum(path, tree):
