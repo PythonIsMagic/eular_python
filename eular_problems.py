@@ -107,7 +107,7 @@ def eular9():
 def eular10():
     print(text.eular10)
     upperlimit = 2000000
-    result = primes.sum_primes_via_iteration(upperlimit)
+    result = sum(primes.eratosthenes_sieve(upperlimit))
     assert result == 142913828922
     print('The sum of all primes up to {} = {}'.format(upperlimit, result))
 
