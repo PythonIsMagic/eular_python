@@ -260,8 +260,13 @@ def isfactorofall(num, limit):
     """
     Returns True if num is divisible by all numbers in the range of integers in 1 up to and
     including limit.
+    # Speed up by skipping 1. Any integer is divisible by 1!
+    # If the number ends in 1, 3, 7, or 9, it's more likely to be prime.
+    # Check backwards from the largest possible factor
     """
-    for factor in range(1, limit + 1):
+    start = 1
+    #  for factor in range(start, limit + 1):
+    for factor in range(limit, start, -1):
         if num % factor != 0:
             return False
     return True
@@ -276,6 +281,8 @@ def num_div_by_all_upto(limit):
     i = limit
 
     while True:
+        # Skip any number that doesn't end in 0.
+        # Ending in 0 means it's divisible by: 2, 4, 5, 10, 20,  more likely to be our answer
         if isfactorofall(i, limit):
             break
 
