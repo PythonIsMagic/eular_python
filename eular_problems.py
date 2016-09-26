@@ -63,8 +63,8 @@ def eular5():
 def eular6():
     print(text.eular6)
     upto = 100
-    sum_of_sq = functions.sum_of_squares(upto+1)
-    sq_of_sum = functions.square_of_sum(upto+1)
+    sum_of_sq = functions.sum_of_squares(upto)
+    sq_of_sum = functions.square_of_sum(upto)
 
     result = abs(sq_of_sum - sum_of_sq)
     assert result == 25164150
