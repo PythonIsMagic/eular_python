@@ -13,7 +13,7 @@ import text
 
 
 def separator():
-    print('#'*80)
+    print('_'*80)
 
 
 def eular1():
