@@ -262,13 +262,20 @@ def nonsummable_by_abundants():
     abundants = get_abundants_upto(LIMIT)
 
     # Create all possible 2 term combinations for sums.
-    pairs = list(itertools.combinations(abundants, 2))
+    #  pairs = list(itertools.combinations(abundants, 2)) # No
+    #  pairs = itertools.combinations(abundants, 2) # No
+    #  pairs = itertools.permutations(abundants, 2) # No
+    # We want the Cartesian product, because the abundant numbers, can be repeated(ex: 12 - the
+    # lowest abundant number, can be repeated 12+12 to sum 24.)
+    pairs = itertools.product(abundants, repeat=2)
 
     # Create a set of sums using a set comprehension
     abundant_sums = {a + b for a, b in pairs}
 
+    unsummable = [i for i in range(LIMIT + 1) if i not in abundant_sums]
+
     # Return the sum of all integers that cannot be written as the sum of abundant numbers.
-    return sum([i for i in range(LIMIT + 1) if i not in abundant_sums])
+    return sum(unsummable)
 
 
 def isfactorofall(num, limit):
