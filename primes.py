@@ -1,35 +1,26 @@
 import math
 
-def isprime_checkall(n):
+
+def isprime_ver1(n):
     """
-    Returns True if n is prime, False otherwise. Checks all factors of n.
+    Returns True if n is prime, False otherwise.
+    * Checks all factors of n.
+    * Rediculously slow. For checking up to 100k, takes over a minute.
     """
-    # Start checking at 2.
-    i = 3
+    if n < 2:
+        return False
+    i = 2
     while i < n:
         if n % i == 0:
             return False
-        i += 2
+        i += 1
     return True
 
 
-def isprime_2step(n):
+def isprime_ver2(n):
     """
-    Returns True if n is prime, False otherwise. Checks all factors of n.
-
-    To speed things up we:
-        * Check if n is even
-        * Check if n is 2.
-        * Start checking factors at 3 and then increment by 2 to only check odd numbers.
-    """
-    if n == 2:
-        return True
-
-    if n % 2 == 0:
-        return False
-
-    if n < 2:  # Anything below 3 is not prime.
-        return False
+    Returns True if n is prime, False otherwise.
+    * Only check up to the square root of n.
 
     # We only need to search up to the square root of n because if a number N is not prime, it
     # can be factored into 2 factors A and B.  N = A * B
@@ -39,9 +30,55 @@ def isprime_2step(n):
     # factors less than or equal to the square root.
 
     # Mathematical representation: if N = A*N and A <= B then A*A <= A*N = N
+    """
+    if n < 2:
+        return False
+    i = 2
+    limit = math.sqrt(n)
+    while i <= limit:
+        if n % i == 0:
+            return False
+        i += 1
+    return True
+
+
+def isprime_ver3(n):
+    """
+    Returns True if n is prime, False otherwise.
+    * Only check up to the square root of n.
+    * Start checking at 3 and skip evens.
+    """
+    if n < 2:
+        return False
+    elif n == 2:
+        return True
+    elif n % 2 == 0:
+        return False
 
     i = 3
-    while i <= math.sqrt(n):
+    limit = math.sqrt(n)
+    while i <= limit:
+        if n % i == 0:
+            return False
+        i += 2
+    return True
+
+
+def isprime_ver4(n):
+    """
+    Returns True if n is prime, False otherwise.
+    * Only check up to the square root of n.
+    * Start checking at 3 and skip evens.
+    * Check 2 and the modulus at the same time. (Saves 2 lines)
+    """
+    if n < 2:
+        return False
+    elif n % 2 == 0:
+        return n == 2
+
+    i = 3
+    limit = math.sqrt(n)
+    while i <= limit:
         if n % i == 0:
             return False
         i += 2
@@ -59,7 +96,7 @@ def getprime(n):
             return i
 
         i += 1
-        if isprime_2step(i):
+        if isprime_ver4(i):
             prime += 1
 
 
@@ -69,7 +106,7 @@ def generate_primes(n):
 
     primes = []
     for i in range(n + 1):
-        if isprime_2step(i):
+        if isprime_ver4(i):
             primes.append(i)
         #  primes.append(getprime(i))
     return primes
@@ -151,7 +188,7 @@ def max_prime_factor(n):
 def sum_primes_via_iteration(n):
     prime_sum = 0
     for i in range(n):
-        if isprime_2step(i):
+        if isprime_ver4(i):
             prime_sum += i
     return prime_sum
 
