@@ -241,14 +241,6 @@ def proper_divisors(n):
     return d
 
 
-def is_deficient(n):
-    """
-    A number n is called deficient if the sum of its proper divisors is less than n. Returns
-    True if n is an deficient number, False otherwise.
-    """
-    return sum(proper_divisors(n)) > n
-
-
 def is_abundant(n):
     """
     A number n is called abundant if the sum of its proper divisors is more than n. Returns True
