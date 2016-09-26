@@ -332,6 +332,14 @@ class TestFunctions(unittest.TestCase):
         result = functions.sum_proper_divisors(6)
         self.assertEqual(expected, result)
 
+    """
+    Tests for get_abundants_upto(limit):
+    """
+    def test_getabundantsupto_12_returns12(self):
+        expected = [12]
+        result = functions.get_abundants_upto(12)
+        self.assertEqual(expected, result)
+
 
 def test_fromprime(n):
     """

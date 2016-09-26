@@ -249,18 +249,26 @@ def is_abundant(n):
     return sum(proper_divisors(n)) > n
 
 
-def sum_nonabundants(limit):
+def get_abundants_upto(limit):
+    """
+    Returns a list of all abundant numbers up, and including, the limit.
+    """
+    return [i for i in range(1, limit + 1) if is_abundant(i)]
+
+
+def nonsummable_by_abundants():
+    LIMIT = 28123
     # Calculate all the abundant numbers up to limit.
-    abundants = [i for i in range(1, limit + 1) if is_abundant(i)]
+    abundants = get_abundants_upto(LIMIT)
 
     # Create all possible 2 term combinations for sums.
     pairs = list(itertools.combinations(abundants, 2))
 
-    # Create a set using a set comprehension
-    sums = {a + b for a, b in pairs}
+    # Create a set of sums using a set comprehension
+    abundant_sums = {a + b for a, b in pairs}
 
-    # Create a sum of all non-abundant numbers up to limit.
-    sum([i for i in range(limit + 1) if i not in sums])
+    # Return the sum of all integers that cannot be written as the sum of abundant numbers.
+    return sum([i for i in range(LIMIT + 1) if i not in abundant_sums])
 
 
 def isfactorofall(num, limit):
