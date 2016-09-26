@@ -264,9 +264,8 @@ def isfactorofall(num, limit):
     # If the number ends in 1, 3, 7, or 9, it's more likely to be prime.
     # Check backwards from the largest possible factor
     """
-    start = 1
-    #  for factor in range(start, limit + 1):
-    for factor in range(limit, start, -1):
+    start = 2
+    for factor in range(start, limit + 1):
         if num % factor != 0:
             return False
     return True
@@ -287,7 +286,7 @@ def num_div_by_all_upto(limit):
 
     while True:
         # Skip any number that doesn't end in 0.
-        # Ending in 0 means it's divisible by: 2, 4, 5, 10, 20, 100, 1000, etc.
+        # Ending in 0 maximizes our chance of a big divisor.
         if i % 10 != 0:
             pass
         elif isfactorofall(i, limit):
