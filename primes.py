@@ -112,46 +112,20 @@ def generate_primes(n):
     return primes
 
 
-def sieve_rm_method(n):
-    """
-    For integers up to n, sifts out non-primes via Sieve of Eratosthenese and returns
-    list of all primes up to, and including, n.
-    """
-    if n < 2:
-        raise ValueError('Passed in integer is not large enough to contain primes.')
+def eratosthenes_sieve(n):
+    # Great speed!
+    L = [x for x in range(n+1)]
+    L[0], L[1] = None, None
 
-    numbers = [x for x in range(2, n + 1)]
-    i = 2
-    while i < len(numbers) + 2:
-        for j in range(i * 2, n + 1, i):
-            if j in numbers:
-                numbers.remove(j)
+    i = 0
+    while i < len(L):
+        if L[i] is None:
+            pass
+        else:
+            for j in range(i * 2, len(L), i):
+                L[j] = None
         i += 1
-    return numbers
-
-
-def sieve_markers(n):
-    """
-    Sieve of Eratosthenese; returns list primes up to, and including, n.
-    * Uses enumerate while going through the list to remove numbers by index.
-    """
-    if n < 2:
-        raise ValueError('Passed in integer is not large enough to contain primes.')
-
-    numbers = [x for x in range(n + 1)]
-    numbers[0] = None
-    numbers[1] = None
-
-    size = len(numbers)
-    i = 1
-    while i < size:
-        i += 1
-        if i is None:
-            continue
-        for j in range(i * 2, size, i):
-            numbers[j] = None
-
-    return [x for x in numbers if x is not None]
+    return [x for x in L if x is not None]
 
 
 def get_prime_factors(n):
@@ -195,7 +169,7 @@ def sum_primes_via_iteration(n):
 
 def sum_primes_via_sieve(n):
     prime_sum = 0
-    set_of_primes = sieve_rm_method(n - 1)
+    set_of_primes = eratosthenes_sieve(n - 1)
     for p in set_of_primes:
         prime_sum += p
     return prime_sum
