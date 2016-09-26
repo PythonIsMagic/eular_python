@@ -123,6 +123,9 @@ def eular11():
 def eular12():
     print(text.eular12)
     for result in functions.triangle_num():
+        # Skip checking numbers that don't end in 0.
+        if result % 10 != 0:
+            continue
         f = functions.divisors(result)
 
         if len(f) > 500:
