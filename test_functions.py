@@ -160,20 +160,14 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(expected, result)
 
     # Tests for num_div_by_all_upto(upto):
-    def test_numdivbyallupto_1_returns1(self):
-        expected = 1
-        result = functions.num_div_by_all_upto(1)
-        self.assertEqual(expected, result)
+    def test_numdivbyallupto_1_raiseException(self):
+        self.assertRaises(ValueError, functions.num_div_by_all_upto, 1)
 
-    def test_numdivbyallupto_2_returns2(self):
-        expected = 2
-        result = functions.num_div_by_all_upto(2)
-        self.assertEqual(expected, result)
+    def test_numdivbyallupto_2_raisesException(self):
+        self.assertRaises(ValueError, functions.num_div_by_all_upto, 1)
 
-    def test_numdivbyallupto_3_returns6(self):
-        expected = 6
-        result = functions.num_div_by_all_upto(3)
-        self.assertEqual(expected, result)
+    def test_numdivbyallupto_15_raisesException(self):
+        self.assertRaises(ValueError, functions.num_div_by_all_upto, 15)
 
     def test_numdivbyallupto_10_returns2520(self):
         expected = 2520

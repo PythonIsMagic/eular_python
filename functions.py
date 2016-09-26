@@ -278,12 +278,19 @@ def num_div_by_all_upto(limit):
     """
     # Start at the highest factor we are testing by because the target number won't be divisible
     # by any numbers larger than it.
+    if limit < 10:
+        raise ValueError('This function only tests for ranges 10 and above!')
+    elif limit % 10 != 0:
+        raise ValueError('This function only tests multiples of 10!')
+
     i = limit
 
     while True:
         # Skip any number that doesn't end in 0.
-        # Ending in 0 means it's divisible by: 2, 4, 5, 10, 20,  more likely to be our answer
-        if isfactorofall(i, limit):
+        # Ending in 0 means it's divisible by: 2, 4, 5, 10, 20, 100, 1000, etc.
+        if i % 10 != 0:
+            pass
+        elif isfactorofall(i, limit):
             break
 
         # Increase by the size of the largest factor we are testing by. This should dramatically
