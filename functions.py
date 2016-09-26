@@ -1,3 +1,4 @@
+import itertools
 import math
 import primes
 
@@ -254,6 +255,20 @@ def is_abundant(n):
     if n is an abundant number, False otherwise.
     """
     return sum(proper_divisors(n)) > n
+
+
+def sum_nonabundants(limit):
+    # Calculate all the abundant numbers up to limit.
+    abundants = [i for i in range(1, limit + 1) if is_abundant(i)]
+
+    # Create all possible 2 term combinations for sums.
+    pairs = list(itertools.combinations(abundants, 2))
+
+    # Create a set using a set comprehension
+    sums = {a + b for a, b in pairs}
+
+    # Create a sum of all non-abundant numbers up to limit.
+    sum([i for i in range(limit + 1) if i not in sums])
 
 
 def isfactorofall(num, limit):
