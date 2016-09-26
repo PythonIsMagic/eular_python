@@ -212,28 +212,6 @@ class TestFunctions(unittest.TestCase):
         result = functions.square_of_sum(2)
         self.assertEqual(expected, result)
 
-    # Tests for factorial(n):
-    def test_factorial_neg1_RaiseException(self):
-        self.assertRaises(ValueError, functions.factorial, -1)
-
-    def test_factorial_0_(self):
-        self.assertRaises(ValueError, functions.factorial, 0)
-
-    def test_factorial_1_returns1(self):
-        expected = 1
-        result = functions.factorial(1)
-        self.assertEqual(expected, result)
-
-    def test_factorial_2_returns2(self):
-        expected = 2
-        result = functions.factorial(2)
-        self.assertEqual(expected, result)
-
-    def test_factorial_3_returns6(self):
-        expected = 6
-        result = functions.factorial(3)
-        self.assertEqual(expected, result)
-
     # Tests for bruteforce(n):
     def test_bruteforce_0_raiseException(self):
         self.assertRaises(ValueError, functions.divisors_bruteforce, 0)
