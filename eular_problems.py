@@ -30,7 +30,7 @@ def eular1():
 def eular2():
     print(text.eular2)
     UPPERLIMIT = 4000000
-    result = sum([x for x in functions.fibonacci(UPPERLIMIT) if x % 2 == 0])
+    result = sum([x for x in functions.fibonaccis(UPPERLIMIT) if x % 2 == 0])
     assert result == 4613732
     print('Sum = {}'.format(result))
 
@@ -45,7 +45,7 @@ def eular3():
 
 def eular4():
     print(text.eular4)
-    result = functions.get_largest_palindrome(100, 1000)
+    result = functions.largest_palindrome(100, 1000)
     assert result == 906609
     print('Largest palindrome between the factors of 100 and 1000 = {}'.format(result))
     print()
@@ -54,7 +54,7 @@ def eular4():
 def eular5():
     print(text.eular5)
     limit = 20
-    result = functions.num_div_by_all_upto(limit)
+    result = functions.div_by_all_upto(limit)
     assert result == 232792560
     print('Finding a number divisible by all the numbers 1-{}'.format(limit))
     print("{} is a factor of all numbers 1-{}!".format(result, limit))
@@ -122,7 +122,7 @@ def eular11():
 
 def eular12():
     print(text.eular12)
-    for result in functions.triangle_num():
+    for result in functions.triangles():
         # Skip checking numbers that don't end in 0.
         if result % 10 != 0:
             continue
@@ -204,7 +204,7 @@ def eular19():
 def eular20():
     print(text.eular20)
     num = 100
-    result = functions.fact_sum(num)
+    result = functions.factorial_sum(num)
     assert result == 648
     print('The sum of the digits in {}! = {}'.format(num, result))
 
@@ -248,7 +248,7 @@ def eular24():
 
 def eular25():
     print(text.eular25)
-    for i, x in enumerate(functions.fibonacci()):
+    for i, x in enumerate(functions.fibonaccis()):
         if len(str(x)) >= 1000:
             break
 
