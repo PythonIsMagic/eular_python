@@ -6,7 +6,8 @@ be warned these are SPOILERS!  These are for my portfolio and for people to
 check out my work - please don't peek if you haven't attempted them yet.
 
 ### My progress button
-https://projecteuler.net/profile/elunna.png
+[![Foo](https://projecteuler.net/profile/elunna.png)](http://projecteuler.net/)
+
 
 ### Prerequisites
 You should only need python3
