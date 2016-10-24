@@ -125,3 +125,7 @@ eular24 = """Eular Problem 24 - Lexicographic permutations:
 eular25 = """Eular Problem 25 - The Fibonacci sequence:
     What is the first term in the Fibonacci sequence to contain 1000 digits?
 """
+
+eular30 = """Eular Problem 30 - Digit fifth powers:
+    Find the sum of all the numbers that can be written as the sum of fifth powers of their digits.
+"""

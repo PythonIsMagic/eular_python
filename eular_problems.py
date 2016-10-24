@@ -153,10 +153,10 @@ def eular14():
     upto = 1000000
     longest_seq = functions.longest_collatz_seq(upto)
     result = longest_seq[0]
-    assert result == 837799
     print('\n\n')
     print('The longest collatz sequence under {} starts with the number {}'.format(upto, result))
     print('which has a length of {}'.format(len(longest_seq)))
+    assert result == 837799
 
 
 def eular15():
@@ -257,80 +257,35 @@ def eular25():
     print('Fibonacci Term {} has over 1000 digits!'.format(i))
 
 
+def eular30():
+    print(text.eular30)
+    POWER = 5
+    i = 0
+    while True:
+        if not functions.writable_by_powers(i, POWER):
+            break
+        i += 1
+
+    print('Max number writable by fifth powers is {}'.format(i))
+
+    fifth_sums = []
+    for x in range(2, i + 1):
+        if functions.sum_powers(x, POWER) == x:
+            fifth_sums.append(x)
+
+    print('These are the numbers that can be written as the sum of 5th powers of their digits.')
+    print(fifth_sums)
+
+    print('The sum of these numbers = {}'.format(sum(fifth_sums)))
+
+EULAR_FUNCTIONS = (
+    eular1, eular2, eular3, eular4, eular5, eular6, eular7, eular8, eular9, eular10, eular11,
+    eular12, eular13, eular14, eular15, eular16, eular17, eular18, eular19, eular20, eular21,
+    eular22, eular23, eular24, eular25, eular30
+)
+
+
 if __name__ == "__main__":
-    eular1()
-    separator()
-
-    eular2()
-    separator()
-
-    eular3()
-    separator()
-
-    eular4()
-    separator()
-
-    eular5()
-    separator()
-
-    eular6()
-    separator()
-
-    eular7()
-    separator()
-
-    eular8()
-    separator()
-
-    eular9()
-    separator()
-
-    # sum primes - takes a while
-    eular10()
-    separator()
-
-    eular11()
-    separator()
-
-    # Triangle num
-    eular12()
-    separator()
-
-    eular13()
-    separator()
-
-    #  eular14()
-    separator()
-
-    eular15()
-    separator()
-
-    eular16()
-    separator()
-
-    eular17()
-    separator()
-
-    eular18()
-    separator()
-
-    eular19()
-    separator()
-
-    eular20()
-    separator()
-
-    eular21()
-    separator()
-
-    eular22()
-    separator()
-
-    eular23()
-    separator()
-
-    eular24()
-    separator()
-
-    eular25()
-    separator()
+    for f in EULAR_FUNCTIONS:
+        f()
+        separator()

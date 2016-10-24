@@ -238,7 +238,6 @@ def largest_palindrome(lowerlimit, upperlimit):
         for m2 in range(m1, upperlimit):
             product = m1 * m2
             if is_palindrome(product):
-                # print("Found palindrome!: {}".format(product))
                 if product > largest_palindrome:
                     largest_palindrome = product
     return largest_palindrome
@@ -247,15 +246,15 @@ def largest_palindrome(lowerlimit, upperlimit):
 def longest_collatz_seq(upto):
     """
     Finds the longest collatz sequence in all the integers 0 to the upto integer passed and
-    returns is as a list.
+    returns it as a list.
     """
-    collatz_dict = {}
-    longestseq = []
+    collatz_dict, longestseq = {}, []
+
     for i in range(1, upto):
         seq = collatz_seq(i, collatz_dict)
         if len(seq) > len(longestseq):
             longestseq = seq
-    return seq
+    return longestseq
 
 
 def next_collatz(n):
@@ -332,3 +331,16 @@ def triangles():
         yield tri
         x += 1
         tri += x
+
+
+def writable_by_powers(n, p):
+    digits = len(str(n))
+    max_amt = digits * (9 ** p)
+    if max_amt < n:
+        return False
+    else:
+        return True
+
+
+def sum_powers(n, p):
+    return sum(int(x) ** p for x in str(n))
