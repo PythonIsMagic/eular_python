@@ -1,5 +1,137 @@
+"""
+  " Collection of function to process prime numbers and divisors.
+  """
+
 import math
 import timer
+
+
+def sift_primes(n):
+    """Sieve of eratosthenese. For all integers up to n, sifts out the non-primes
+        and returns list of all primes up to n.
+    """
+    if n < 2:
+        print('Passed in integer is not large enough to contain primes.')
+        return -1
+    print('sifting primes of {}'.format(n))
+
+    numbers = [x for x in range(2, n + 1)]
+    #  numbers = [True for x in range(2, n + 1)]
+
+    print(numbers)
+
+    i = 2
+    while i < len(numbers) + 2:
+        #  print('i = {}'.format(i))
+        for j in range(i*2, n + 1, i):
+            #  print('j = {}'.format(j))
+            if j in numbers:
+                numbers.remove(j)
+
+        #  print(numbers)
+        i += 1
+
+    # Failed attempt
+    """
+    for i in numbers:
+        print('i = {}'.format(i))
+        for j in numbers:
+            print('j = {}'.format(j))
+            if j % i == 0:
+                numbers.remove(j)
+        print(numbers)
+    """
+
+    return numbers
+
+
+def divisors(n):
+    """ Creates a list of all the factors of n and returns them as a set. First
+        we get the prime factors of n. To get any remaining factors, we take all
+        the prime factors and take each to it's maximum power. This results in a
+        list of factors we can use to build the remaining factors.
+    """
+    if n < 1:
+        raise ValueError('factors.divisors(n): n needs to be a positive integer')
+    elif n == 1:
+        return {1}
+
+    prime_facts = get_prime_factors(n)
+    if prime_facts is None:
+        return None
+
+    factors = list(prime_facts)
+
+    for x in factors:
+        for y in factors:
+            product = y * x
+
+            if n % product == 0 and product not in factors:
+                factors.append(product)
+
+    # Cutting out 1 saves a lot of checks and is a factor of every positive number.
+    factors.append(1)
+    return set(factors)
+
+
+def divisors_bruteforce(n):
+    """
+    Returns a set of all the divisors of n using a brute force check.  We only need to check up
+    to (n/2) for any n, because n won't be divisible by anything larger than that. We'll also
+    skip checking even divisors for odd numbers, since they won't be divisible, however this is
+    still pretty slow for numbers over a million.
+    """
+    if n < 1:
+        raise ValueError('factors.divisors(n): n needs to be a positive integer')
+
+    factors = set()
+    middle = n // 2
+
+    if n % 2 == 0:  # It's even
+        for i in range(1, middle + 1):
+            if n % i == 0:
+                factors.add(i)
+    else:
+        # It's odd (skip checking even factors)
+        for i in range(1, middle + 1, 2):
+            if n % i == 0:
+                factors.add(i)
+
+    # n will ALWAYS be a factor of itself.
+    factors.add(n)
+    return factors
+
+
+def divisors_proper(n):
+    """ Return a set containing the proper divisors of n (numbers less than n
+        which divide evenly into n).
+    """
+    d = divisors(n)
+    d.remove(n)
+    return d
+
+
+def divisor_sum_dict(limit):
+    """ Make a dictionary of divisor sums up to, but not including, limit.
+        Example: The divisor sum of 2 would be 1 + 2 = 3.
+        The divisor sum of 220 = 1 + 2 + 4 + 5 + 10 + 11 + 20 + 22 + 44 + 55 + 110 = 284
+    """
+    return {n: sum_proper_divisors(n) for n in range(1, limit)}
+
+
+def factor_of_all_upto(num, limit):
+    """ Returns True if num is divisible by all numbers in the range of integers
+        in 1 up to and including limit.
+
+        # Speed up by skipping 1. Any integer is divisible by 1!
+        # If the number ends in 1, 3, 7, or 9, it's more likely to be prime.
+        # Check backwards from the largest possible factor
+    """
+    start = 2
+    for factor in range(start, limit + 1):
+        if num % factor != 0:
+            return False
+    return True
 
 
 def isprime_ver1(n):
@@ -149,6 +281,14 @@ def get_prime_factors(n):
         return factors
 
 
+def sum_proper_divisors(n):
+    """
+    Return the sum of the proper divisors of n(numbers less than n which divide evenly into n).
+    """
+    divs = divisors_proper(n)
+    return sum(divs)
+
+
 @timer.timeit
 def count_primes(upto, func):
     c = 0
@@ -164,7 +304,8 @@ def sieve_primes(upto, func):
     return len(p)
 
 
-if __name__ == "__main__":
+def main():
+    """ Runs through some tests for different prime functions. """
     print('~~~~~~~~~~~')
     print('Prime tests')
 
@@ -195,3 +336,7 @@ if __name__ == "__main__":
             count = sieve_primes(k, s)
             assert count == v
             print('{} primes found up to {}.'.format(count, k))
+
+
+if __name__ == "__main__":
+    main()

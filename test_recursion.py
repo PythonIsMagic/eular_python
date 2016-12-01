@@ -1,10 +1,12 @@
+"""
+  " Tests for the recursion module.
+  """
 import unittest
 import recursion
 
 
 class TestRecursion(unittest.TestCase):
-    # Tests for multiply(alist, index, factors, product):
-
+    """ Function tests """
     def test_multiply_2factors_returns2(self):
         n = [1, 2, 3, 4, 5]
         expected = 2

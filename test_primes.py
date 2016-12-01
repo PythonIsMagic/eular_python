@@ -1,85 +1,11 @@
+"""
+  " Tests for the prime (and division) related functions
+  """
 import unittest
 import primes
 
 
-class TestIsPrime:
-    def setUp(self):
-        self.ip = self.getImpl()  # call to factory method
-
-    """
-    Tests for is_prime(target):
-    """
-    def test_isprime_0_returnFalse(self):
-        expected = False
-        result = self.ip(0)
-        self.assertEqual(expected, result)
-
-    def test_isprime_1_returnFalse(self):
-        expected = False
-        result = self.ip(1)
-        self.assertEqual(expected, result)
-
-    def test_isprime_2_returnTrue(self):
-        expected = True
-        result = self.ip(2)
-        self.assertEqual(expected, result)
-
-    def test_isprime_3_returnTrue(self):
-        expected = True
-        result = self.ip(3)
-        self.assertEqual(expected, result)
-
-
-class TestIsPrimeVer1(TestIsPrime, unittest.TestCase):
-    def getImpl(self):
-        return primes.isprime_ver1
-
-
-class TestIsPrimeVer2(TestIsPrime, unittest.TestCase):
-    def getImpl(self):
-        return primes.isprime_ver2
-
-
-class TestSieve:
-    def setUp(self):
-        self.sieve = self.getImpl()  # call to factory method
-
-    """
-    Tests for def sieve_markers(n):
-    """
-    #  def test_sievemarkers_0_raiseException(self):
-        #  self.assertRaises(ValueError, self.sieve, 0)
-
-    def test_sievemarkers_2_return2(self):
-        expected = [2]
-        result = self.sieve(2)
-        self.assertEqual(expected, result)
-
-    def test_sievemarkers_3_return2_3(self):
-        expected = [2, 3]
-        result = self.sieve(3)
-        self.assertEqual(expected, result)
-
-    def test_sievemarkers_11_returns5primes(self):
-        expected = [2, 3, 5, 7, 11]
-        result = self.sieve(11)
-        self.assertEqual(expected, result)
-
-    def test_sievemarkers_20_returns8primes(self):
-        expected = [2, 3, 5, 7, 11, 13, 17, 19]
-        result = self.sieve(20)
-        self.assertEqual(expected, result)
-
-
-class TestEratosthenesSieve(TestSieve, unittest.TestCase):
-    def getImpl(self):
-        return primes.eratosthenes_sieve
-
-
 class TestPrimes(unittest.TestCase):
-    """
-    Tests for max_prime_factor(target):
-    """
     def test_maxprimefactor_0_returnNone(self):
         expected = None
         result = primes.max_prime_factor(0)
@@ -120,9 +46,6 @@ class TestPrimes(unittest.TestCase):
         result = primes.max_prime_factor(1000)
         self.assertEqual(expected, result)
 
-    """
-    Tests for primes(n)
-    """
     def test_primes_1next_return2(self):
         g = primes.primes()
         expected = 2
@@ -144,9 +67,6 @@ class TestPrimes(unittest.TestCase):
         result = next(g)
         self.assertEqual(expected, result)
 
-    """
-    Tests for get_prime_factors(target):
-    """
     # of -1 = None
     def test_getprimefactors_neg1_returnsNone(self):
         expected = None
@@ -218,3 +138,207 @@ class TestPrimes(unittest.TestCase):
         expected = {2, 3}
         result = primes.get_prime_factors(24)
         self.assertEqual(expected, result)
+
+
+class TestIsPrime(object):
+    """ Function tests """
+    def setUp(self):
+        self.ip = self.getImpl()  # call to factory method
+
+    def test_isprime_0_returnFalse(self):
+        expected = False
+        result = self.ip(0)
+        self.assertEqual(expected, result)
+
+    def test_isprime_1_returnFalse(self):
+        expected = False
+        result = self.ip(1)
+        self.assertEqual(expected, result)
+
+    def test_isprime_2_returnTrue(self):
+        expected = True
+        result = self.ip(2)
+        self.assertEqual(expected, result)
+
+    def test_isprime_3_returnTrue(self):
+        expected = True
+        result = self.ip(3)
+        self.assertEqual(expected, result)
+
+
+class TestIsPrimeVer1(TestIsPrime, unittest.TestCase):
+    def getImpl(self):
+        return primes.isprime_ver1
+
+
+class TestIsPrimeVer2(TestIsPrime, unittest.TestCase):
+    def getImpl(self):
+        return primes.isprime_ver2
+
+
+class TestSieve(object):
+    """ Tests for Eratosthenes Sieve """
+
+    def setUp(self):
+        self.sieve = self.getImpl()  # call to factory method
+
+    #  def test_sievemarkers_0_raiseException(self):
+        #  self.assertRaises(ValueError, self.sieve, 0)
+
+    def test_sievemarkers_2_return2(self):
+        expected = [2]
+        result = self.sieve(2)
+        self.assertEqual(expected, result)
+
+    def test_sievemarkers_3_return2_3(self):
+        expected = [2, 3]
+        result = self.sieve(3)
+        self.assertEqual(expected, result)
+
+    def test_sievemarkers_11_returns5primes(self):
+        expected = [2, 3, 5, 7, 11]
+        result = self.sieve(11)
+        self.assertEqual(expected, result)
+
+    def test_sievemarkers_20_returns8primes(self):
+        expected = [2, 3, 5, 7, 11, 13, 17, 19]
+        result = self.sieve(20)
+        self.assertEqual(expected, result)
+
+    def test_divisorsproper_7_returns1(self):
+        expected = {1}
+        result = primes.divisors_proper(7)
+        self.assertEqual(expected, result)
+
+    def test_divisorsproper_24_returns7factors(self):
+        expected = {1, 2, 3, 4, 6, 8, 12}
+        result = primes.divisors_proper(24)
+        self.assertEqual(expected, result)
+
+    # Proper divisors of 1 = None. Sum = 0
+    def test_sumproperdivisors_1_returns0(self):
+        expected = 0
+        result = primes.sum_proper_divisors(1)
+        self.assertEqual(expected, result)
+
+    # Proper divisors of 2 = 1. Sum = 1
+    def test_sumproperdivisors_2_returns1(self):
+        expected = 1
+        result = primes.sum_proper_divisors(2)
+        self.assertEqual(expected, result)
+
+    # Proper divisors of 3 = 1. Sum = 1
+    def test_sumproperdivisors_3_returns1(self):
+        expected = 1
+        result = primes.sum_proper_divisors(3)
+        self.assertEqual(expected, result)
+
+    # Proper divisors of 4 = 1, 2. Sum = 3
+    def test_sumproperdivisors_4_returns3(self):
+        expected = 3
+        result = primes.sum_proper_divisors(4)
+        self.assertEqual(expected, result)
+
+    # Proper divisors of 6 = 1, 2, 3. Sum = 6
+    def test_sumproperdivisors_6_returns6(self):
+        expected = 6
+        result = primes.sum_proper_divisors(6)
+        self.assertEqual(expected, result)
+
+    def test_factorofallupto_1_upto1_returnTrue(self):
+        expected = True
+        result = primes.factor_of_all_upto(1, 1)
+        self.assertEqual(expected, result)
+
+    def test_factorofallupto_1_upto2_returnFalse(self):
+        expected = False
+        result = primes.factor_of_all_upto(1, 2)
+        self.assertEqual(expected, result)
+
+    def test_factorofallupto_2520_upto10_returnTrue(self):
+        expected = True
+        result = primes.factor_of_all_upto(2520, 10)
+        self.assertEqual(expected, result)
+
+
+class TestEratosthenesSieve(TestSieve, unittest.TestCase):
+    def getImpl(self):
+        return primes.eratosthenes_sieve
+
+
+class TestDivisors(object):
+    """ Reusable tests for different divisors implementations """
+    def setUp(self):
+        self.div = self.getImpl()  # call to factory method
+
+    # Tests for divisors(n):
+    def test_divisors_0_raiseException(self):
+        self.assertRaises(ValueError, self.div, 0)
+
+    # 1 has 1 factor: 1
+    def test_divisors_1_returns1(self):
+        expected = {1}
+        result = self.div(1)
+        self.assertEqual(expected, result)
+
+    # 2 has 2 factors: 1, 2
+    def test_divisors_2_returns2factors(self):
+        expected = {1, 2}
+        result = self.div(2)
+        self.assertEqual(expected, result)
+
+    # 3 has 2 factors: 1, 3
+    def test_divisors_3_returns2factors(self):
+        expected = {1, 3}
+        result = self.div(3)
+        self.assertEqual(expected, result)
+
+    # 4 has 3 factors: 1, 2, 4
+    def test_divisors_4_returns3factors(self):
+        expected = {1, 2, 4}
+        result = self.div(4)
+        self.assertEqual(expected, result)
+
+    # 6 has 4 factors: 1, 2, 3, 6
+    def test_divisors_6_returns4factors(self):
+        expected = {1, 2, 3, 6}
+        result = self.div(6)
+        self.assertEqual(expected, result)
+
+    # 24 has 8 factors: 1, 2, 3, 4, 6, 8, 12, 24
+    def test_divisors_24_returns8factors(self):
+        expected = {1, 2, 3, 4, 6, 8, 12, 24}
+        result = self.div(24)
+        self.assertEqual(expected, result)
+
+
+class Test_Divisors(TestDivisors, unittest.TestCase):
+    def getImpl(self):
+        return primes.divisors
+
+
+class Test_DivisorsBruteForce(TestDivisors, unittest.TestCase):
+    def getImpl(self):
+        return primes.divisors_bruteforce
+
+
+def test_fromprime(n):
+    """ Compares divisors and divisors_bruteforce. """
+    failures = 0
+
+    for i in range(1, n):
+        bf = primes.divisors_bruteforce(i)
+        fp = primes.divisors(i)
+
+        if bf != fp:
+            print('Test failed on {}!'.format(i))
+            print('bruteforce: {}'.format(sorted(bf)))
+            print('fromprime:  {}'.format(sorted(fp)))
+            failures += 1
+        else:
+            print('{} - Check.'.format(i))
+
+    if failures > 0:
+        print('{} out of {} tests failed.'.format(failures, n - 1))
+    else:
+        print('All tests passed! (up to {})'.format(n))

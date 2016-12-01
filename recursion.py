@@ -1,4 +1,10 @@
+"""
+  " Functions related to or using recursion.
+  """
+
+
 def print_list(alist):
+    """ Prints a list recursively. """
     pl(alist, 0)
 
 
@@ -30,3 +36,19 @@ def multiply(alist, index, factors, product=1):
         return alist[index]
     else:
         return alist[index] * multiply(alist, index + 1, factors - 1, product)
+
+
+# This wasn't successful.
+def recursive_try():
+    pass
+    #  print('Eular 9: Recursive solution')
+    #  result = recursive_solution()
+    #  if result is None:
+        #  print('No solution was found')
+        #  exit()
+    #  else:
+        #  a2, b2, c2 = result
+
+    #  a = math.sqrt(a2)
+    #  b = math.sqrt(b2)
+    #  c = math.sqrt(c2)
