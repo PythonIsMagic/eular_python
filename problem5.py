@@ -6,7 +6,7 @@
 import primes
 import timer
 
-DESC = 'Largest palindrome product'
+DESC = 'Smallest multiple'
 SOLUTION = 232792560
 
 

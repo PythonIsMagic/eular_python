@@ -1,6 +1,6 @@
 """Eular Problem 13 -
-	Work out the first ten digits of the sum of the following one-hundred
-	50-digit numbers.
+    Work out the first ten digits of the sum of the following one-hundred
+    50-digit numbers.
 """
 
 import timer
@@ -23,8 +23,5 @@ def solve():
     for x in n:
         bigsum += x
 
-    print('sum = {}'.format(bigsum))
     sum_list = list(str(bigsum))
-    result = int(''.join(sum_list[0:10]))
-    print(result)
-
+    return int(''.join(sum_list[0:10]))

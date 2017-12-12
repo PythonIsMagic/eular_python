@@ -22,7 +22,6 @@ def collatz_seq(n, collatz_dict={}):
             seq.append(n)
 
     collatz_dict[seq[0]] = seq
-    print(seq)
     return seq
 
 

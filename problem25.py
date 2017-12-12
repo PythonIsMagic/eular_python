@@ -17,4 +17,4 @@ def solve():
         if len(str(x)) >= 1000:
             break
 
-    return += 1  # Avoid off by one err
+    return i + 1  # Avoid off by one err

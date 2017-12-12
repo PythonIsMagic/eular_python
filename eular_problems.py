@@ -34,20 +34,21 @@ def main():
     print("Eular Problems!")
     print('\n')
 
-    fields = ('#', 'Description', 'Time(sec)', 'My Attempt', 'Solution')
-    fmt_str1 = '{:4} {:30} {:18} {:20} {:20}'
+    fields = ('#', 'Description', 'Time(sec)', 'Solution', 'Passed')
+    fmt_str1 = '{:4} {:30} {:15} {:20} {:5}'
     print(fmt_str1.format(*fields))
 
-    fmt_str2 = '{:<4} {:<30} {:<18.13f} {:<20} {:<20}'
+    fmt_str2 = '{:<4} {:<30} {:<15.10f} {:<20} {:<5}'
     for f in SOLVED:
         problem = EularProblem(f)
         problem.solve()
+        passed = problem.solution == problem.attempt
         print(fmt_str2.format(
             problem.num,
             problem.desc,
             problem.time,
             problem.solution,
-            problem.attempt
+            str(passed)
         ))
 
 

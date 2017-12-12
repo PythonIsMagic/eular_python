@@ -10,6 +10,7 @@ import timer
 DESC = 'Names scores'
 SOLUTION = 871198282
 
+
 def alphabetical_value(name):
     """ Returns the sum of the alphabetical values of the string passed. Each
         letter is equal to it's position in the alphabet.
@@ -50,9 +51,7 @@ def import_names(filename):
 
 @timer.timeit
 def solve():
-
     names = import_names('data/names.txt')
-    print('names has {} entries.'.format(len(names)))
     result = 0
 
     for i, n in enumerate(names):
