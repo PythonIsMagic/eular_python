@@ -10,7 +10,7 @@ check out my work - please don't peek if you haven't attempted them yet.
 
 
 ### Prerequisites
-You should only need python3
+You should only need python3 and pytest
 
 ### Running all challenges
 ```
@@ -18,7 +18,7 @@ $ python3 eular_problems.py
 ```
 
 ## Running the tests
-$ python3 -m unittest discover
+$ pytest
 
 
 ## Authors

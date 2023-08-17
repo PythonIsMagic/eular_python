@@ -4,16 +4,10 @@
 """
 
 import timer
+from toolkit import read_numbers
 
 DESC = 'Large Sum:'
 SOLUTION = 5537376230
-
-
-def read_numbers(filename):
-    """ Read each number as a line from the file and return the numbers as a list. """
-    with open(filename) as f:
-        numbers = [int(l) for l in f.readlines()]
-    return numbers
 
 
 @timer.timeit

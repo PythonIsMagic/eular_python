@@ -2,7 +2,7 @@
     Evaluate the sum of all the amicable numbers under 10000.
 """
 
-import primes
+import toolkit
 import timer
 
 DESC = 'Amicable numbers:'
@@ -12,7 +12,7 @@ SOLUTION = 31626
 def add_amicables(limit):
     """ Adds all the amicable numbers up to limit and returns the sum. """
     amicables = set()
-    div_sums = primes.divisor_sum_dict(limit)
+    div_sums = toolkit.divisor_sum_dict(limit)
 
     for k, v in div_sums.items():
         # Skip divisor sums that are equal to or over the limit - they won't be in the keys.

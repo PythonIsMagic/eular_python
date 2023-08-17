@@ -2,7 +2,7 @@
     Find the sum of all the primes below two million.
 """
 
-import primes
+import toolkit
 import timer
 
 
@@ -13,4 +13,4 @@ SOLUTION = 142913828922
 @timer.timeit
 def solve():
     upperlimit = 2000000
-    return sum(primes.eratosthenes_sieve(upperlimit))
+    return sum(toolkit.eratosthenes_sieve(upperlimit))

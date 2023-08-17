@@ -1,4 +1,4 @@
-import primes
+import toolkit
 import timer
 
 
@@ -10,4 +10,4 @@ def test_primes():
     # def getprime(index):
 
     # def sift_primes(n):
-    timer.enhanced_tests(primes.sieve_rm_method, 1000)
+    timer.enhanced_tests(toolkit.sieve_rm_method, 1000)

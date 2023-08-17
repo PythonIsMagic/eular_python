@@ -3,21 +3,10 @@
     hundred natural numbers and the square of the sum.
 """
 import timer
+from toolkit import sum_of_squares, square_of_sum
 
 DESC = 'Sum square difference'
 SOLUTION = 25164150
-
-
-def sum_of_squares(limit):
-    """ Returns the sum of all squares in the range 1 up to and including limit. """
-    return sum([i ** 2 for i in range(limit+1)])
-
-
-def square_of_sum(limit):
-    """ Returns the square of the sum of all integers in the range 1 up to and
-        including limit.
-    """
-    return sum([i for i in range(limit + 1)]) ** 2
 
 
 @timer.timeit
