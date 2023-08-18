@@ -2,9 +2,8 @@
     There exists exactly one Pythagorean triplet for which a + b + c = 1000.
     Find the product a * b * c.
 """
-
 import math
-import timer
+from src import timer
 
 DESC = 'Special Pythagorean triplet'
 SOLUTION = 31875000

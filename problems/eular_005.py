@@ -3,8 +3,8 @@
     numbers 1 to 20?
 """
 
-import timer
-from toolkit import div_by_all_upto
+from src import timer
+from src.toolkit import div_by_all_upto
 
 DESC = 'Smallest multiple'
 SOLUTION = 232792560

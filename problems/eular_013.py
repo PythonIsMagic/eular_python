@@ -3,8 +3,9 @@
     50-digit numbers.
 """
 
-import timer
-from toolkit import DATADIR, read_numbers
+from src import timer
+from src.toolkit import DATADIR
+from src.toolkit import read_numbers
 
 DESC = 'Large Sum'
 SOLUTION = 5537376230

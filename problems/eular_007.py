@@ -1,8 +1,9 @@
 """Eular Problem 8 -
     What is the 10001st prime number?
 """
-import toolkit
-import timer
+from src import timer
+from src.toolkit import primes
+
 
 DESC = '10001st prime'
 SOLUTION = 104743
@@ -12,7 +13,7 @@ SOLUTION = 104743
 def solve():
     targetprime = 10001
     result = 0
-    for i, result in enumerate(toolkit.primes()):
+    for i, result in enumerate(primes()):
         if i == targetprime - 1:
             break
     return result

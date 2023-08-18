@@ -3,9 +3,8 @@
     this value by its alphabetical position in the list to obtain a name
     score. What is the total of all the name scores in the file?
 """
-
-import timer
-from toolkit import DATADIR
+from src import timer
+from src.toolkit import DATADIR
 
 DESC = 'Names scores'
 SOLUTION = 871198282

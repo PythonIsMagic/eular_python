@@ -2,8 +2,8 @@
     Find the largest palindrome made from the product of two 3-digit numbers.
 """
 
-import timer
-from toolkit import largest_palindrome
+from src import timer
+from src.toolkit import largest_palindrome
 
 DESC = 'Largest palindrome product'
 SOLUTION = 906609

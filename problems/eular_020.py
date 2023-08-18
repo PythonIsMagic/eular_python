@@ -1,9 +1,8 @@
 """Eular Problem 20 -
     Find the sum of the digits in the number 100!
 """
-
 import math
-import timer
+from src import timer
 
 DESC = 'Factorial digit sum'
 SOLUTION = 648

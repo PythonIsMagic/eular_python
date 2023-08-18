@@ -2,8 +2,8 @@
     Find the difference between the sum of the squares of the first one
     hundred natural numbers and the square of the sum.
 """
-import timer
-from toolkit import sum_of_squares, square_of_sum
+from src import timer
+from src.toolkit import sum_of_squares, square_of_sum
 
 DESC = 'Sum square difference'
 SOLUTION = 25164150

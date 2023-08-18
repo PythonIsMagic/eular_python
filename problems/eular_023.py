@@ -2,9 +2,8 @@
     Find the sum of all positive integers which cannot be written as the sum
     of two abundant numbers.
 """
-
-import timer
-from toolkit import nonsummable_by_abundants
+from src import timer
+from src.toolkit import nonsummable_by_abundants
 
 DESC = 'Non-abundant sums'
 SOLUTION = 4179871

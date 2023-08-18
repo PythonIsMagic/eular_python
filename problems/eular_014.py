@@ -2,9 +2,8 @@
     Which starting number, under one million, produces the longest Collatz
     chain?
 """
-
-import timer
-from toolkit import longest_collatz_seq
+from src import timer
+from src.toolkit import longest_collatz_seq
 
 DESC = 'Longest Collatz sequence'
 SOLUTION = 837799

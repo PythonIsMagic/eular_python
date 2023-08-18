@@ -1,9 +1,9 @@
 """
   " Tests for the prime (and division) related functions
   """
-import toolkit
-import toolkit
+from ..src import toolkit
 import pytest
+
 
 @pytest.fixture(params=[toolkit.isprime_ver1, toolkit.isprime_ver2])
 def isprime(request):
@@ -378,6 +378,7 @@ def test_getrows_3x3_returns3lists():
     m = toolkit.read_matrix('data/test_matrix4.txt')
     assert toolkit.get_rows(m) == expected
 
+
 # Tests for extract_line(matrix, point, xyincrement) are implicit since get_rows,
 # get_columns, get_right_diagonals, get_right_diagonals use extract_line.
 
@@ -501,6 +502,7 @@ def test_nextcollatz_5_returns16():
     expected = 16
     assert toolkit.next_collatz(5) == expected
 
+
 # Tests for get_digit(n, i)
 # Tests for letter_qty(s):
 # 'abc' returns 3
@@ -547,29 +549,29 @@ def test_getdigit_123_hundreds_returns1():
 def test_getdigit_1234_hundreds_returns2():
     assert toolkit.get_digit(1234, 2) == 2
 
+
 # Tests get_tens_digit(n):
 #  def test_getdigit_0_tens_raisesException():
-    #  Raise exception
-    #  .assertRaises(ValueError, problem17.get_digit, 0, 1)
+#  Raise exception
+#  .assertRaises(ValueError, problem17.get_digit, 0, 1)
 
 
 #  def test_getdigit_1_tens_raisesException():
-    #  Raise exception
-    #  .assertRaises(ValueError, problem17.get_digit, 1, 1)
+#  Raise exception
+#  .assertRaises(ValueError, problem17.get_digit, 1, 1)
 
 
 # Tests get_hundreds_digit(n):
 #  def test_getdigit_0_raiseException():
-    #  .assertRaises(ValueError, problem17.get_digit, 0, 2)
+#  .assertRaises(ValueError, problem17.get_digit, 0, 2)
 
 
 #  def test_getdigit_1_raiseException():
-    #  .assertRaises(ValueError, problem17.get_digit, 1, 2)
+#  .assertRaises(ValueError, problem17.get_digit, 1, 2)
 
 
 #  def test_getdigit_12_raiseException():
-    #  .assertRaises(ValueError, problem17.get_digit, 12, 2)
-
+#  .assertRaises(ValueError, problem17.get_digit, 12, 2)
 
 
 def test_gettext_0_raisesException():

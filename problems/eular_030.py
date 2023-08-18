@@ -2,8 +2,7 @@
     Find the sum of all the numbers that can be written as the sum of fifth
     powers of their digits.
 """
-
-import timer
+from src import timer
 
 DESC = 'Digit fifth powers'
 SOLUTION = None

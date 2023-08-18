@@ -2,9 +2,8 @@
     If all the numbers from 1 to 1000 (one thousand) inclusive were written
     out in words, how many letters would be used?
 """
-
-import timer
-from toolkit import letter_qty, num_to_alpha
+from src import timer
+from src.toolkit import letter_qty, num_to_alpha
 
 DESC = 'Number letter counts'
 SOLUTION = 21124

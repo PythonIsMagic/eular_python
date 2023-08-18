@@ -2,8 +2,8 @@
     By considering the terms in the Fibonacci sequence whose values do not
     exceed 4 million, find the sum of the even-valued terms.
 """
-import timer
-from toolkit import fibonaccis
+from src import timer
+from src.toolkit import fibonaccis
 
 DESC = 'Even Fibonacci numbers'
 SOLUTION = 4613732

@@ -4,7 +4,7 @@
 import itertools
 import math
 import string
-import timer
+from . import timer
 
 DATADIR = "data/"
 

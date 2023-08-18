@@ -3,8 +3,9 @@
     Find the 13 adjacent digits in the 1000-digit number that have the
     greatest product.  What is the value of this product?
 """
-import timer
-from toolkit import DATADIR, read_file_to_list, find_product_in_list
+from src import timer
+from src.toolkit import DATADIR
+from src.toolkit import read_file_to_list, find_product_in_list
 
 DESC = 'Largest product in a series'
 SOLUTION = 23514624000
