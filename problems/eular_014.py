@@ -6,7 +6,7 @@
 import timer
 from toolkit import longest_collatz_seq
 
-DESC = 'Longest Collatz sequence:'
+DESC = 'Longest Collatz sequence'
 SOLUTION = 837799
 
 

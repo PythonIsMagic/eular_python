@@ -6,7 +6,7 @@
 import timer
 from toolkit import read_file_to_list, find_product_in_list
 
-DESC = 'Largest product in a series:'
+DESC = 'Largest product in a series'
 SOLUTION = 23514624000
 
 

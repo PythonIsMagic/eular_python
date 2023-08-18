@@ -5,7 +5,7 @@
 import toolkit
 import timer
 
-DESC = 'Amicable numbers:'
+DESC = 'Amicable numbers'
 SOLUTION = 31626
 
 

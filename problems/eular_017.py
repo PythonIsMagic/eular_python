@@ -6,7 +6,7 @@
 import timer
 from toolkit import letter_qty, num_to_alpha
 
-DESC = 'Number letter counts:'
+DESC = 'Number letter counts'
 SOLUTION = 21124
 
 

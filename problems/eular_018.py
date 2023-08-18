@@ -5,7 +5,7 @@ import toolkit
 import timer
 from toolkit import find_max_path
 
-DESC = 'Maximum path sum I:'
+DESC = 'Maximum path sum I'
 SOLUTION = 1074
 
 

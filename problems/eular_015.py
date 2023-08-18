@@ -7,7 +7,7 @@
 
 import timer
 
-DESC = 'Lattice paths:'
+DESC = 'Lattice paths'
 SOLUTION = 137846528820
 
 

@@ -3,7 +3,7 @@
 """
 import timer
 
-DESC = 'Power digit sum:'
+DESC = 'Power digit sum'
 SOLUTION = 1366
 
 

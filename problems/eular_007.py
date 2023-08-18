@@ -4,7 +4,7 @@
 import toolkit
 import timer
 
-DESC = '10001st prime:'
+DESC = '10001st prime'
 SOLUTION = 104743
 
 

@@ -6,7 +6,7 @@
 import timer
 from toolkit import nonsummable_by_abundants
 
-DESC = 'Non-abundant sums:'
+DESC = 'Non-abundant sums'
 SOLUTION = 4179871
 
 

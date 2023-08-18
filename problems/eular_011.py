@@ -7,7 +7,7 @@
 import timer
 from toolkit import find_greatest_product, read_matrix
 
-DESC = 'Largest product in a grid:'
+DESC = 'Largest product in a grid'
 SOLUTION = 70600674
 
 

@@ -6,7 +6,7 @@
 import math
 import timer
 
-DESC = 'Special Pythagorean triplet:'
+DESC = 'Special Pythagorean triplet'
 SOLUTION = 31875000
 
 

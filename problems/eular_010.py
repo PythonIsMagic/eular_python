@@ -6,7 +6,7 @@ import toolkit
 import timer
 
 
-DESC = 'Summation of primes:'
+DESC = 'Summation of primes'
 SOLUTION = 142913828922
 
 

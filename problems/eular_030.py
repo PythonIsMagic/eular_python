@@ -5,7 +5,7 @@
 
 import timer
 
-DESC = 'Digit fifth powers:'
+DESC = 'Digit fifth powers'
 SOLUTION = None
 
 

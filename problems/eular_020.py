@@ -5,7 +5,7 @@
 import math
 import timer
 
-DESC = 'Factorial digit sum:'
+DESC = 'Factorial digit sum'
 SOLUTION = 648
 
 

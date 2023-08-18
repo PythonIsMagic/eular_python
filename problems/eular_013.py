@@ -6,7 +6,7 @@
 import timer
 from toolkit import read_numbers
 
-DESC = 'Large Sum:'
+DESC = 'Large Sum'
 SOLUTION = 5537376230
 
 
