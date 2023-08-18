@@ -6,26 +6,43 @@ import importlib
 
 
 def separator():
-    print('_'*80)
+    print('_' * 80)
 
 
-SOLVED = (1,
-          #2, # TODO: Fix bug
-          3, 4,
-          5, #Takes too long
-          6, 7, 8, 9, 10,
-          11,
-          12, #Takes too long
-          13, 14, 15, 16, 17, 18, 19, 20,
-          21, 22, 23, 24, 25, #30
+SOLVED = ("eular_001",
+          # "eular_002",, # TODO: Fix bug
+          "eular_003",
+          "eular_004",
+          "eular_005",  # Takes too long
+          "eular_006",
+          "eular_007",
+          "eular_008",
+          "eular_009",
+          "eular_010",
+          "eular_011",
+          # "eular_012",  # Takes too long
+          "eular_013",
+          "eular_014",
+          "eular_015",
+          "eular_016",
+          "eular_017",
+          "eular_018",
+          "eular_019",
+          "eular_020",
+          "eular_021",
+          "eular_022",
+          "eular_023",
+          "eular_024",
+          "eular_025",
+
+          # "eular_030", # TODO: Fix bug
           )
 
 
-
 class EularProblem(object):
-    def __init__(self, num):
-        self.num = num
-        self.module = 'problems.problem' + str(num)
+    def __init__(self, pname):
+        self.num = pname
+        self.module = 'problems.' + pname
 
         self.mod = importlib.import_module(self.module)
 
@@ -41,16 +58,17 @@ class EularProblem(object):
 
 
 def main():
-    print("Eular Problems!")
+    print("Programming Challenges")
+    print("Author: Erik Lunna")
     print('\n')
 
-    fields = ('#', 'Description', 'Time(sec)', 'Solution', 'Passed')
-    fmt_str1 = '{:4} {:30} {:15} {:20} {:5}'
+    fields = ('Problem', 'Description', 'Time(sec)', 'Solution', 'Passed')
+    fmt_str1 = '{:10} {:30} {:12} {:20} {:5}'
     print(fmt_str1.format(*fields))
 
-    fmt_str2 = '{:<4} {:<30} {:<15.10f} {:<20} {:<5}'
-    for f in SOLVED:
-        problem = EularProblem(f)
+    fmt_str2 = '{:<10} {:<30} {:<12.5f} {:<20} {:<5}'
+    for pname in SOLVED:
+        problem = EularProblem(pname)
         problem.solve()
         passed = problem.solution == problem.attempt
         print(fmt_str2.format(
