@@ -9,9 +9,14 @@ def separator():
     print('_'*80)
 
 
-SOLVED = (1, #2,
-          3, 4, 5, 6, 7, 8, 9, 10,
-          11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+SOLVED = (1,
+          #2, # TODO: Fix bug
+          3, 4,
+          5, #Takes too long
+          6, 7, 8, 9, 10,
+          11,
+          12, #Takes too long
+          13, 14, 15, 16, 17, 18, 19, 20,
           21, 22, 23, 24, 25, #30
           )
 
@@ -20,7 +25,7 @@ SOLVED = (1, #2,
 class EularProblem(object):
     def __init__(self, num):
         self.num = num
-        self.module = 'problem' + str(num)
+        self.module = 'problems.problem' + str(num)
 
         self.mod = importlib.import_module(self.module)
 
