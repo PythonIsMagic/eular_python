@@ -26,17 +26,20 @@ def test_fromprime():
 
 def test_trianglenum_call1_returns1():
     gen = eular_012.triangles()
-    assert next(gen) == 1
+    result = next(gen)
+    assert result == 1
 
 
 def test_trianglenum_call2_returns3():
     gen = eular_012.triangles()
     next(gen)
-    assert next(gen) == 3
+    result = next(gen)
+    assert result == 3
 
 
 def test_trianglenum_call3_returns6():
     gen = eular_012.triangles()
     next(gen)
     next(gen)
-    assert next(gen) == 6
+    result = next(gen)
+    assert result == 6

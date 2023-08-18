@@ -1,32 +1,47 @@
+
 from ..src import eular_003
 
+
+def test_max_prime_factor_negative_number():
+    result = eular_003.max_prime_factor(-12)
+    assert result is None
+
+
 def test_maxprimefactor_0_returnNone():
-    assert eular_003.max_prime_factor(0) is None
+    result = eular_003.max_prime_factor(0)
+    assert result is None
 
 
-def test_maxprimefactor_1_returnNone():
-    assert eular_003.max_prime_factor(1) is None
+def test_max_prime_factor_one():
+    result = eular_003.max_prime_factor(1)
+    assert result is None
 
 
-def test_maxprimefactor_2_return2():
-    assert eular_003.max_prime_factor(2) == 2
+def test_max_prime_factor_prime_number():
+    result = eular_003.max_prime_factor(17)
+    assert result == 17
 
 
-def test_maxprimefactor_3_return3():
-    assert eular_003.max_prime_factor(3) == 3
+def test_max_prime_factor_large_prime():
+    result = eular_003.max_prime_factor(9973)
+    assert result == 9973
 
 
-def test_maxprimefactor_4_return2():
-    assert eular_003.max_prime_factor(4) == 2
+def test_max_prime_factor_very_large_prime():
+    result = eular_003.max_prime_factor(10000019)
+    assert result == 10000019
 
 
-def test_maxprimefactor_10_return5():
-    assert eular_003.max_prime_factor(10) == 5
+def test_max_prime_factor_composite_number():
+    result = eular_003.max_prime_factor(56)
+    assert result == 7
 
 
-def test_maxprimefactor_100_return5():
-    assert eular_003.max_prime_factor(100) == 5
+def test_max_prime_factor_large_composite():
+    result = eular_003.max_prime_factor(123456)
+    assert result == 643
 
 
-def test_maxprimefactor_1000_return5():
-    assert eular_003.max_prime_factor(1000) == 5
+def test_max_prime_factor_very_large_composite():
+    result = eular_003.max_prime_factor(999999990)
+    assert result == 137

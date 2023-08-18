@@ -6,12 +6,16 @@ from . import timer
 
 DESC = 'Even Fibonacci numbers'
 SOLUTION = 4613732
+UPPERLIMIT = 4000000
 
 
 @timer.timeit
 def solve():
-    UPPERLIMIT = 4000000
-    return sum([x for x in fibonaccis(UPPERLIMIT) if x % 2 == 0])
+    return sum_evens(fibonaccis(UPPERLIMIT))
+
+
+def sum_evens(numlist):
+    return sum([x for x in numlist if x % 2 == 0])
 
 
 def fibonaccis(limit=None):
@@ -20,7 +24,7 @@ def fibonaccis(limit=None):
     """
     a, b = 0, 1
     while True:
-        if limit and b >= limit:
+        if limit and b > limit:
             raise StopIteration()
         a, b = b, a + b
         yield a

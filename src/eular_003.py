@@ -23,5 +23,3 @@ def max_prime_factor(n):
         return None
     else:
         return max(factors)
-
-

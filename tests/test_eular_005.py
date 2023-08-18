@@ -19,4 +19,5 @@ def test_divbyallupto_15_raisesException():
 
 
 def test_divbyallupto_10_returns2520():
-    assert eular_005.div_by_all_upto(10) == 2520
+    result = eular_005.div_by_all_upto(10)
+    assert result == 2520
