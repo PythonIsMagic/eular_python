@@ -2,7 +2,6 @@
     Find the sum of all the multiples of 3 or 5 below 1000.
 """
 from src import timer
-from src.toolkit import get_multiples
 
 DESC = "Sum multiples"
 SOLUTION = 233168
@@ -11,3 +10,12 @@ SOLUTION = 233168
 @timer.timeit
 def solve():
     return get_multiples()
+
+
+def get_multiples():
+    """Used for problem 1"""
+    result = 0
+    for i in range(1000):
+        if i % 3 == 0 or i % 5 == 0:
+            result += i
+    return result

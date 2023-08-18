@@ -1,4 +1,9 @@
 # TODO: Convert this to Pytest tests
+import eular_python.src.eular_005
+import eular_python.src.eular_010
+import eular_python.src.eular_012
+import eular_python.src.eular_021
+
 
 class TestSieve(object):
     """ Tests for Eratosthenes Sieve """
@@ -31,63 +36,63 @@ class TestSieve(object):
 
     def test_divisorsproper_7_returns1():
         expected = {1}
-        assert primes.divisors_proper(7)
+        assert eular_python.src.eular_021.divisors_proper(7)
         .assertEqual(expected, result)
 
     def test_divisorsproper_24_returns7factors():
         expected = {1, 2, 3, 4, 6, 8, 12}
-        assert primes.divisors_proper(24)
+        assert eular_python.src.eular_021.divisors_proper(24)
         .assertEqual(expected, result)
 
     # Proper divisors of 1 = None. Sum = 0
     def test_sumproperdivisors_1_returns0():
         expected = 0
-        assert primes.sum_proper_divisors(1)
+        assert eular_python.src.eular_021.sum_proper_divisors(1)
         .assertEqual(expected, result)
 
     # Proper divisors of 2 = 1. Sum = 1
     def test_sumproperdivisors_2_returns1():
         expected = 1
-        assert primes.sum_proper_divisors(2)
+        assert eular_python.src.eular_021.sum_proper_divisors(2)
         .assertEqual(expected, result)
 
     # Proper divisors of 3 = 1. Sum = 1
     def test_sumproperdivisors_3_returns1():
         expected = 1
-        assert primes.sum_proper_divisors(3)
+        assert eular_python.src.eular_021.sum_proper_divisors(3)
         .assertEqual(expected, result)
 
     # Proper divisors of 4 = 1, 2. Sum = 3
     def test_sumproperdivisors_4_returns3():
         expected = 3
-        assert primes.sum_proper_divisors(4)
+        assert eular_python.src.eular_021.sum_proper_divisors(4)
         .assertEqual(expected, result)
 
     # Proper divisors of 6 = 1, 2, 3. Sum = 6
     def test_sumproperdivisors_6_returns6():
         expected = 6
-        assert primes.sum_proper_divisors(6)
+        assert eular_python.src.eular_021.sum_proper_divisors(6)
         .assertEqual(expected, result)
 
     def test_factorofallupto_1_upto1_returnTrue():
         expected = True
-        assert primes.factor_of_all_upto(1, 1)
+        assert eular_python.src.eular_005.factor_of_all_upto(1, 1)
         .assertEqual(expected, result)
 
     def test_factorofallupto_1_upto2_returnFalse():
         expected = False
-        assert primes.factor_of_all_upto(1, 2)
+        assert eular_python.src.eular_005.factor_of_all_upto(1, 2)
         .assertEqual(expected, result)
 
     def test_factorofallupto_2520_upto10_returnTrue():
         expected = True
-        assert primes.factor_of_all_upto(2520, 10)
+        assert eular_python.src.eular_005.factor_of_all_upto(2520, 10)
         .assertEqual(expected, result)
 
 
 class TestEratosthenesSieve(TestSieve, unittest.TestCase):
     def getImpl():
-        return primes.eratosthenes_sieve
+        return eular_python.src.eular_010.eratosthenes_sieve
 
 
 class TestDivisors(object):
@@ -138,12 +143,12 @@ class TestDivisors(object):
 
 class Test_Divisors(TestDivisors, unittest.TestCase):
     def getImpl():
-        return primes.divisors
+        return eular_python.src.eular_012.divisors
 
 
 class Test_DivisorsBruteForce(TestDivisors, unittest.TestCase):
     def getImpl():
-        return primes.divisors_bruteforce
+        return eular_python.src.eular_012.divisors_bruteforce
 
 
 

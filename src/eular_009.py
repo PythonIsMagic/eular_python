@@ -3,10 +3,17 @@
     Find the product a * b * c.
 """
 import math
+
 from src import timer
 
 DESC = 'Special Pythagorean triplet'
 SOLUTION = 31875000
+
+
+@timer.timeit
+def solve():
+    a, b, c = iterative_solution()
+    return a * b * c
 
 
 def adds_to_1000(a, b, c):
@@ -84,9 +91,3 @@ def recursive_solution():
 
 def square_list(upto):
     return [x ** 2 for x in range(upto)]
-
-
-@timer.timeit
-def solve():
-    a, b, c = iterative_solution()
-    return a * b * c

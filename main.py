@@ -42,7 +42,7 @@ SOLVED = ("eular_001",
 class EularProblem(object):
     def __init__(self, pname):
         self.num = pname
-        self.module = 'problems.' + pname
+        self.module = 'src.' + pname
 
         self.mod = importlib.import_module(self.module)
 

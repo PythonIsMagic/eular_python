@@ -1,9 +1,9 @@
 """Eular Problem 21 -
     Evaluate the sum of all the amicable numbers under 10000.
 """
-from src import timer
-from src.toolkit import divisor_sum_dict
+from . import timer
 
+from .eular_012 import divisors
 
 DESC = 'Amicable numbers'
 SOLUTION = 31626
@@ -33,3 +33,28 @@ def solve():
     LIMIT = 10000
     # Add all of the amicable numbers together
     return add_amicables(LIMIT)
+
+
+def divisor_sum_dict(limit):
+    """ Make a dictionary of divisor sums up to, but not including, limit.
+        Example: The divisor sum of 2 would be 1 + 2 = 3.
+        The divisor sum of 220 = 1 + 2 + 4 + 5 + 10 + 11 + 20 + 22 + 44 + 55 + 110 = 284
+    """
+    return {n: sum_proper_divisors(n) for n in range(1, limit)}
+
+
+def sum_proper_divisors(n):
+    """
+    Return the sum of the proper divisors of n(numbers less than n which divide evenly into n).
+    """
+    divs = divisors_proper(n)
+    return sum(divs)
+
+
+def divisors_proper(n):
+    """ Return a set containing the proper divisors of n (numbers less than n
+        which divide evenly into n).
+    """
+    d = divisors(n)
+    d.remove(n)
+    return d
