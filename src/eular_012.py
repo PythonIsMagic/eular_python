@@ -4,7 +4,7 @@
 """
 from . import timer
 
-from .eular_003 import get_prime_factors
+from .primes import get_prime_factors
 
 DESC = 'Triangle numbers'
 SOLUTION = 76576500

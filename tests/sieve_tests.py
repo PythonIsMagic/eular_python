@@ -3,6 +3,7 @@ import eular_python.src.eular_005
 import eular_python.src.eular_010
 import eular_python.src.eular_012
 import eular_python.src.eular_021
+import eular_python.src.primes
 
 
 class TestSieve(object):
@@ -92,7 +93,7 @@ class TestSieve(object):
 
 class TestEratosthenesSieve(TestSieve, unittest.TestCase):
     def getImpl():
-        return eular_python.src.eular_010.eratosthenes_sieve
+        return eular_python.src.primes.eratosthenes_sieve
 
 
 class TestDivisors(object):
