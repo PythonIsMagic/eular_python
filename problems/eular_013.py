@@ -4,7 +4,7 @@
 """
 
 import timer
-from toolkit import read_numbers
+from toolkit import DATADIR, read_numbers
 
 DESC = 'Large Sum'
 SOLUTION = 5537376230
@@ -12,7 +12,7 @@ SOLUTION = 5537376230
 
 @timer.timeit
 def solve():
-    n = read_numbers('data/bignumbers.txt')
+    n = read_numbers(DATADIR + 'bignumbers.txt')
     bigsum = 0
     for x in n:
         bigsum += x

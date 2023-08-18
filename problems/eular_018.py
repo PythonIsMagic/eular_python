@@ -3,7 +3,7 @@
 """
 import toolkit
 import timer
-from toolkit import find_max_path
+from toolkit import DATADIR, find_max_path
 
 DESC = 'Maximum path sum I'
 SOLUTION = 1074
@@ -11,5 +11,5 @@ SOLUTION = 1074
 
 @timer.timeit
 def solve():
-    tree = toolkit.read_matrix('data/number_tree.txt')
+    tree = toolkit.read_matrix(DATADIR + 'number_tree.txt')
     return find_max_path(tree)

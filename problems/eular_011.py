@@ -5,7 +5,7 @@
     the same direction(up, down, left, right, or diagonally) in the 20×20 grid?
 """
 import timer
-from toolkit import find_greatest_product, read_matrix
+from toolkit import DATADIR, find_greatest_product, read_matrix
 
 DESC = 'Largest product in a grid'
 SOLUTION = 70600674
@@ -13,5 +13,5 @@ SOLUTION = 70600674
 
 @timer.timeit
 def solve():
-    m = read_matrix('data/matrix1.txt')
+    m = read_matrix(DATADIR + 'matrix1.txt')
     return find_greatest_product(m, 4)

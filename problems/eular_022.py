@@ -5,7 +5,7 @@
 """
 
 import timer
-
+from toolkit import DATADIR
 
 DESC = 'Names scores'
 SOLUTION = 871198282
@@ -51,7 +51,7 @@ def import_names(filename):
 
 @timer.timeit
 def solve():
-    names = import_names('data/names.txt')
+    names = import_names(DATADIR + 'names.txt')
     result = 0
 
     for i, n in enumerate(names):

@@ -6,6 +6,8 @@ import math
 import string
 import timer
 
+DATADIR = "data/"
+
 
 def get_multiples():
     """Used for problem 1"""
